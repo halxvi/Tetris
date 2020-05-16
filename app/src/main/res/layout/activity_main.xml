@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/holdBlockView"
         android:layout_width="76dp"
         android:layout_height="76dp"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
@@ -44,8 +44,9 @@
         android:id="@+id/tableLayout"
         android:layout_width="407dp"
         android:layout_height="574dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:layout_editor_absoluteX="1dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreView">
 
         <TableRow
             android:layout_width="match_parent"
@@ -478,7 +479,7 @@
     </TableLayout>
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/nextBlockView"
         android:layout_width="76dp"
         android:layout_height="76dp"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
@@ -487,12 +488,12 @@
         app:srcCompat="@drawable/ic_launcher_background" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/scoreView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/imageView2"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/holdBlockView"
+        app:layout_constraintStart_toEndOf="@+id/nextBlockView"
         tools:layout_editor_absoluteY="56dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
