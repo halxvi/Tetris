@@ -4,55 +4,495 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3100FFDF"
+    android:background="#FFC107"
     tools:context=".MainActivity">
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="250dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="76dp"
+        android:layout_height="76dp"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/block_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/block_background" />
-
-    </FrameLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_launcher_background" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/rotateButton"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginBottom="150dp"
-        android:background="#00000000"
+        android:background="?attr/colorButtonNormal"
+        android:contentDescription="button to rotate a block"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.879"
+        app:layout_constraintHorizontal_bias="0.888"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout"
         app:srcCompat="@android:drawable/ic_popup_sync" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/holdButton"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginBottom="150dp"
         android:text="Hold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintHorizontal_bias="0.123"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="407dp"
+        android:layout_height="574dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:layout_editor_absoluteX="1dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/block_1"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_2"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_3"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_4"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_5"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_6"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_7"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_8"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_9"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_10"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/block_11"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_12"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_13"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_14"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_15"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_16"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_17"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_18"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_19"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_20"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/block_21"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_22"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_23"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_24"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_25"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_26"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_27"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_28"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_29"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_30"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/block_31"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_32"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_33"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_34"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_35"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_36"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_37"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_38"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_39"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_40"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/block_41"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_42"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_43"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_44"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_45"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_46"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_47"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_48"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_49"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+            <ImageView
+                android:id="@+id/block_50"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:contentDescription="blockView"
+                app:srcCompat="@drawable/block_background" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="76dp"
+        android:layout_height="76dp"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        tools:layout_editor_absoluteY="56dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
