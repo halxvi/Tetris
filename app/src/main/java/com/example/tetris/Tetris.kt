@@ -3,16 +3,15 @@ package com.example.tetris
 import kotlin.random.Random
 
 class Tetris {
-    init {
-        val fields = Array<int>(10){ Array<int>(20){ Random.nextInt(0,7) };}
-        val straightBlock = Array<int>(4){ 1 }
-        val squareBlock = arrayOf(arrayOf(2,2), arrayOf(2,2))
-        val zBlock1 = arrayOf(arrayOf(0,3,3), arrayOf(3,3,0))
-        val zBlock2 = arrayOf(arrayOf(4,4,0), arrayOf(0,4,4))
-        val lBlock1 = arrayOf(arrayOf(5,0,0), Array(3){ 5 })
-        val lBlock2 = arrayOf(arrayOf(0,0,6), Array(2){ 6 })
-        val tBlock = arrayOf(arrayOf(0,7,0), Array(3){ 7 })
-        val blocks = arrayOf(
+        val fields: Array<Array<Int>> = Array(20){ Array<Int>( 10){ 0 };}
+        private val straightBlock = Array(4){ 1 }
+        private val squareBlock = arrayOf(arrayOf(2,2), arrayOf(2,2))
+        private val zBlock1 = arrayOf(arrayOf(0,3,3), arrayOf(3,3,0))
+        private val zBlock2 = arrayOf(arrayOf(4,4,0), arrayOf(0,4,4))
+        private val lBlock1 = arrayOf(arrayOf(5,0,0), Array(3){ 5 })
+        private val lBlock2 = arrayOf(arrayOf(0,0,6), Array(2){ 6 })
+        private val tBlock = arrayOf(arrayOf(0,7,0), Array(3){ 7 })
+        private val blocks = arrayOf(
             straightBlock,
             squareBlock,
             zBlock1,
@@ -21,5 +20,5 @@ class Tetris {
             lBlock2,
             tBlock
         );
-    }
+    private val score = 0;
 }
