@@ -12,25 +12,25 @@ import kotlin.concurrent.timer
 class MainActivity : AppCompatActivity() {
   private val tetris = Tetris()
   private val handler = Handler()
-  private var timer = timer(initialDelay = 1000, period = 100) {
-    checkGameOver(tetris.gameOver)
+  private var timer = timer(period = tetris.getGameSpeed().toLong()) {
+    checkGameOver(tetris.getGameOver())
     updateField(handler, tetris.fields)
     updateHeader(handler, tetris.getScore(), tetris.getNextBlocks())
   }
-  var gameSpeed:Double = 1000.0
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
+    restartButton.setOnClickListener {
+      tetris.init()
+      timer = timer(period = tetris.getGameSpeed().toLong()) {
+        checkGameOver(tetris.getGameOver())
+        updateField(handler, tetris.fields)
+        updateHeader(handler, tetris.getScore(), tetris.getNextBlocks())
+      }
+      gameOverLayout.visibility = View.INVISIBLE
+    }
     gameOverLayout.visibility = View.INVISIBLE
-
-//    fun setTimer() {
-//      timer.cancel()
-//      timer.schedule() {
-//        updateField(tetris.fields)
-//        updateScore(tetris.score)
-//      }
-//    }
   }
 
   private fun checkGameOver(gameOverFlag: Boolean) {
@@ -46,9 +46,9 @@ class MainActivity : AppCompatActivity() {
   private fun updateField(handler: Handler, fields: Array<Array<Int>>) {
     handler.post {
       fields.forEachIndexed { firstIndex, array ->
-        if (firstIndex < 19) {
+        if (firstIndex > 1) {
           array.forEachIndexed { lastIndex, block_num ->
-            val blockArrayIndex = (firstIndex) * 10 + (lastIndex + 1)
+            val blockArrayIndex = (firstIndex - 2) * 10 + (lastIndex + 1)
             val resourceId = resources.getIdentifier("block_$blockArrayIndex", "id", packageName)
             val blockId: ImageView = findViewById(resourceId)
             when (block_num) {

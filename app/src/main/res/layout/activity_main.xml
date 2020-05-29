@@ -11,6 +11,7 @@
         android:id="@+id/gameOverLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:animateLayoutChanges="?android:attr/windowOverscan"
         android:background="@drawable/gameover_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,10 +32,10 @@
             android:text="TextView" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/restartButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="Restart" />
 
     </FrameLayout>
 

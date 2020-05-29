@@ -5,20 +5,41 @@ import kotlin.concurrent.timer
 
 class Tetris {
   private val sr: SecureRandom = SecureRandom.getInstance("SHA1PRNG")
-  val fields: Array<Array<Int>> = Array(22) { Array<Int>(10) { 0 }; }
+  var fields: Array<Array<Int>> = Array(22) { Array<Int>(10) { 0 }; }
   private var score = 0;
+  private var gameOver = false
+  private var gameSpeed: Double = 100.0
   private var nextBlocks: MutableList<Int> = MutableList(5) {
     sr.nextInt(7) + 1
   }
   private var blockSelected: Boolean = false
-  private val timer = timer(initialDelay = 1000, period = 100) {
+  private var timer = timer(period = gameSpeed.toLong()) {
     moveBlocks()
     checkErasableBlock()
   }
-  var gameOver = false
+
+  init {
+    addBlock()
+  }
+
+  fun init() {
+    gameOver = false
+    gameSpeed = 500.0
+    blockSelected = false
+    fields = Array(22) { Array<Int>(10) { 0 }; }
+    score = 0
+    nextBlocks = MutableList(5) {
+      sr.nextInt(7) + 1
+    }
+    timer = timer(period = gameSpeed.toLong()) {
+      moveBlocks()
+      checkErasableBlock()
+    }
+    addBlock()
+  }
 
   private fun addBlock() {
-    checkOver()
+    checkGameOver()
     if (!blockSelected) {
       val nextBlock = this.nextBlocks.first()
       val setPlace = sr.nextInt(5) + 1
@@ -78,7 +99,7 @@ class Tetris {
     }
   }
 
-  private fun checkOver() {
+  private fun checkGameOver() {
     for (i in 0..1) {
       for (n in 9 downTo 0) {
         when (fields[i][n]) {
@@ -126,7 +147,7 @@ class Tetris {
 
   private fun checkErasableBlock() {
     for (i in 21 downTo 2) {
-      var flag: Boolean = false
+      var flag = false
       for (n in 9 downTo 0) {
         if (fields[i][n] == 0) {
           flag = false
@@ -138,7 +159,7 @@ class Tetris {
         for (j in 9 downTo 0) {
           fields[i][j] = 0
         }
-        score += 1000
+        score += 100
       }
     }
   }
@@ -192,7 +213,6 @@ class Tetris {
     }
   }
 
-
   fun getNextBlocks(): MutableList<Int> {
     return nextBlocks
   }
@@ -201,7 +221,11 @@ class Tetris {
     return score
   }
 
-  init {
-    addBlock()
+  fun getGameOver(): Boolean {
+    return gameOver
+  }
+
+  fun getGameSpeed(): Double {
+    return gameSpeed / 3
   }
 }
