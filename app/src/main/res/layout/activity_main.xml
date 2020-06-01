@@ -11,7 +11,6 @@
         android:id="@+id/gameOverLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:animateLayoutChanges="?android:attr/windowOverscan"
         android:background="@drawable/gameover_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,19 +47,22 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/nextBlockView"
-            android:layout_width="63dp"
-            android:layout_height="match_parent" />
+            android:id="@+id/nextBlockView1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3" />
 
         <ImageView
             android:id="@+id/nextBlockView2"
-            android:layout_width="115dp"
-            android:layout_height="match_parent" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3" />
 
         <ImageView
             android:id="@+id/nextBlockView3"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_weight="0.3" />
 
     </LinearLayout>
 
@@ -74,1520 +76,1540 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="0.05">
 
             <ImageView
                 android:id="@+id/block_1"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+string/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_2"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+string/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_3"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+string/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_4"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+string/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_5"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+string/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_6"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+string/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_7"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+string/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_8"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+string/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_9"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+string/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_10"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+string/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="0.05">
 
             <ImageView
                 android:id="@+id/block_11"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_12"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_13"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_14"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_15"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_16"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_17"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_18"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_19"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_20"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="0.05">
 
             <ImageView
                 android:id="@+id/block_21"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_22"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_23"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_24"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_25"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_26"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_27"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_28"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_29"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_30"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="0.05">
 
             <ImageView
                 android:id="@+id/block_31"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView" />
 
             <ImageView
                 android:id="@+id/block_32"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_33"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_34"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_35"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_36"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_37"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_38"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_39"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_40"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="0.05">
 
             <ImageView
                 android:id="@+id/block_41"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_42"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_43"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_44"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_45"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_46"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_47"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_48"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_49"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_50"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="0.05">
 
             <ImageView
                 android:id="@+id/block_51"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_52"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_53"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_54"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_55"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_56"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_57"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_58"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_59"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_60"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="0.05">
 
             <ImageView
                 android:id="@+id/block_61"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_62"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_63"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_64"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_65"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_66"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_67"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_68"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_69"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_70"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="0.05">
 
             <ImageView
                 android:id="@+id/block_71"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_72"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_73"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_74"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_75"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_76"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_77"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_78"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_79"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_80"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="0.05">
 
             <ImageView
                 android:id="@+id/block_81"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_82"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_83"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_84"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_85"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_86"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_87"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_88"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_89"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_90"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="0.05">
 
             <ImageView
                 android:id="@+id/block_91"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_92"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_93"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_94"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_95"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_96"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_97"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_98"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_99"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_100"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="0.05">
 
             <ImageView
                 android:id="@+id/block_101"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_102"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_103"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_104"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_105"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_106"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_107"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_108"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_109"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_110"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="0.05">
 
             <ImageView
                 android:id="@+id/block_111"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_112"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_113"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_114"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_115"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_116"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_117"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_118"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_119"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_120"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="0.05">
 
             <ImageView
                 android:id="@+id/block_121"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_122"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_123"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_124"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_125"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_126"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_127"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_128"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_129"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_130"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="0.05">
 
             <ImageView
                 android:id="@+id/block_131"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_132"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_133"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_134"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_135"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_136"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_137"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_138"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_139"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_140"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="0.05">
 
             <ImageView
                 android:id="@+id/block_141"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_142"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_143"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_144"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_145"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_146"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_147"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_148"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_149"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_150"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
         </TableRow>
 
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="0.05">
 
             <ImageView
                 android:id="@+id/block_151"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_152"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_153"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_154"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_155"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_156"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_157"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_158"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_159"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_160"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="0.05">
 
             <ImageView
                 android:id="@+id/block_161"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_162"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_163"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_164"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_165"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_166"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_167"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_168"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_169"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_170"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="0.05">
 
             <ImageView
                 android:id="@+id/block_171"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_172"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_173"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_174"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_175"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_176"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_177"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_178"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_179"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_180"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="0.05">
 
             <ImageView
                 android:id="@+id/block_181"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_182"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_183"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_184"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_185"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_186"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_187"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_188"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_189"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_190"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="0.05">
 
             <ImageView
                 android:id="@+id/block_191"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_192"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_193"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_194"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_195"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_196"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_197"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_198"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_199"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
             <ImageView
                 android:id="@+id/block_200"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="@+String/blockView" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="@+string/blockView"  />
 
         </TableRow>
 
@@ -1613,6 +1635,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Your Score:0" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"></LinearLayout>
 
     </LinearLayout>
 
