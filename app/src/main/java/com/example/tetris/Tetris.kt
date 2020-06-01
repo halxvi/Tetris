@@ -1,24 +1,25 @@
 package com.example.tetris
 
-import java.security.SecureRandom;
+import java.security.SecureRandom
 import kotlin.concurrent.timer
 
 class Tetris {
   private val sr: SecureRandom = SecureRandom.getInstance("SHA1PRNG")
-  var fields: Array<Array<Int>> = Array(22) { Array<Int>(10) { 0 }; }
-  private var score = 0;
+  private var fields: Array<Array<Int>> = Array(23) { Array<Int>(10) { 0 } }
+  private var score = 0
   private var gameOver = false
-  private var gameSpeed: Double = 100.0
-  private var nextBlocks: MutableList<Int> = MutableList(5) {
+  private var gameSpeed: Double = 500.0
+  private var nextBlocks: MutableList<Int> = MutableList(14) {
     sr.nextInt(7) + 1
   }
   private var blockSelected: Boolean = false
-  private var timer = timer(period = gameSpeed.toLong()) {
+  private var timer = timer(initialDelay = 1000, period = gameSpeed.toLong()) {
     moveBlocks()
     checkErasableBlock()
   }
 
   init {
+    setBottom()
     addBlock()
   }
 
@@ -26,16 +27,23 @@ class Tetris {
     gameOver = false
     gameSpeed = 500.0
     blockSelected = false
-    fields = Array(22) { Array<Int>(10) { 0 }; }
+    fields = Array(23) { Array<Int>(10) { 0 } }
     score = 0
     nextBlocks = MutableList(5) {
       sr.nextInt(7) + 1
     }
-    timer = timer(period = gameSpeed.toLong()) {
+    timer = timer(initialDelay = 1000, period = gameSpeed.toLong()) {
       moveBlocks()
       checkErasableBlock()
     }
+    setBottom()
     addBlock()
+  }
+
+  private fun setBottom() {
+    for (i in 0..9) {
+      fields[22][i] = 16
+    }
   }
 
   private fun addBlock() {
@@ -101,7 +109,7 @@ class Tetris {
 
   private fun checkGameOver() {
     for (i in 0..1) {
-      for (n in 9 downTo 0) {
+      for (n in 0..9) {
         when (fields[i][n]) {
           8, 9, 10, 11, 12, 13, 14 -> {
             timer.cancel()
@@ -138,6 +146,9 @@ class Tetris {
             14 -> {
               fields[i][n] = 7
             }
+            15 -> {
+              fields[i][n] = 0
+            }
           }
         }
       }
@@ -167,21 +178,13 @@ class Tetris {
   private fun checkAdjacentBlocks(): Boolean {
     for (i in 21 downTo 0) {
       for (n in 9 downTo 0) {
-        if (i == 21) {
-          when (fields[i][n]) {
-            8, 9, 10, 11, 12, 13, 14 -> {
-              return true
-            }
-          }
-        } else {
-          val currentBlock = fields[i][n]
-          val targetBlock = fields[i + 1][n]
-          when (currentBlock) {
-            8, 9, 10, 11, 12, 13, 14 -> {
-              when (targetBlock) {
-                1, 2, 3, 4, 5, 6, 7 -> {
-                  return true
-                }
+        val currentBlock = fields[i][n]
+        val targetBlock = fields[i + 1][n]
+        when (currentBlock) {
+          8, 9, 10, 11, 12, 13, 14 -> {
+            when (targetBlock) {
+              1, 2, 3, 4, 5, 6, 7, 16 -> {
+                return true
               }
             }
           }
@@ -195,17 +198,127 @@ class Tetris {
     if (checkAdjacentBlocks()) {
       replaceBlocks()
       addBlock()
-    } else {
+    } else if (blockSelected) {
       for (i in 20 downTo 0) {
         for (n in 9 downTo 0) {
           val currentBlock = fields[i][n]
           val targetBlock = fields[i + 1][n]
-          if (targetBlock == 0) {
-            when (currentBlock) {
-              8, 9, 10, 11, 12, 13, 14 -> {
+          when (currentBlock) {
+            8, 9, 10, 11, 12, 13, 14 -> {
+              if (targetBlock == 0 || targetBlock == 15) {
                 fields[i + 1][n] = currentBlock
                 fields[i][n] = 0
               }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  fun flickBlock(option: String) {
+    var flag = false
+    when (option) {
+      "right" -> {
+        for (j in 0..21) {
+          when (fields[j][9]) {
+            8, 9, 10, 11, 12, 13, 14 -> {
+              flag = true
+            }
+          }
+        }
+        loop@ for (n in 8 downTo 0) {
+          for (i in 0..21) {
+            if (flag) {
+              break@loop
+            }
+            val currentBlock = fields[i][n]
+            val targetBlock = fields[i][n + 1]
+            when (currentBlock) {
+              8, 9, 10, 11, 12, 13, 14 -> {
+                if (targetBlock == 0 || !flag) {
+                  fields[i][n + 1] = currentBlock
+                  fields[i][n] = 0
+                }
+              }
+            }
+          }
+        }
+      }
+      "left" -> {
+        for (j in 0..21) {
+          when (fields[j][0]) {
+            8, 9, 10, 11, 12, 13, 14 -> {
+              flag = true
+            }
+          }
+        }
+        loop@ for (n in 1..9) {
+          for (i in 0..21) {
+            if (flag) {
+              break@loop
+            }
+            val currentBlock = fields[i][n]
+            val targetBlock = fields[i][n - 1]
+            when (currentBlock) {
+              8, 9, 10, 11, 12, 13, 14 -> {
+                if (targetBlock == 0 || !flag) {
+                  fields[i][n - 1] = currentBlock
+                  fields[i][n] = 0
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  fun onSpeedUp() {
+    val speed = 10
+    for (i in 0..speed) {
+      moveBlocks()
+    }
+  }
+
+  private fun makeShadowBlock(copyFields: Array<Array<Int>>) {
+    loop@ while (true) {
+      for (i in 21 downTo 0) {
+        for (n in 9 downTo 0) {
+          val currentBlock = copyFields[i][n]
+          val targetBlock = copyFields[i + 1][n]
+          when (currentBlock) {
+            8, 9, 10, 11, 12, 13, 14 -> {
+              when (targetBlock) {
+                1, 2, 3, 4, 5, 6, 7, 16 -> {
+                  break@loop
+                }
+              }
+            }
+          }
+        }
+      }
+      for (j in 20 downTo 0) {
+        for (p in 9 downTo 0) {
+          val currentBlock = copyFields[j][p]
+          val targetBlock = copyFields[j + 1][p]
+          if (targetBlock == 0 || targetBlock == 15) {
+            when (currentBlock) {
+              8, 9, 10, 11, 12, 13, 14 -> {
+                copyFields[j + 1][p] = currentBlock
+                copyFields[j][p] = 0
+              }
+            }
+          }
+        }
+      }
+    }
+    for ((firstIndex, firstArray) in copyFields.withIndex()) {
+      for ((lastIndex, block_num) in firstArray.withIndex()) {
+        when (block_num) {
+          8, 9, 10, 11, 12, 13, 14 -> {
+            if (fields[firstIndex][lastIndex] == 0) {
+              fields[firstIndex][lastIndex] = 15
             }
           }
         }
@@ -226,6 +339,10 @@ class Tetris {
   }
 
   fun getGameSpeed(): Double {
-    return gameSpeed / 3
+    return gameSpeed / 10
+  }
+
+  fun getField(): Array<Array<Int>> {
+    return fields
   }
 }
