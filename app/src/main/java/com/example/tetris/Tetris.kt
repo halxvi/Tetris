@@ -16,71 +16,73 @@ class Tetris() : TetrisInterface {
 
   init {
     for (i in 0..9) fields[22][i] = 16
-    for (i in 1..3) {nextBlocks.add(i)}
+    for (i in 1..3) {
+      nextBlocks.add(i)
+    }
   }
 
-   override fun addBlock() {
-    if (isBlockSelected){
+  override fun addBlock() {
+    if (isBlockSelected) {
       return
     }
-      when (nextBlocks.first()) {
-        1 -> {
-          //straight
-          for (i in 0..3) {
-            fields[1][i] = 8
-          }
-          blockCategory = 8
+    when (nextBlocks.first()) {
+      1 -> {
+        //straight
+        for (i in 0..3) {
+          fields[1][i] = 8
         }
-        2 -> {
-          //square
-          for (i in 0..1) {
-            fields[0][i] = 9
-            fields[1][i] = 9
-          }
-          blockCategory = 9
-        }
-        3 -> {
-          //zReverse
-          for (i in 0..1) {
-            fields[0][i + 1] = 10
-            fields[1][i] = 10
-          }
-          blockCategory = 10
-        }
-        4 -> {
-          //z
-          for (i in 0..1) {
-            fields[0][i] = 11
-            fields[1][i + 1] = 11
-          }
-          blockCategory = 11
-        }
-        5 -> {
-          //L
-          fields[0][0] = 12
-          for (i in 0..2) {
-            fields[1][i] = 12
-          }
-          blockCategory = 12
-        }
-        6 -> {
-          //LReverse
-          fields[0][2] = 13
-          for (i in 0..2) {
-            fields[1][i] = 13
-          }
-          blockCategory = 13
-        }
-        7 -> {
-          //t
-          fields[0][1] = 14
-          for (i in 0..2) {
-            fields[1][i] = 14
-          }
-          blockCategory = 14
-        }
+        blockCategory = 8
       }
-      isBlockSelected = true
+      2 -> {
+        //square
+        for (i in 0..1) {
+          fields[0][i] = 9
+          fields[1][i] = 9
+        }
+        blockCategory = 9
+      }
+      3 -> {
+        //zReverse
+        for (i in 0..1) {
+          fields[0][i + 1] = 10
+          fields[1][i] = 10
+        }
+        blockCategory = 10
+      }
+      4 -> {
+        //z
+        for (i in 0..1) {
+          fields[0][i] = 11
+          fields[1][i + 1] = 11
+        }
+        blockCategory = 11
+      }
+      5 -> {
+        //L
+        fields[0][0] = 12
+        for (i in 0..2) {
+          fields[1][i] = 12
+        }
+        blockCategory = 12
+      }
+      6 -> {
+        //LReverse
+        fields[0][2] = 13
+        for (i in 0..2) {
+          fields[1][i] = 13
+        }
+        blockCategory = 13
+      }
+      7 -> {
+        //t
+        fields[0][1] = 14
+        for (i in 0..2) {
+          fields[1][i] = 14
+        }
+        blockCategory = 14
+      }
+    }
+    isBlockSelected = true
   }
 
   private fun checkGameOver() {
