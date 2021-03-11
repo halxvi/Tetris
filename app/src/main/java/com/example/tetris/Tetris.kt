@@ -173,7 +173,7 @@ class Tetris() : TetrisInterface {
     return false
   }
 
-  private fun moveBlocks() {
+  fun moveBlock() {
     if (!isBlockSelected) {
       return
     }
@@ -400,7 +400,7 @@ class Tetris() : TetrisInterface {
   fun onSpeedUp() {
     val speed = 10
     for (i in 0..speed) {
-      moveBlocks()
+      moveBlock()
     }
   }
 
