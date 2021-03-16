@@ -47,12 +47,6 @@
       app:layout_constraintTop_toTopOf="parent">
 
     <ImageView
-        android:id="@+id/nextBlockView0"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.3" />
-
-    <ImageView
         android:id="@+id/nextBlockView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -60,6 +54,12 @@
 
     <ImageView
         android:id="@+id/nextBlockView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.3" />
+
+    <ImageView
+        android:id="@+id/nextBlockView3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="0.3" />
@@ -1645,7 +1645,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="732dp"
         android:orientation="horizontal">
 
     </LinearLayout>
