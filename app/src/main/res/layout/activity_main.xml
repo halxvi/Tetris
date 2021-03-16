@@ -47,19 +47,19 @@
       app:layout_constraintTop_toTopOf="parent">
 
     <ImageView
-        android:id="@+id/nextBlockView1"
+        android:id="@+id/nextBlockView_1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="0.3" />
 
     <ImageView
-        android:id="@+id/nextBlockView2"
+        android:id="@+id/nextBlockView_2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="0.3" />
 
     <ImageView
-        android:id="@+id/nextBlockView3"
+        android:id="@+id/nextBlockView_3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="0.3" />

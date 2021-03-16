@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
   private lateinit var mDetector: GestureDetectorCompat
   private val tetris = Tetris()
   private val handler = Handler()
-  private var timer = timer(period = tetris.getGameSpeed().toLong()) {
+  private var timer = timer(period = 1000.toLong()) {
     if (tetris.getGameOver()) checkGameOver()
     updateField(handler, tetris.getField())
     updateHeader(handler, tetris.getScore(), tetris.nextBlocks)
@@ -28,14 +28,7 @@ class MainActivity : AppCompatActivity() {
     5 to R.drawable.blue_block,
     6 to R.drawable.orange_block,
     7 to R.drawable.purple_block,
-    8 to R.drawable.lightblue_block,
-    9 to R.drawable.yellow_block,
-    10 to R.drawable.red_block,
-    11 to R.drawable.green_block,
-    12 to R.drawable.blue_block,
-    13 to R.drawable.orange_block,
-    14 to R.drawable.purple_block,
-    15 to R.drawable.target_block_background
+    8 to R.drawable.target_block_background
   )
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,6 +44,7 @@ class MainActivity : AppCompatActivity() {
       gameOverLayout.visibility = View.INVISIBLE
     }
     gameOverLayout.visibility = View.INVISIBLE
+    updateField(handler, tetris.getField())
   }
 
   override fun onTouchEvent(event: MotionEvent): Boolean {
@@ -96,15 +90,14 @@ class MainActivity : AppCompatActivity() {
 
   private fun updateField(handler: Handler, fields: Array<Array<Int>>) {
     handler.post {
-      fields.forEachIndexed { firstIndex, array ->
-        if (firstIndex in 2..21) {
-          array.forEachIndexed { lastIndex, block_num ->
-            val blockIndex = (firstIndex - 2) * 10 + (lastIndex + 1)
-            val resourceId = resources.getIdentifier("block_$blockIndex", "id", packageName)
-            val blockId: ImageView = findViewById(resourceId)
-            blockId.setImageResource(
-              drawableType[block_num] ?: R.drawable.block_background
-            )
+      fields.forEachIndexed { n, array ->
+        if (n in 2..21) {
+          array.forEachIndexed { m, blockNumber: Int ->
+            val i = (n - 2) * 10 + (m + 1)
+            val resourceId = resources.getIdentifier("block_$i", "id", packageName)
+            val imageView: ImageView = findViewById(resourceId)
+            imageView.setImageResource(R.drawable.block_background)
+            imageView.tag = R.drawable.block_background
           }
         }
       }
@@ -113,12 +106,11 @@ class MainActivity : AppCompatActivity() {
 
   private fun updateHeader(handler: Handler, score: Int, nextBlocks: MutableList<Int>) {
     handler.post {
-      for (i in 0..2) {
-        val resourceId = resources.getIdentifier("nextBlockView$i", "id", packageName)
-        val nextBlockView: ImageView = findViewById(resourceId)
-        nextBlockView.setImageResource(
-          drawableType[nextBlocks[i]] ?: R.drawable.block_background
-        )
+      for (i in 1..3) {
+        val resourceId = resources.getIdentifier("nextBlockView_$i", "id", packageName)
+        val imageView: ImageView = findViewById(resourceId)
+        imageView.setImageResource(R.drawable.block_background)
+        imageView.tag = R.drawable.block_background
       }
       scoreView.text = "Score:$score"
     }
