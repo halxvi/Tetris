@@ -24,7 +24,7 @@ class ViewTest {
         .check(matches(hasDrawable(R.drawable.block_background)))
     }
     for (n in 1..3) {
-      onView(withResourceName("nextBlockView$n"))
+      onView(withResourceName("nextBlockView_$n"))
         .check(matches(hasDrawable(R.drawable.block_background)))
     }
     onView(withId(R.id.scoreView))
