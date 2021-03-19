@@ -1,6 +1,6 @@
 package com.example.tetris
 
-import com.example.tetris.androidTest.customMacher.DrawableMatcher.Companion.hasDrawable
+import com.example.tetris.androidTest.customMacher.hasDrawable
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
