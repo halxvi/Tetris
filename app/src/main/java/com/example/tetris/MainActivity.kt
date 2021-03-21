@@ -5,8 +5,8 @@ import android.view.GestureDetector
 import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GestureDetectorCompat
-import org.koin.android.viewmodel.ext.android.viewModel
 import com.example.tetris.model.TetrisViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity() : AppCompatActivity() {
   private lateinit var mDetector: GestureDetectorCompat

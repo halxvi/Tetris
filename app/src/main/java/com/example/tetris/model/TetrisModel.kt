@@ -5,11 +5,11 @@ import java.security.SecureRandom
 
 class TetrisModel(repo: TetrisModelRepository) {
   private val sr: SecureRandom = SecureRandom.getInstance("SHA1PRNG")
-  private var fields: Array<Array<Int>> = repo.fields
+  var fields: Array<Array<Int>> = repo.fields
   private var score: Int = repo.score
   private var gameover: Boolean = repo.gameover
   private var gameSpeed: Double = 500.0
-  private var nextBlocks: MutableList<Int> = repo.nextBlocks
+  var nextBlocks: MutableList<Int> = repo.nextBlocks
   var isBlockSelected: Boolean = false
   private var blockDirection: Int = 0
   private var blockCategory: Int = 0

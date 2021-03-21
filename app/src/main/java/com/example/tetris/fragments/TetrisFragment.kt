@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.tetris.R
 import com.example.tetris.databinding.TetrisBinding
 import com.example.tetris.model.TetrisViewModel
-import org.koin.android.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class TetrisFragment : Fragment() {
   private val viewModel: TetrisViewModel by sharedViewModel()
