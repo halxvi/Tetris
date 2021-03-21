@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -45,3 +45,21 @@ jobs:
             **/build/reports/tests/**/*
           if-no-files-found: warn
           retention-days: 14
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Run Inspection
+      run: ./gradlew lint
+      
+    - name: Upload results Artifact
+      uses: actions/upload-artifact@v2
+      if: success() || failure()
+      with:
+        name: results
+        path: |
+          **/build/reports/lint-results.html
+          **/build/reports/lint-results.xml
+        if-no-files-found: error
+        retention-days: 14
