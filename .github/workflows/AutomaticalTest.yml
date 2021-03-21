@@ -31,9 +31,9 @@ jobs:
         run: ./gradlew assembleDebug
         
       - name: Unit Test
-        run: ./gradlew test
+        run: ./gradlew test --stacktrace
         
-      - name: Upload test results and code coverage Artifact
+      - name: Upload test results
         uses: actions/upload-artifact@v2
         if: success() || failure()
         with:
