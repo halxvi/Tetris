@@ -28,7 +28,7 @@ jobs:
             ${{ runner.os }}-gradle-
             
       - name: Bulid
-        run: ./gradlew assembleDebug
+        run: ./gradlew bulid
         
       - name: Unit Test
         run: ./gradlew test
