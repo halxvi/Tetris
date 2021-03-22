@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  unitTest:
     runs-on: ubuntu-latest
 
     steps:
@@ -42,3 +42,14 @@ jobs:
             **/build/reports/tests/**/*
           if-no-files-found: warn
           retention-days: 14
+          
+  instrumentedTest:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: run tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: ./gradlew connectedCheck
