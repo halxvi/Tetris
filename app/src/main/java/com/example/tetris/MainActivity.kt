@@ -5,6 +5,7 @@ import android.view.GestureDetector
 import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GestureDetectorCompat
+import com.example.tetris.fragments.TetrisFragment
 import com.example.tetris.model.TetrisViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -16,6 +17,10 @@ class MainActivity() : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
     mDetector = GestureDetectorCompat(this, MyGestureListener(this.viewModel))
+    val fragmentManager = supportFragmentManager
+    val fragmentTransaction = fragmentManager.beginTransaction()
+    fragmentTransaction.add(R.id.fragment_container, TetrisFragment())
+    fragmentTransaction.commit()
   }
 
   override fun onTouchEvent(event: MotionEvent): Boolean {
