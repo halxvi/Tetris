@@ -4,6 +4,7 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.core.content.ContextCompat
 import com.example.tetris.R
+import com.example.tetris.view.GameFieldView
 
 private val drawableType = mapOf(
   1 to R.drawable.lightblue_block,
@@ -25,4 +26,9 @@ fun blockImage(view: ImageView, blockType: Int) {
     )
   )
   view.tag = drawableType[blockType] ?: R.drawable.block_background
+}
+
+@BindingAdapter("app:gameField")
+fun setField(view: GameFieldView, field: Array<Array<Int>>) {
+  view.setField(field)
 }
