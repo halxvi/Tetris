@@ -3,4 +3,18 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <color name="colorFieldBackground">#6AFFFFFF</color>
+    <color name="colorGameoverBackground">#D7555353</color>
+    <color name="colorBlockBackground">#5BFFFFFF</color>
+    <color name="colorBlockTargetBackground">#74BAB7B7</color>
+    <color name="colorBlockStroke">#95CDCDCD</color>
+    <color name="colorBlockBlack">#171717</color>
+    <color name="colorBlockBlue">#3F51B5</color>
+    <color name="colorBlockLightBlue">#2196F3</color>
+    <color name="colorBlockOrange">#FF9800</color>
+    <color name="colorBlockPurple">#FDC13DFA</color>
+    <color name="colorBlockRed">#FB5242</color>
+    <color name="colorBlockYellow">#FFEB3B</color>
+    <color name="colorBlockGreen">#4CAF50</color>
 </resources>
