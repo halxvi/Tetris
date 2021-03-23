@@ -9,6 +9,7 @@ import com.example.tetris.fragments.TetrisFragment
 import com.example.tetris.model.TetrisViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+
 class MainActivity() : AppCompatActivity() {
   private lateinit var mDetector: GestureDetectorCompat
   private val viewModel: TetrisViewModel by viewModel()

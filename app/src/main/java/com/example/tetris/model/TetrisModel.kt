@@ -378,19 +378,10 @@ class TetrisModel(repo: TetrisModelRepository) {
     }
   }
 
-  fun getGameSpeed(): Double {
-    return gameSpeed / 10
-  }
-
-  fun getField(): Array<Array<Int>> {
-    return fields
-  }
-
   fun onSpeedUp() {
     val speed = 10
     for (i in 0..speed) {
       moveBlock()
     }
   }
-
 }

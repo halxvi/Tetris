@@ -13,6 +13,7 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class TetrisFragment : Fragment() {
   private val viewModel: TetrisViewModel by sharedViewModel()
+
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?
