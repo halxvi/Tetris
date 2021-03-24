@@ -8,7 +8,7 @@
     <color name="colorGameoverBackground">#D7555353</color>
     <color name="colorBlockBackground">#5BFFFFFF</color>
     <color name="colorBlockTargetBackground">#74BAB7B7</color>
-    <color name="colorBlockStroke">#95CDCDCD</color>
+    <color name="colorBlockStroke">#86F3E7E7</color>
     <color name="colorBlockBlack">#171717</color>
     <color name="colorBlockBlue">#3F51B5</color>
     <color name="colorBlockLightBlue">#2196F3</color>

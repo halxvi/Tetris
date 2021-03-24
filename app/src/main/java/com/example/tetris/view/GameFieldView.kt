@@ -12,8 +12,17 @@ import com.example.tetris.R
 
 class GameFieldView(context: Context, attributeSet: AttributeSet) : View(context, attributeSet) {
   private lateinit var field: Array<Array<Int>>
-  private var mPaint = Paint()
   private var mRect = Rect()
+  private var fillPaint = Paint().apply {
+    style = Paint.Style.FILL
+  }
+
+  @RequiresApi(Build.VERSION_CODES.M)
+  private var strokePaint = Paint().apply {
+    color = context.getColor(R.color.colorBlockStroke)
+    strokeWidth = 1F
+    style = Paint.Style.STROKE
+  }
   private val colorType = mapOf(
     1 to R.color.colorBlockLightBlue,
     2 to R.color.colorBlockYellow,
@@ -36,18 +45,13 @@ class GameFieldView(context: Context, attributeSet: AttributeSet) : View(context
         mRect.offsetTo(offsetWidth, offsetHeight)
         canvas?.drawRect(
           mRect,
-          mPaint.apply {
-            color = colorType[field[y][x]] ?: R.color.colorFieldBackground
-            strokeWidth = 3F
-            style = Paint.Style.STROKE
-          }
-        )
+          fillPaint.apply {
+            color = context.getColor(colorType[field[y][x]] ?: R.color.colorBlockBackground)
+          })
         canvas?.drawRect(
           mRect,
-          mPaint.apply {
-            color = context.getColor(R.color.colorBlockStroke)
-            style = Paint.Style.FILL
-          })
+          strokePaint
+        )
         offsetWidth += width / 10
       }
       offsetHeight += height / 20
