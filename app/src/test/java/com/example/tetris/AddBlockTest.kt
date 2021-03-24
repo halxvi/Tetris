@@ -1,7 +1,7 @@
 package com.example.tetris
 
 import com.example.tetris.model.TetrisModel
-import com.example.tetris.repository.TetrisModelRepository
+import com.example.tetris.model.TetrisModelRepository
 import org.junit.Test
 import org.junit.Assert.*
 import org.junit.Rule
@@ -25,114 +25,91 @@ class AddBlockTest : KoinTest {
 
   @Test
   fun addStraightBlock() {
-    model.nextBlocks = MutableList<Int>(3) { 1 }
-    model.addBlock()
-    val expectedArray: Array<Array<Int>> = Array(23) { Array<Int>(10) { 0 } }
-    for (i in 0..9) expectedArray[22][i] = 16
-    for (i in 0..3) {
-      expectedArray[1][i] = 8
+    model.addStraightBlock()
+    var expectedArray: Array<Array<Int>> = Array(22) { Array<Int>(12) { 0 } }
+    for (i in 5..8) {
+      expectedArray[1][i] = 1
     }
+    expectedArray = addWallToArray(expectedArray)
     assertArrayEquals(expectedArray, model.fields)
-    assertTrue(model.isBlockSelected)
   }
 
   @Test
   fun addSquareBlock() {
-    model.nextBlocks = MutableList<Int>(3) { 2 }
-    model.addBlock()
-    val expectedArray: Array<Array<Int>> = Array(23) { Array<Int>(10) { 0 } }
-    for (i in 0..9) expectedArray[22][i] = 16
-    for (i in 0..1) {
-      expectedArray[0][i] = 9
-      expectedArray[1][i] = 9
+    model.addSquareBlock()
+    var expectedArray: Array<Array<Int>> = Array(22) { Array<Int>(12) { 0 } }
+    for (i in 5..6) {
+      expectedArray[0][i] = 2
+      expectedArray[1][i] = 2
     }
+    expectedArray = addWallToArray(expectedArray)
     assertArrayEquals(expectedArray, model.fields)
-    assertTrue(model.isBlockSelected)
-  }
-
-  @Test
-  fun addZReverseBlock() {
-    val model: TetrisModel by inject()
-    model.nextBlocks = MutableList<Int>(3) { 3 }
-    model.addBlock()
-    val expectedArray: Array<Array<Int>> = Array(23) { Array<Int>(10) { 0 } }
-    for (i in 0..9) expectedArray[22][i] = 16
-    for (i in 0..1) {
-      expectedArray[0][i + 1] = 10
-      expectedArray[1][i] = 10
-    }
-    assertArrayEquals(expectedArray, model.fields)
-    assertTrue(model.isBlockSelected)
   }
 
   @Test
   fun addZBlock() {
-    val model: TetrisModel by inject()
-    model.nextBlocks = MutableList<Int>(3) { 4 }
-    model.addBlock()
-    val expectedArray: Array<Array<Int>> = Array(23) { Array<Int>(10) { 0 } }
-    for (i in 0..9) expectedArray[22][i] = 16
-    for (i in 0..1) {
-      expectedArray[0][i] = 11
-      expectedArray[1][i + 1] = 11
+    model.addZBlock()
+    var expectedArray: Array<Array<Int>> = Array(22) { Array<Int>(12) { 0 } }
+    for (i in 5..6) {
+      expectedArray[0][i] = 3
+      expectedArray[1][i + 1] = 3
     }
+    expectedArray = addWallToArray(expectedArray)
     assertArrayEquals(expectedArray, model.fields)
-    assertTrue(model.isBlockSelected)
+  }
+
+  @Test
+  fun addZReverseBlock() {
+    model.addZReverseBlock()
+    var expectedArray: Array<Array<Int>> = Array(22) { Array<Int>(12) { 0 } }
+    for (i in 5..6) {
+      expectedArray[0][i + 1] = 4
+      expectedArray[1][i] = 4
+    }
+    expectedArray = addWallToArray(expectedArray)
+    assertArrayEquals(expectedArray, model.fields)
   }
 
   @Test
   fun addLBlock() {
-    val model: TetrisModel by inject()
-    model.nextBlocks = MutableList<Int>(3) { 5 }
-    model.addBlock()
-    val expectedArray: Array<Array<Int>> = Array(23) { Array<Int>(10) { 0 } }
-    for (i in 0..9) expectedArray[22][i] = 16
-    expectedArray[0][0] = 12
-    for (i in 0..2) {
-      expectedArray[1][i] = 12
+    model.addLBlock()
+    var expectedArray: Array<Array<Int>> = Array(22) { Array<Int>(12) { 0 } }
+    expectedArray[0][7] = 5
+    for (i in 5..7) {
+      expectedArray[1][i] = 5
     }
+    expectedArray = addWallToArray(expectedArray)
     assertArrayEquals(expectedArray, model.fields)
-    assertTrue(model.isBlockSelected)
   }
 
   @Test
   fun addLReverseBlock() {
-    val model: TetrisModel by inject()
-    model.nextBlocks = MutableList<Int>(3) { 6 }
-    model.addBlock()
-    val expectedArray: Array<Array<Int>> = Array(23) { Array<Int>(10) { 0 } }
-    for (i in 0..9) expectedArray[22][i] = 16
-    expectedArray[0][2] = 13
-    for (i in 0..2) {
-      expectedArray[1][i] = 13
+    model.addLReverseBlock()
+    var expectedArray: Array<Array<Int>> = Array(22) { Array<Int>(12) { 0 } }
+    expectedArray[0][5] = 6
+    for (i in 5..7) {
+      expectedArray[1][i] = 6
     }
+    expectedArray = addWallToArray(expectedArray)
     assertArrayEquals(expectedArray, model.fields)
-    assertTrue(model.isBlockSelected)
   }
 
   @Test
   fun addTBlock() {
-    val model: TetrisModel by inject()
-    model.nextBlocks = MutableList<Int>(3) { 7 }
-    model.addBlock()
-    val expectedArray: Array<Array<Int>> = Array(23) { Array<Int>(10) { 0 } }
-    for (i in 0..9) expectedArray[22][i] = 16
-    expectedArray[0][1] = 14
-    for (i in 0..2) {
-      expectedArray[1][i] = 14
+    model.addTBlock()
+    var expectedArray: Array<Array<Int>> = Array(22) { Array<Int>(12) { 0 } }
+    expectedArray[0][6] = 7
+    for (i in 5..7) {
+      expectedArray[1][i] = 7
     }
+    expectedArray = addWallToArray(expectedArray)
     assertArrayEquals(expectedArray, model.fields)
-    assertTrue(model.isBlockSelected)
   }
 
-  @Test
-  fun notBlockSelected() {
-    val model: TetrisModel by inject()
-    model.isBlockSelected = true
-    model.addBlock()
-    val expectedArray: Array<Array<Int>> = Array(23) { Array<Int>(10) { 0 } }
-    for (i in 0..9) expectedArray[22][i] = 16
-    assertArrayEquals(expectedArray, model.fields)
-    assertTrue(model.isBlockSelected)
+  private fun addWallToArray(array: Array<Array<Int>>): Array<Array<Int>> {
+    for (n in 0..21) array[n][0] = 16
+    for (n in 0..21) array[n][11] = 16
+    for (i in 2..10) array[21][i] = 16
+    return array
   }
 }

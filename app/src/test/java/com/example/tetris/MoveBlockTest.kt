@@ -1,7 +1,7 @@
 package com.example.tetris
 
 import com.example.tetris.model.TetrisModel
-import com.example.tetris.repository.TetrisModelRepository
+import com.example.tetris.model.TetrisModelRepository
 import org.junit.Test
 import org.junit.Assert.*
 import org.junit.Rule
@@ -25,15 +25,21 @@ class MoveBlockTest : KoinTest {
 
   @Test
   fun moveZBlock() {
-    model.nextBlocks = MutableList<Int>(3) { 4 }
-    model.addBlock()
+    model.addZBlock()
     model.moveBlock()
-    var expectedArray: Array<Array<Int>> = Array(23) { Array<Int>(10) { 0 } }
-    for (i in 0..9) expectedArray[22][i] = 16
-    for (i in 0..1) {
-      expectedArray[1][i] = 11
-      expectedArray[2][i + 1] = 11
+    var expectedArray: Array<Array<Int>> = Array(22) { Array<Int>(12) { 0 } }
+    for (i in 5..6) {
+      expectedArray[0][i] = 3
+      expectedArray[1][i + 1] = 3
     }
+    expectedArray = addWallToArray(expectedArray)
     assertArrayEquals(expectedArray, model.fields)
+  }
+
+  private fun addWallToArray(array:Array<Array<Int>>): Array<Array<Int>> {
+    for (n in 0..21) array[n][0] = 16
+    for (n in 0..21) array[n][11] = 16
+    for (i in 2..10) array[21][i] = 16
+    return array
   }
 }
