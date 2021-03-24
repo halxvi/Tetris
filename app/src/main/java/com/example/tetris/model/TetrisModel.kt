@@ -1,6 +1,5 @@
 package com.example.tetris.model
 
-import com.example.tetris.repository.TetrisModelRepository
 import java.security.SecureRandom
 
 class TetrisModel(repo: TetrisModelRepository) {
@@ -15,71 +14,61 @@ class TetrisModel(repo: TetrisModelRepository) {
   private var blockCategory: Int = 0
 
   init {
-    for (i in 0..9) fields[22][i] = 16
+    fieldInit()
   }
 
-  fun addBlock() {
-    if (isBlockSelected) {
-      return
+  private fun fieldInit() {
+    for (n in 0..21) fields[n][0] = 16
+    for (n in 0..21) fields[n][11] = 16
+    for (i in 2..10) fields[21][i] = 16
+  }
+
+  fun addStraightBlock() {
+    for (i in 5..8) {
+      fields[1][i] = 1
     }
-    when (nextBlocks.first()) {
-      1 -> {
-        //straight
-        for (i in 0..3) {
-          fields[1][i] = 8
-        }
-        blockCategory = 8
-      }
-      2 -> {
-        //square
-        for (i in 0..1) {
-          fields[0][i] = 9
-          fields[1][i] = 9
-        }
-        blockCategory = 9
-      }
-      3 -> {
-        //zReverse
-        for (i in 0..1) {
-          fields[0][i + 1] = 10
-          fields[1][i] = 10
-        }
-        blockCategory = 10
-      }
-      4 -> {
-        //z
-        for (i in 0..1) {
-          fields[0][i] = 11
-          fields[1][i + 1] = 11
-        }
-        blockCategory = 11
-      }
-      5 -> {
-        //L
-        fields[0][0] = 12
-        for (i in 0..2) {
-          fields[1][i] = 12
-        }
-        blockCategory = 12
-      }
-      6 -> {
-        //LReverse
-        fields[0][2] = 13
-        for (i in 0..2) {
-          fields[1][i] = 13
-        }
-        blockCategory = 13
-      }
-      7 -> {
-        //t
-        fields[0][1] = 14
-        for (i in 0..2) {
-          fields[1][i] = 14
-        }
-        blockCategory = 14
-      }
+  }
+
+  fun addSquareBlock() {
+    for (i in 5..6) {
+      fields[0][i] = 2
+      fields[1][i] = 2
     }
-    isBlockSelected = true
+  }
+
+  fun addZBlock() {
+    for (i in 5..6) {
+      fields[0][i] = 3
+      fields[1][i + 1] = 3
+    }
+  }
+
+  fun addZReverseBlock() {
+    for (i in 5..6) {
+      fields[0][i + 1] = 4
+      fields[1][i] = 4
+    }
+  }
+
+  fun addLBlock() {
+    fields[0][7] = 5
+    for (i in 5..7) {
+      fields[1][i] = 5
+    }
+  }
+
+  fun addLReverseBlock() {
+    fields[0][5] = 6
+    for (i in 5..7) {
+      fields[1][i] = 6
+    }
+  }
+
+  fun addTBlock() {
+    fields[0][6] = 7
+    for (i in 5..7) {
+      fields[1][i] = 7
+    }
   }
 
   private fun checkGameOver() {
@@ -176,7 +165,6 @@ class TetrisModel(repo: TetrisModelRepository) {
     }
     if (checkAdjacentBlocks()) {
       replaceBlocks()
-      addBlock()
       return
     }
     for (i in 20 downTo 0) {

@@ -1,4 +1,4 @@
-package com.example.tetris.interfaces
+package com.example.tetris.model
 
 import androidx.lifecycle.MutableLiveData
 

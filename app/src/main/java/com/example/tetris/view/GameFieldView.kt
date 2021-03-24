@@ -39,9 +39,9 @@ class GameFieldView(context: Context, attributeSet: AttributeSet) : View(context
     super.onDraw(canvas)
     mRect.set(0, 0, width / 10, height / 20)
     var offsetHeight = 0
-    for (y in 0..19) {
+    for (y in 1..20) {
       var offsetWidth = 0
-      for (x in 0..9) {
+      for (x in 1..10) {
         mRect.offsetTo(offsetWidth, offsetHeight)
         canvas?.drawRect(
           mRect,

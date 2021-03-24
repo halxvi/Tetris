@@ -1,4 +1,4 @@
-package com.example.tetris.fragments
+package com.example.tetris.view
 
 import android.os.Bundle
 import android.view.LayoutInflater

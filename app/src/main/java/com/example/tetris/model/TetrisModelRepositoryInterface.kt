@@ -1,4 +1,4 @@
-package com.example.tetris.interfaces
+package com.example.tetris.model
 
 interface TetrisModelRepositoryInterface {
   var fields: Array<Array<Int>>
