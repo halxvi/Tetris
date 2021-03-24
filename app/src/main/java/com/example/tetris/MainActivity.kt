@@ -5,7 +5,7 @@ import android.view.GestureDetector
 import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GestureDetectorCompat
-import com.example.tetris.fragments.TetrisFragment
+import com.example.tetris.view.TetrisFragment
 import com.example.tetris.model.TetrisViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
