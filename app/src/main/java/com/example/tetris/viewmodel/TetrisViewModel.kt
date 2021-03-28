@@ -1,12 +1,15 @@
-package com.example.tetris.model
+package com.example.tetris.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.tetris.model.TetrisModel
 
-class TetrisViewModel(repo: TetrisViewModelRepository, model: TetrisModel) : ViewModel() {
-  private val model = model
+class TetrisViewModel(
+  repo: TetrisViewModelRepository,
+  val model: TetrisModel
+) : ViewModel() {
   var fields: MutableLiveData<Array<Array<Int>>> = repo.fields
-  var nextBlocks: MutableLiveData<MutableList<Int>> = repo.nextBlocks
+  var nextBlocks: MutableLiveData<Array<Int>> = repo.nextBlocks
   var score: MutableLiveData<Int> = repo.score
   var gameover: MutableLiveData<Boolean> = repo.gameover
 

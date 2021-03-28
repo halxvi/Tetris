@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.tetris.R
 import com.example.tetris.databinding.TetrisBinding
-import com.example.tetris.model.TetrisViewModel
+import com.example.tetris.viewmodel.TetrisViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class TetrisFragment : Fragment() {
