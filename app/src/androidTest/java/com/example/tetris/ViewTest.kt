@@ -19,10 +19,6 @@ class ViewTest {
 
   @Test
   fun init() {
-    for (i in 1..200) {
-      onView(withResourceName("block_$i"))
-        .check(matches(hasDrawable(R.drawable.block_background)))
-    }
     for (n in 1..3) {
       onView(withResourceName("nextBlockView_$n"))
         .check(matches(hasDrawable(R.drawable.block_background)))

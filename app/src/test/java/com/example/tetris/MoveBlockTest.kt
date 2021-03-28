@@ -1,5 +1,6 @@
 package com.example.tetris
 
+import com.example.tetris.model.field.Field
 import com.example.tetris.model.TetrisModel
 import com.example.tetris.model.TetrisModelRepository
 import org.junit.Test
@@ -19,21 +20,20 @@ class MoveBlockTest : KoinTest {
     modules(
       module {
         single { TetrisModelRepository() }
-        factory { TetrisModel(get()) }
+        single { Field() }
+        factory { TetrisModel(get(), get()) }
       })
   }
 
   @Test
-  fun moveZBlock() {
-    model.addZBlock()
+  fun moveBlock() {
     model.moveBlock()
     var expectedArray: Array<Array<Int>> = Array(22) { Array<Int>(12) { 0 } }
-    for (i in 5..6) {
-      expectedArray[0][i] = 3
-      expectedArray[1][i + 1] = 3
+    for (i in 5..8) {
+      expectedArray[2][i] = 1
     }
     expectedArray = addWallToArray(expectedArray)
-    assertArrayEquals(expectedArray, model.fields)
+    assertArrayEquals(expectedArray, model.getField())
   }
 
   private fun addWallToArray(array:Array<Array<Int>>): Array<Array<Int>> {
