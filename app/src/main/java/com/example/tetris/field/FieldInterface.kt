@@ -1,4 +1,4 @@
-package com.example.tetris.model.field
+package com.example.tetris.field
 
 interface FieldInterface {
   fun addBlock()
