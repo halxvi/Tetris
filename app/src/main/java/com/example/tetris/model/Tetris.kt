@@ -1,27 +1,24 @@
 package com.example.tetris.model
 
-import com.example.tetris.model.field.Field
+import com.example.tetris.field.Field
 
 class TetrisModel(
-  repo: TetrisModelRepository,
   private val field: Field
-) : TetrisModelInterface {
-  override var score: Int = repo.score
-  private var gameover: Boolean = repo.gameover
-  override var nextBlocks: Array<Int> = repo.nextBlocks
+) {
+  var score: Int = 0
+  var gameover: Boolean = false
   private var gameSpeed: Double = 500.0
-  override var holdBlock: Int = 0
 
-  override fun addBlock(){
+  fun addBlock() {
     field.addBlock()
   }
 
-  override fun moveBlock() {
+  fun moveBlock() {
     field.moveBlock()
   }
 
-  override fun getField(): Array<Array<Int>> {
-    return field.combineField()
+  fun getBlocks(): Array<Array<Int>> {
+    return field.combineBlocks()
   }
 
 //  private fun checkGameOver() {
