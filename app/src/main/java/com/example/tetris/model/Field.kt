@@ -7,7 +7,7 @@ class Field(
   var selectedBlock: BlockInterface = StraightBlock(),
   val blocks: Array<Array<Int>> =
     Array(22) { Array<Int>(12) { 0 } },
-  private val nextBlocks: MutableList<Int> = mutableListOf(0, 0, 0),
+  val nextBlocks: MutableList<Int> = mutableListOf(0, 0, 0),
   var heldBlock: Int = 0,
   private val random: Random = Random
 ) {

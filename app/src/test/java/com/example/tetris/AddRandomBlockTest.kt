@@ -51,9 +51,10 @@ class AddRandomBlockTest : KoinTest {
     }
 
     val expectedNextBlocks = mutableListOf(0, 0, 0)
+    val r = Random(0)
     for (index in expectedNextBlocks.indices) {
-      expectedNextBlocks[index] = Random(0).nextInt(1, 7)
+      expectedNextBlocks[index] = r.nextInt(1, 7)
     }
-    assertEquals(expectedNextBlocks, expectedNextBlocks)
+    assertEquals(expectedNextBlocks, field.nextBlocks)
   }
 }
