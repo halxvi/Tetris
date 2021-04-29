@@ -31,8 +31,10 @@ class Field(
   }
 
   fun addBlock() {
-    blocks.apply { combineBlocks() }
-    selectedBlock = when (nextBlocks.elementAt(0)) {
+    selectedBlock.coordinates.forEach {
+      blocks[it[1]][it[0]] = selectedBlock.type
+    }
+    selectedBlock = when (nextBlocks.removeAt(0)) {
       1 -> StraightBlock()
       2 -> SquareBlock()
       3 -> ZBlock()
@@ -42,7 +44,6 @@ class Field(
       7 -> TBlock()
       else -> SquareBlock()
     }
-    nextBlocks.removeAt(0)
     nextBlocks.add(random.nextInt(1, 7))
   }
 
@@ -62,7 +63,7 @@ class Field(
     }
   }
 
-  private fun checkMoveBlock(): Boolean {
+  fun checkMoveBlock(): Boolean {
     selectedBlock.coordinates.forEach {
       if (blocks[it[1]++][it[0]] != 0) {
         return false
