@@ -58,14 +58,14 @@ class Field(
   fun moveBlock() {
     if (checkMoveBlock()) {
       for ((index, elem) in selectedBlock.coordinates.withIndex()) {
-        selectedBlock.coordinates[index] = arrayOf(elem[0], elem[1]++)
+        selectedBlock.coordinates[index] = arrayOf(elem[0], elem[1] + 1)
       }
     }
   }
 
   fun checkMoveBlock(): Boolean {
     selectedBlock.coordinates.forEach {
-      if (blocks[it[1]++][it[0]] != 0) {
+      if (blocks[it[1] + 1][it[0]] != 0) {
         return false
       }
     }
