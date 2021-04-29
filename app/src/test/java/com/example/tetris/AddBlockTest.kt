@@ -27,7 +27,7 @@ class AddBlockTest : KoinTest {
     field.addBlock()
     var expectedBlocks: Array<Array<Int>> = Array(22) { Array<Int>(12) { 0 } }
     for (i in 5..8) {
-      expectedBlocks[1][i] = 1
+      expectedBlocks[0][i] = 1
     }
     expectedBlocks = addWallToBlocks(expectedBlocks)
     assertArrayEquals(expectedBlocks, field.blocks)
