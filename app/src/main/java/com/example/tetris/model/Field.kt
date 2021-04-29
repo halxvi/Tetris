@@ -12,12 +12,16 @@ class Field(
   private val random: Random = Random
 ) {
   init {
+    addWallToBlocks()
+    initNextBlocks()
+  }
+
+  private fun addWallToBlocks() {
     for (n in 0..21) {
       blocks[n][0] = -1
       blocks[n][11] = -1
     }
     for (i in 2..10) blocks[21][i] = -1
-    initNextBlocks()
   }
 
   private fun initNextBlocks() {
