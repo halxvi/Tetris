@@ -4,7 +4,7 @@ import com.example.tetris.block.*
 import kotlin.random.Random
 
 class Field(
-  var selectedBlock: BlockInterface = StraightBlock(),
+  var selectedBlock: BlockInterface = InitBlock(),
   val blocks: Array<Array<Int>> =
     Array(22) { Array<Int>(12) { 0 } },
   val nextBlocks: MutableList<Int> = mutableListOf(0, 0, 0),
