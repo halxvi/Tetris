@@ -1,8 +1,6 @@
 package com.example.tetris.model
 
-import com.example.tetris.field.Field
-
-class TetrisModel(
+class Tetris(
   private val field: Field
 ) {
   var score: Int = 0

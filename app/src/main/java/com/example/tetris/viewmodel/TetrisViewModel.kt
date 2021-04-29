@@ -2,21 +2,20 @@ package com.example.tetris.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.tetris.model.TetrisModel
+import com.example.tetris.model.Tetris
 
 class TetrisViewModel(
-  repo: TetrisViewModelRepository,
-  val model: TetrisModel
+  private val tetris: Tetris
 ) : ViewModel() {
-  var fields: MutableLiveData<Array<Array<Int>>> = repo.fields
-  var nextBlocks: MutableLiveData<Array<Int>> = repo.nextBlocks
-  var score: MutableLiveData<Int> = repo.score
-  var gameover: MutableLiveData<Boolean> = repo.gameover
+  var fields: MutableLiveData<Array<Array<Int>>> = MutableLiveData(Array(22) { Array<Int>(12) { 0 } })
+  var nextBlocks: MutableLiveData<Array<Int>> = MutableLiveData(Array(3) { 0 })
+  var score: MutableLiveData<Int> = MutableLiveData(0)
+  var gameover: MutableLiveData<Boolean> = MutableLiveData(false)
 
   fun flickBlock(direction: String) {}
 
   fun onSpeedUp() {
-    model.onSpeedUp()
+    tetris.onSpeedUp()
   }
 
   fun rotateBlock() {}

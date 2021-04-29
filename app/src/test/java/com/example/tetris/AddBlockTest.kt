@@ -1,7 +1,7 @@
 package com.example.tetris
 
 import com.example.tetris.block.*
-import com.example.tetris.field.Field
+import com.example.tetris.model.Field
 import org.junit.Test
 import org.junit.Assert.*
 import org.junit.Rule
