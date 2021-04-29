@@ -49,7 +49,6 @@ class AddBlockTest : KoinTest {
   @Test
   fun addZBlock() {
     val field: Field by inject { parametersOf(ZBlock()) }
-
     field.addBlock()
     var expectedBlocks: Array<Array<Int>> = Array(22) { Array<Int>(12) { 0 } }
     for (i in 5..6) {
@@ -63,7 +62,6 @@ class AddBlockTest : KoinTest {
   @Test
   fun addZReverseBlock() {
     val field: Field by inject { parametersOf(ZReverseBlock()) }
-
     field.addBlock()
     var expectedBlocks: Array<Array<Int>> = Array(22) { Array<Int>(12) { 0 } }
     for (i in 5..6) {
@@ -77,7 +75,6 @@ class AddBlockTest : KoinTest {
   @Test
   fun addLBlock() {
     val field: Field by inject { parametersOf(LBlock()) }
-
     field.addBlock()
     var expectedBlocks: Array<Array<Int>> = Array(22) { Array<Int>(12) { 0 } }
     expectedBlocks[0][7] = 5
@@ -91,7 +88,6 @@ class AddBlockTest : KoinTest {
   @Test
   fun addLReverseBlock() {
     val field: Field by inject { parametersOf(LReverseBlock()) }
-
     field.addBlock()
     var expectedBlocks: Array<Array<Int>> = Array(22) { Array<Int>(12) { 0 } }
     expectedBlocks[0][5] = 6
@@ -105,7 +101,6 @@ class AddBlockTest : KoinTest {
   @Test
   fun addTBlock() {
     val field: Field by inject { parametersOf(TBlock()) }
-
     field.addBlock()
     var expectedBlocks: Array<Array<Int>> = Array(22) { Array<Int>(12) { 0 } }
     expectedBlocks[0][6] = 7
