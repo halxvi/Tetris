@@ -13,7 +13,7 @@ import org.koin.test.KoinTestRule
 import org.koin.test.inject
 import kotlin.random.Random
 
-class AddRandomBlockTest : KoinTest {
+class RandomBlockTest : KoinTest {
   @get:Rule
   val koinTestRule = KoinTestRule.create {
     modules(
