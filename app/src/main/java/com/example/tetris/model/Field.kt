@@ -7,7 +7,7 @@ class Field(
   var selectedBlock: BlockInterface = StraightBlock(),
   val blocks: Array<Array<Int>> =
     Array(22) { Array<Int>(12) { 0 } },
-  val nextBlocks: MutableList<Int> = mutableListOf(0, 0, 0),
+  private val nextBlocks: MutableList<Int> = mutableListOf(0, 0, 0),
   var heldBlock: Int = 0,
   private val random: Random = Random
 ) {
@@ -17,30 +17,37 @@ class Field(
       blocks[n][11] = -1
     }
     for (i in 2..10) blocks[21][i] = -1
+    initNextBlocks()
+  }
+
+  private fun initNextBlocks() {
+    for (index in nextBlocks.indices) {
+      nextBlocks[index] = random.nextInt(1, 7)
+    }
   }
 
   fun addBlock() {
-    selectedBlock.coordinates.forEach {
-      blocks[it[1]][it[0]] = selectedBlock.type
+    blocks.apply { combineBlocks() }
+    selectedBlock = when (nextBlocks.elementAt(0)) {
+      1 -> StraightBlock()
+      2 -> SquareBlock()
+      3 -> ZBlock()
+      4 -> ZReverseBlock()
+      5 -> LBlock()
+      6 -> LReverseBlock()
+      7 -> TBlock()
+      else -> SquareBlock()
     }
-    when (nextBlocks.removeAt(0)) {
-      1 -> selectedBlock = StraightBlock()
-      2 -> selectedBlock = SquareBlock()
-      3 -> selectedBlock = ZBlock()
-      4 -> selectedBlock = ZReverseBlock()
-      5 -> selectedBlock = LBlock()
-      6 -> selectedBlock = LReverseBlock()
-      7 -> selectedBlock = TBlock()
-    }
-    nextBlocks.add(1)
+    nextBlocks.removeAt(0)
+    nextBlocks.add(random.nextInt(1, 7))
   }
 
   fun combineBlocks(): Array<Array<Int>> {
-    val combinedField = blocks
+    val combinedBlocks = blocks
     selectedBlock.coordinates.forEach {
-      combinedField[it[1]][it[0]] = selectedBlock.type
+      combinedBlocks[it[1]][it[0]] = selectedBlock.type
     }
-    return combinedField
+    return combinedBlocks
   }
 
   fun moveBlock() {
