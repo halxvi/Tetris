@@ -72,6 +72,40 @@ class Field(
     return true
   }
 
+  fun flickToRight() {
+    if (checkFlickToRight()) {
+      for ((index, elem) in selectedBlock.coordinates.withIndex()) {
+        selectedBlock.coordinates[index] = arrayOf(elem[0] + 1, elem[1])
+      }
+    }
+  }
+
+  fun checkFlickToRight(): Boolean {
+    selectedBlock.coordinates.forEach {
+      if (blocks[it[1]][it[0] + 1] != 0) {
+        return false
+      }
+    }
+    return true
+  }
+
+  fun flickToLeft() {
+    if (checkFlickToLeft()) {
+      for ((index, elem) in selectedBlock.coordinates.withIndex()) {
+        selectedBlock.coordinates[index] = arrayOf(elem[0] - 1, elem[1])
+      }
+    }
+  }
+
+  fun checkFlickToLeft(): Boolean {
+    selectedBlock.coordinates.forEach {
+      if (blocks[it[1]][it[0] - 1] != 0) {
+        return false
+      }
+    }
+    return true
+  }
+
   fun checkErasableBlock() {
   }
 
