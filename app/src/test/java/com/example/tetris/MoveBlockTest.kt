@@ -1,5 +1,7 @@
 package com.example.tetris
 
+import com.example.tetris.Utilities.Companion.addWallToBlocks
+import com.example.tetris.Utilities.Companion.insertBlock
 import com.example.tetris.block.BlockInterface
 import com.example.tetris.block.InitBlock
 import com.example.tetris.block.StraightBlock
@@ -51,9 +53,14 @@ class MoveBlockTest : KoinTest {
     }
     field.addBlock()
     field.moveBlock()
-    var expectedBlocks: Array<Array<Int>> = Array(22) { Array<Int>(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(22) { Array<Int>(12) { 0 } }
     expectedBlocks.apply {
-      insertBlock(expectedBlocks, field.selectedBlock.type, 1)
+      insertBlock(
+        expectedBlocks,
+        field.selectedBlock.type,
+        5,
+        1
+      )
       addWallToBlocks(expectedBlocks)
     }
     assertArrayEquals(expectedBlocks, field.combineBlocks())
@@ -75,8 +82,15 @@ class MoveBlockTest : KoinTest {
 
   @Test
   fun cantMoveBlockWithCollapse() {
-    var blocks: Array<Array<Int>> = Array(22) { Array<Int>(12) { 0 } }
-    blocks.apply { insertBlock(blocks, 1, 1) }
+    val blocks: Array<Array<Int>> = Array(22) { Array<Int>(12) { 0 } }
+    blocks.apply {
+      insertBlock(
+        blocks,
+        1,
+        5,
+        1
+      )
+    }
     val field: Field by inject {
       parametersOf(
         StraightBlock(),
@@ -125,67 +139,16 @@ class MoveBlockTest : KoinTest {
     while (field.checkMoveBlock()) {
       field.moveBlock()
     }
-    var expectedBlocks: Array<Array<Int>> = Array(22) { Array<Int>(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(22) { Array<Int>(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(
         expectedBlocks,
         field.selectedBlock.type,
+        5,
         if (field.selectedBlock.type == 1) 20 else 19
       )
       addWallToBlocks(expectedBlocks)
     }
     assertArrayEquals(expectedBlocks, field.combineBlocks())
-  }
-
-  private fun addWallToBlocks(array: Array<Array<Int>>): Array<Array<Int>> {
-    for (n in 0..21) {
-      array[n][0] = -1
-      array[n][11] = -1
-    }
-    for (i in 2..10) array[21][i] = -1
-    return array
-  }
-
-  private fun insertBlock(
-    expectedBlocks: Array<Array<Int>>,
-    type: Int,
-    targetY: Int
-  ): Array<Array<Int>> {
-    when (type) {
-      1 -> for (i in 5..8) {
-        expectedBlocks[targetY][i] = 1
-      }
-      2 -> for (i in 5..6) {
-        expectedBlocks[targetY][i] = 2
-        expectedBlocks[targetY + 1][i] = 2
-      }
-      3 -> for (i in 5..6) {
-        expectedBlocks[targetY][i] = 3
-        expectedBlocks[targetY + 1][i + 1] = 3
-      }
-      4 -> for (i in 5..6) {
-        expectedBlocks[targetY][i + 1] = 4
-        expectedBlocks[targetY + 1][i] = 4
-      }
-      5 -> {
-        expectedBlocks[targetY][7] = 5
-        for (i in 5..7) {
-          expectedBlocks[targetY + 1][i] = 5
-        }
-      }
-      6 -> {
-        expectedBlocks[targetY][5] = 6
-        for (i in 5..7) {
-          expectedBlocks[targetY + 1][i] = 6
-        }
-      }
-      7 -> {
-        expectedBlocks[targetY][6] = 7
-        for (i in 5..7) {
-          expectedBlocks[targetY + 1][i] = 7
-        }
-      }
-    }
-    return expectedBlocks
   }
 }
