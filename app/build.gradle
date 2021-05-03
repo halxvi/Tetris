@@ -27,6 +27,12 @@ android {
     dataBinding {
         enabled true
     }
+
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
 }
 
 dependencies {
@@ -34,6 +40,9 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     testImplementation 'junit:junit:4.12'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.5.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.2'
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation "androidx.activity:activity-ktx:$activity_version"
@@ -44,5 +53,6 @@ dependencies {
 
     implementation "org.koin:koin-android:$koin_version"
     implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    testImplementation "io.insert-koin:koin-test-junit5:$koin_version"
     testImplementation "org.koin:koin-test:$koin_version"
 }
