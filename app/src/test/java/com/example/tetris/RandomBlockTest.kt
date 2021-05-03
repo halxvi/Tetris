@@ -43,7 +43,7 @@ class RandomBlockTest : KoinTest {
     val field: Field by inject {
       parametersOf(
         StraightBlock(),
-        Array(22) { Array<Int>(12) { 0 } },
+        Array(24) { Array<Int>(12) { 0 } },
         mutableListOf(0, 0, 0),
         0,
         Random(0)

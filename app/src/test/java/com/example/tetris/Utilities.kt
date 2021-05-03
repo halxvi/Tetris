@@ -3,11 +3,11 @@ package com.example.tetris
 class Utilities {
   companion object {
     fun addWallToBlocks(array: Array<Array<Int>>): Array<Array<Int>> {
-      for (n in 0..21) {
+      for (n in 0..23) {
         array[n][0] = -1
         array[n][11] = -1
       }
-      for (i in 2..10) array[21][i] = -1
+      for (i in 2..10) array[23][i] = -1
       return array
     }
 

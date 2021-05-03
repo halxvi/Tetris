@@ -6,7 +6,7 @@ import kotlin.random.Random
 class Field(
   var selectedBlock: BlockInterface = InitBlock(),
   private val blocks: Array<Array<Int>> =
-    Array(22) { Array<Int>(12) { 0 } },
+    Array(24) { Array<Int>(12) { 0 } },
   val nextBlocks: MutableList<Int> = mutableListOf(0, 0, 0),
   var heldBlock: Int = 0,
   private val random: Random = Random
@@ -17,11 +17,11 @@ class Field(
   }
 
   private fun addWallToBlocks() {
-    for (n in 0..21) {
+    for (n in 0..23) {
       blocks[n][0] = -1
       blocks[n][11] = -1
     }
-    for (i in 2..10) blocks[21][i] = -1
+    for (i in 2..10) blocks[23][i] = -1
   }
 
   private fun initNextBlocks() {

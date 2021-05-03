@@ -45,7 +45,7 @@ class MoveBlockTest : KoinTest {
     val field: Field by inject {
       parametersOf(
         InitBlock(),
-        Array(22) { Array<Int>(12) { 0 } },
+        Array(24) { Array<Int>(12) { 0 } },
         mutableListOf(0, 0, 0),
         0,
         Random
@@ -53,13 +53,13 @@ class MoveBlockTest : KoinTest {
     }
     field.addBlock()
     field.moveBlock()
-    val expectedBlocks: Array<Array<Int>> = Array(22) { Array<Int>(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(
         expectedBlocks,
         field.selectedBlock.type,
         5,
-        1
+        3
       )
       addWallToBlocks(expectedBlocks)
     }
@@ -71,7 +71,7 @@ class MoveBlockTest : KoinTest {
     val field: Field by inject {
       parametersOf(
         InitBlock(),
-        Array(22) { Array<Int>(12) { 0 } },
+        Array(24) { Array<Int>(12) { 0 } },
         mutableListOf(0, 0, 0),
         0,
         Random
@@ -81,14 +81,14 @@ class MoveBlockTest : KoinTest {
   }
 
   @Test
-  fun cantMoveBlockWithCollapse() {
-    val blocks: Array<Array<Int>> = Array(22) { Array<Int>(12) { 0 } }
+  fun cantMoveBlockWithCollision() {
+    val blocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
     blocks.apply {
       insertBlock(
         blocks,
         1,
         5,
-        1
+        3
       )
     }
     val field: Field by inject {
@@ -109,13 +109,13 @@ class MoveBlockTest : KoinTest {
       parametersOf(
         StraightBlock(
           arrayOf(
-            arrayOf(5, 20),
-            arrayOf(6, 20),
-            arrayOf(7, 20),
-            arrayOf(8, 20)
+            arrayOf(5, 22),
+            arrayOf(6, 22),
+            arrayOf(7, 22),
+            arrayOf(8, 22)
           )
         ),
-        Array(22) { Array<Int>(12) { 0 } },
+        Array(24) { Array<Int>(12) { 0 } },
         mutableListOf(0, 0, 0),
         0,
         Random
@@ -129,7 +129,7 @@ class MoveBlockTest : KoinTest {
     val field: Field by inject {
       parametersOf(
         InitBlock(),
-        Array(22) { Array<Int>(12) { 0 } },
+        Array(24) { Array<Int>(12) { 0 } },
         mutableListOf(0, 0, 0),
         0,
         Random
@@ -139,13 +139,13 @@ class MoveBlockTest : KoinTest {
     while (field.checkMoveBlock()) {
       field.moveBlock()
     }
-    val expectedBlocks: Array<Array<Int>> = Array(22) { Array<Int>(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(
         expectedBlocks,
         field.selectedBlock.type,
         5,
-        if (field.selectedBlock.type == 1) 20 else 19
+        if (field.selectedBlock.type == 1) 22 else 21
       )
       addWallToBlocks(expectedBlocks)
     }

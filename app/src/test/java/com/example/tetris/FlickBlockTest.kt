@@ -30,10 +30,10 @@ class FlickBlockTest : KoinTest {
       parametersOf(
         StraightBlock(
           arrayOf(
-            arrayOf(6, 1),
-            arrayOf(7, 1),
-            arrayOf(8, 1),
-            arrayOf(9, 1)
+            arrayOf(6, 3),
+            arrayOf(7, 3),
+            arrayOf(8, 3),
+            arrayOf(9, 3)
           )
         )
       )
@@ -47,10 +47,10 @@ class FlickBlockTest : KoinTest {
       parametersOf(
         StraightBlock(
           arrayOf(
-            arrayOf(7, 1),
-            arrayOf(8, 1),
-            arrayOf(9, 1),
-            arrayOf(10, 1)
+            arrayOf(7, 3),
+            arrayOf(8, 3),
+            arrayOf(9, 3),
+            arrayOf(10, 3)
           )
         )
       )
@@ -64,18 +64,18 @@ class FlickBlockTest : KoinTest {
       parametersOf(
         StraightBlock(
           arrayOf(
-            arrayOf(6, 1),
-            arrayOf(7, 1),
-            arrayOf(8, 1),
-            arrayOf(9, 1)
+            arrayOf(6, 3),
+            arrayOf(7, 3),
+            arrayOf(8, 3),
+            arrayOf(9, 3)
           )
         )
       )
     }
     field.flickToRight()
-    val expectedBlocks = Array(22) { Array<Int>(12) { 0 } }
+    val expectedBlocks = Array(24) { Array<Int>(12) { 0 } }
     expectedBlocks.apply {
-      insertBlock(expectedBlocks, field.selectedBlock.type, 7, 1)
+      insertBlock(expectedBlocks, field.selectedBlock.type, 7, 3)
       addWallToBlocks(expectedBlocks)
     }
     assertArrayEquals(expectedBlocks, field.combineBlocks())
@@ -87,10 +87,10 @@ class FlickBlockTest : KoinTest {
       parametersOf(
         StraightBlock(
           arrayOf(
-            arrayOf(2, 1),
-            arrayOf(3, 1),
-            arrayOf(4, 1),
-            arrayOf(5, 1)
+            arrayOf(2, 3),
+            arrayOf(3, 3),
+            arrayOf(4, 3),
+            arrayOf(5, 3)
           )
         )
       )
@@ -104,10 +104,10 @@ class FlickBlockTest : KoinTest {
       parametersOf(
         StraightBlock(
           arrayOf(
-            arrayOf(1, 1),
-            arrayOf(2, 1),
-            arrayOf(3, 1),
-            arrayOf(4, 1)
+            arrayOf(1, 3),
+            arrayOf(2, 3),
+            arrayOf(3, 3),
+            arrayOf(4, 3)
           )
         )
       )
@@ -121,18 +121,18 @@ class FlickBlockTest : KoinTest {
       parametersOf(
         StraightBlock(
           arrayOf(
-            arrayOf(2, 1),
-            arrayOf(3, 1),
-            arrayOf(4, 1),
-            arrayOf(5, 1)
+            arrayOf(2, 3),
+            arrayOf(3, 3),
+            arrayOf(4, 3),
+            arrayOf(5, 3)
           )
         )
       )
     }
     field.flickToLeft()
-    val expectedBlocks = Array(22) { Array<Int>(12) { 0 } }
+    val expectedBlocks = Array(24) { Array<Int>(12) { 0 } }
     expectedBlocks.apply {
-      insertBlock(expectedBlocks, field.selectedBlock.type, 1, 1)
+      insertBlock(expectedBlocks, field.selectedBlock.type, 1, 3)
       addWallToBlocks(expectedBlocks)
     }
     assertArrayEquals(expectedBlocks, field.combineBlocks())
