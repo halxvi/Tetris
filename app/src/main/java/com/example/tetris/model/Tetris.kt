@@ -15,7 +15,7 @@ class Tetris(
     field.moveBlock()
   }
 
-  fun getBlocks(): Array<Array<Int>> {
+  fun combineBlocks(): Array<Array<Int>> {
     return field.combineBlocks()
   }
 

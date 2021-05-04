@@ -25,7 +25,7 @@ class Field(
   }
 
   private fun initNextBlocks() {
-    if(nextBlocks.elementAt(0) != 0) return
+    if (nextBlocks.elementAt(0) != 0) return
     for (index in nextBlocks.indices) {
       nextBlocks[index] = random.nextInt(1, 7)
     }
@@ -66,9 +66,7 @@ class Field(
 
   fun checkMoveBlock(): Boolean {
     selectedBlock.coordinates.forEach {
-      if (blocks[it[1] + 1][it[0]] != 0) {
-        return false
-      }
+      if (blocks[it[1] + 1][it[0]] != 0) return false
     }
     return true
   }
@@ -83,9 +81,7 @@ class Field(
 
   fun checkFlickToRight(): Boolean {
     selectedBlock.coordinates.forEach {
-      if (blocks[it[1]][it[0] + 1] != 0) {
-        return false
-      }
+      if (blocks[it[1]][it[0] + 1] != 0) return false
     }
     return true
   }
@@ -100,9 +96,7 @@ class Field(
 
   fun checkFlickToLeft(): Boolean {
     selectedBlock.coordinates.forEach {
-      if (blocks[it[1]][it[0] - 1] != 0) {
-        return false
-      }
+      if (blocks[it[1]][it[0] - 1] != 0) return false
     }
     return true
   }
