@@ -77,7 +77,7 @@ class MoveBlockTest : KoinTest {
         Random
       )
     }
-    assertTrue(field.checkMoveBlock())
+    assertTrue(field.canMoveBlock())
   }
 
   @Test
@@ -100,7 +100,7 @@ class MoveBlockTest : KoinTest {
         Random
       )
     }
-    assertFalse(field.checkMoveBlock())
+    assertFalse(field.canMoveBlock())
   }
 
   @Test
@@ -121,7 +121,7 @@ class MoveBlockTest : KoinTest {
         Random
       )
     }
-    assertFalse(field.checkMoveBlock())
+    assertFalse(field.canMoveBlock())
   }
 
   @Test
@@ -136,7 +136,7 @@ class MoveBlockTest : KoinTest {
       )
     }
     field.addBlock()
-    while (field.checkMoveBlock()) {
+    while (field.canMoveBlock()) {
       field.moveBlock()
     }
     val expectedBlocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
