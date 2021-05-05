@@ -38,7 +38,7 @@ class FlickBlockTest : KoinTest {
         )
       )
     }
-    assertTrue(field.checkFlickToRight())
+    assertTrue(field.canFlickToRight())
   }
 
   @Test
@@ -55,7 +55,7 @@ class FlickBlockTest : KoinTest {
         )
       )
     }
-    assertFalse(field.checkFlickToRight())
+    assertFalse(field.canFlickToRight())
   }
 
   @Test
@@ -95,7 +95,7 @@ class FlickBlockTest : KoinTest {
         )
       )
     }
-    assertTrue(field.checkFlickToLeft())
+    assertTrue(field.canFlickToLeft())
   }
 
   @Test
@@ -112,7 +112,7 @@ class FlickBlockTest : KoinTest {
         )
       )
     }
-    assertFalse(field.checkFlickToLeft())
+    assertFalse(field.canFlickToLeft())
   }
 
   @Test

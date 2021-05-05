@@ -72,14 +72,14 @@ class Field(
   }
 
   fun flickToRight() {
-    if (checkFlickToRight()) {
+    if (canFlickToRight()) {
       for ((index, elem) in selectedBlock.coordinates.withIndex()) {
         selectedBlock.coordinates[index] = arrayOf(elem[0] + 1, elem[1])
       }
     }
   }
 
-  fun checkFlickToRight(): Boolean {
+  fun canFlickToRight(): Boolean {
     selectedBlock.coordinates.forEach {
       if (blocks[it[1]][it[0] + 1] != 0) return false
     }
@@ -87,14 +87,14 @@ class Field(
   }
 
   fun flickToLeft() {
-    if (checkFlickToLeft()) {
+    if (canFlickToLeft()) {
       for ((index, elem) in selectedBlock.coordinates.withIndex()) {
         selectedBlock.coordinates[index] = arrayOf(elem[0] - 1, elem[1])
       }
     }
   }
 
-  fun checkFlickToLeft(): Boolean {
+  fun canFlickToLeft(): Boolean {
     selectedBlock.coordinates.forEach {
       if (blocks[it[1]][it[0] - 1] != 0) return false
     }
