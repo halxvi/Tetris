@@ -57,10 +57,9 @@ class Field(
   }
 
   fun moveBlock() {
-    if (canMoveBlock()) {
-      for ((index, elem) in selectedBlock.coordinates.withIndex()) {
-        selectedBlock.coordinates[index] = arrayOf(elem[0], elem[1] + 1)
-      }
+    if (!canMoveBlock()) return
+    for ((index, elem) in selectedBlock.coordinates.withIndex()) {
+      selectedBlock.coordinates[index] = arrayOf(elem[0], elem[1] + 1)
     }
   }
 
@@ -72,10 +71,9 @@ class Field(
   }
 
   fun flickToRight() {
-    if (canFlickToRight()) {
-      for ((index, elem) in selectedBlock.coordinates.withIndex()) {
-        selectedBlock.coordinates[index] = arrayOf(elem[0] + 1, elem[1])
-      }
+    if (!canFlickToRight()) return
+    for ((index, elem) in selectedBlock.coordinates.withIndex()) {
+      selectedBlock.coordinates[index] = arrayOf(elem[0] + 1, elem[1])
     }
   }
 
@@ -87,10 +85,9 @@ class Field(
   }
 
   fun flickToLeft() {
-    if (canFlickToLeft()) {
-      for ((index, elem) in selectedBlock.coordinates.withIndex()) {
-        selectedBlock.coordinates[index] = arrayOf(elem[0] - 1, elem[1])
-      }
+    if (!canFlickToLeft()) return
+    for ((index, elem) in selectedBlock.coordinates.withIndex()) {
+      selectedBlock.coordinates[index] = arrayOf(elem[0] - 1, elem[1])
     }
   }
 
