@@ -5,7 +5,7 @@ import kotlin.random.Random
 
 class Field(
   var selectedBlock: BlockInterface = InitBlock(),
-  private val blocks: Array<Array<Int>> =
+  val blocks: Array<Array<Int>> =
     Array(24) { Array<Int>(12) { 0 } },
   val nextBlocks: MutableList<Int> = mutableListOf(0, 0, 0),
   var heldBlock: Int = 0,

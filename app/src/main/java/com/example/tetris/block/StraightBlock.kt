@@ -42,7 +42,7 @@ class StraightBlock(
       }
     } else {
       for ((i) in coordinates.withIndex()) {
-        nextCoordinates[i] = arrayOf(getX(i) - 3 + i, getY(i) + 3 - i)
+        nextCoordinates[i] = arrayOf(getX(i) + 3 - i, getY(i) - 3 + i)
       }
     }
     coordinates = nextCoordinates
