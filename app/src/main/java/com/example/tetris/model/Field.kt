@@ -98,6 +98,10 @@ class Field(
     return true
   }
 
+  fun rotate() {
+    selectedBlock.rotate(blocks)
+  }
+
   fun checkErasableBlock() {
   }
 
