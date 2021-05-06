@@ -19,7 +19,7 @@ class Utilities {
       y: Int
     ): Array<Array<Int>> {
       when (type) {
-        1 -> return if (x > 7) expectedBlocks else insertStraightBlock(
+        1 -> return insertStraightBlock(
           expectedBlocks,
           direction,
           x,

@@ -58,6 +58,7 @@ class MoveBlockTest : KoinTest {
       insertBlock(
         expectedBlocks,
         field.selectedBlock.type,
+        field.selectedBlock.direction,
         5,
         3
       )
@@ -87,6 +88,7 @@ class MoveBlockTest : KoinTest {
       insertBlock(
         blocks,
         1,
+        0,
         5,
         3
       )
@@ -144,6 +146,7 @@ class MoveBlockTest : KoinTest {
       insertBlock(
         expectedBlocks,
         field.selectedBlock.type,
+        field.selectedBlock.direction,
         5,
         if (field.selectedBlock.type == 1) 22 else 21
       )
