@@ -14,16 +14,17 @@ class Utilities {
     fun insertBlock(
       expectedBlocks: Array<Array<Int>>,
       type: Int,
+      direction: Int,
       x: Int,
       y: Int
     ): Array<Array<Int>> {
       when (type) {
-        1 -> {
-          if (x > 7) return expectedBlocks
-          for (i in 0..3) {
-            expectedBlocks[y][x + i] = 1
-          }
-        }
+        1 -> return if (x > 7) expectedBlocks else insertStraightBlock(
+          expectedBlocks,
+          direction,
+          x,
+          y
+        )
         2 -> {
           if (x > 9) return expectedBlocks
           for (i in 0..1) {
@@ -64,6 +65,27 @@ class Utilities {
           expectedBlocks[y][x + 1] = 7
           for (i in 0..2) {
             expectedBlocks[y + 1][x + i] = 7
+          }
+        }
+      }
+      return expectedBlocks
+    }
+
+    private fun insertStraightBlock(
+      expectedBlocks: Array<Array<Int>>,
+      direction: Int,
+      x: Int,
+      y: Int
+    ): Array<Array<Int>> {
+      when (direction) {
+        0 -> {
+          for (i in 0..3) {
+            expectedBlocks[y][x + i] = 1
+          }
+        }
+        1 -> {
+          for (i in 0..3) {
+            expectedBlocks[y + i][x] = 1
           }
         }
       }

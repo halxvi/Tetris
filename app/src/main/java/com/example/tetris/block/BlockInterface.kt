@@ -5,5 +5,5 @@ interface BlockInterface {
   var direction: Int
   val type: Int
 
-  fun rotate()
+  fun rotate(blocks: Array<Array<Int>>)
 }
