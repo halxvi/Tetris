@@ -102,7 +102,28 @@ class Field(
     selectedBlock.rotate(blocks)
   }
 
-  fun checkErasableBlock() {
+  fun eraseBlocks() {
+    val y = findErasableBlocks()
+    if (y == -1) return
+    for (x in 1..10) blocks[y][x] = 0
+    for (m in (y - 1)..0) {
+      for (n in 10..1) {
+        blocks[m + 1][n] = blocks[m][n]
+      }
+    }
+    eraseBlocks()
+  }
+
+  fun findErasableBlocks(): Int {
+    for ((i, a) in blocks.withIndex()) {
+      if (a[1] != 0) {
+        crack@ for (n in 2..11) {
+          if (a[n] == 0) break@crack
+          if (a[n] == -1) return i
+        }
+      }
+    }
+    return -1
   }
 
   fun checkGameover() {
