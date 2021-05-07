@@ -32,9 +32,7 @@ class Field(
   }
 
   fun addBlock() {
-    selectedBlock.coordinates.forEach {
-      blocks[it[1]][it[0]] = selectedBlock.type
-    }
+    blocks.apply { combineBlocks() }
     selectedBlock = when (nextBlocks.removeAt(0)) {
       1 -> StraightBlock()
       2 -> SquareBlock()
@@ -126,6 +124,6 @@ class Field(
     return -1
   }
 
-  fun checkGameover() {
+  fun isGameover() {
   }
 }
