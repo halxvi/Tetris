@@ -3,7 +3,6 @@ package com.example.tetris.model
 class Tetris(
   private val field: Field
 ) {
-  var score: Int = 0
   var gameover: Boolean = false
   private var gameSpeed: Double = 500.0
 
@@ -13,6 +12,10 @@ class Tetris(
 
   fun moveBlock() {
     field.moveBlock()
+  }
+
+  fun getScore(): Int {
+    return field.score
   }
 
   fun combineBlocks(): Array<Array<Int>> {
