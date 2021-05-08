@@ -47,13 +47,13 @@ class Utilities {
           x,
           y
         )
-        3 -> {
-          if (x > 7) return expectedBlocks
-          for (i in 0..1) {
-            expectedBlocks[y][x + i] = 3
-            expectedBlocks[y + 1][x + i + 1] = 3
-          }
-        }
+        3 -> return insertZBlock(
+          expectedBlocks,
+          type,
+          direction,
+          x,
+          y
+        )
         4 -> {
           if (x > 7) return expectedBlocks
           for (i in 0..1) {
@@ -107,6 +107,13 @@ class Utilities {
           x,
           y
         )
+        3 -> return insertZBlock(
+          expectedBlocks,
+          8,
+          direction,
+          x,
+          y
+        )
       }
       return expectedBlocks
     }
@@ -139,10 +146,33 @@ class Utilities {
       x: Int,
       y: Int
     ): Array<Array<Int>> {
-      if (x > 9) return expectedBlocks
       for (i in 0..1) {
-        expectedBlocks[y][x + i] = type
         expectedBlocks[y - 1][x + i] = type
+        expectedBlocks[y][x + i] = type
+      }
+      return expectedBlocks
+    }
+
+    private fun insertZBlock(
+      expectedBlocks: Array<Array<Int>>,
+      type: Int,
+      direction: Int,
+      x: Int,
+      y: Int
+    ): Array<Array<Int>> {
+      when (direction) {
+        0 -> {
+          for (i in 0..1) {
+            expectedBlocks[y - 1][x + i] = type
+            expectedBlocks[y][x + 1 + i] = type
+          }
+        }
+        1 -> {
+          for (i in 0..1) {
+            expectedBlocks[y - 1 - i][x + i] = type
+            expectedBlocks[y - i][x + i] = type
+          }
+        }
       }
       return expectedBlocks
     }
