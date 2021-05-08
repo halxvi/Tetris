@@ -41,13 +41,12 @@ class Utilities {
           x,
           y
         )
-        2 -> {
-          if (x > 9) return expectedBlocks
-          for (i in 0..1) {
-            expectedBlocks[y][x + i] = 2
-            expectedBlocks[y + 1][x + i] = 2
-          }
-        }
+        2 -> return insertSquareBlock(
+          expectedBlocks,
+          type,
+          x,
+          y
+        )
         3 -> {
           if (x > 7) return expectedBlocks
           for (i in 0..1) {
@@ -102,6 +101,12 @@ class Utilities {
           x,
           y
         )
+        2 -> return insertSquareBlock(
+          expectedBlocks,
+          8,
+          x,
+          y
+        )
       }
       return expectedBlocks
     }
@@ -124,6 +129,20 @@ class Utilities {
             expectedBlocks[y + i][x] = type
           }
         }
+      }
+      return expectedBlocks
+    }
+
+    private fun insertSquareBlock(
+      expectedBlocks: Array<Array<Int>>,
+      type: Int,
+      x: Int,
+      y: Int
+    ): Array<Array<Int>> {
+      if (x > 9) return expectedBlocks
+      for (i in 0..1) {
+        expectedBlocks[y][x + i] = type
+        expectedBlocks[y - 1][x + i] = type
       }
       return expectedBlocks
     }
