@@ -8,10 +8,10 @@ class Field(
   val blocks: Array<Array<Int>> =
     Array(24) { Array<Int>(12) { 0 } },
   val nextBlocks: MutableList<Int> = mutableListOf(0, 0, 0),
-  var heldBlock: Int = 0,
-  private val random: Random = Random,
-  var score: Int = 0
+  private val random: Random = Random
 ) {
+  var score: Int = 0
+
   init {
     addWallToBlocks()
     if (nextBlocks.elementAt(0) == 0) initNextBlocks()
@@ -116,8 +116,8 @@ class Field(
   fun findErasableBlocks(): Int {
     for ((i, a) in blocks.withIndex()) {
       if (a[1] != 0) {
-        crack@ for (n in 2..11) {
-          if (a[n] == 0) break@crack
+        foundCrack@ for (n in 2..11) {
+          if (a[n] == 0) break@foundCrack
           if (a[n] == -1) return i
         }
       }
