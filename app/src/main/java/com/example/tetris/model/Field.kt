@@ -125,6 +125,12 @@ class Field(
     return -1
   }
 
-  fun isGameover() {
+  fun isGameover(): Boolean {
+    for (n in 1..10) {
+      if (blocks[4][n] != 0 && blocks[3][n] != 0) {
+        return true
+      }
+    }
+    return false
   }
 }
