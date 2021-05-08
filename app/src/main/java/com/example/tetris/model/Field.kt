@@ -14,7 +14,7 @@ class Field(
 ) {
   init {
     addWallToBlocks()
-    initNextBlocks()
+    if (nextBlocks.elementAt(0) == 0) initNextBlocks()
   }
 
   private fun addWallToBlocks() {
@@ -26,7 +26,6 @@ class Field(
   }
 
   private fun initNextBlocks() {
-    if (nextBlocks.elementAt(0) != 0) return
     for (index in nextBlocks.indices) {
       nextBlocks[index] = random.nextInt(1, 7)
     }
