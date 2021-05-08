@@ -165,7 +165,7 @@ class RotateStraightBlockTest : KoinTest {
   @CsvSource(
     "7 | 8 | 9 | 10 | 10",
     "6 | 7 | 8 | 9 | 9",
-    "5 | 6 | 7 | 8 | 8",
+    "5 | 6 | 7 | 8 | 5",
     "4 | 5 | 6 | 7 | 4",
     "3 | 4 | 5 | 6 | 3",
     "2 | 3 | 4 | 5 | 2",
@@ -185,7 +185,7 @@ class RotateStraightBlockTest : KoinTest {
       )
     }
     val field: Field by inject { parametersOf(straightBlock) }
-    field.selectedBlock.rotate(field.blocks)
+    field.rotate()
     val expectedBlocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(expectedBlocks, 1, 1, tx, 17)
@@ -222,7 +222,7 @@ class RotateStraightBlockTest : KoinTest {
       )
     }
     val field: Field by inject { parametersOf(straightBlock) }
-    field.selectedBlock.rotate(field.blocks)
+    field.rotate()
     val expectedBlocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(expectedBlocks, 1, 0, tx, 20)
