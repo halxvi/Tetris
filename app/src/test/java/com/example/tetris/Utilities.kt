@@ -1,5 +1,7 @@
 package com.example.tetris
 
+import com.example.tetris.block.*
+
 class Utilities {
   companion object {
     fun addWallToBlocks(array: Array<Array<Int>>): Array<Array<Int>> {
@@ -9,6 +11,19 @@ class Utilities {
       }
       for (i in 2..10) array[23][i] = -1
       return array
+    }
+
+    fun testBlock(blockType: Int): BlockInterface {
+      return when (blockType) {
+        1 -> StraightBlock()
+        2 -> SquareBlock()
+        3 -> ZBlock()
+        4 -> ZReverseBlock()
+        5 -> LBlock()
+        6 -> LReverseBlock()
+        7 -> TBlock()
+        else -> SquareBlock()
+      }
     }
 
     fun insertBlock(
@@ -21,6 +36,7 @@ class Utilities {
       when (type) {
         1 -> return insertStraightBlock(
           expectedBlocks,
+          type,
           direction,
           x,
           y
@@ -71,8 +87,28 @@ class Utilities {
       return expectedBlocks
     }
 
+    fun insertShadowBlock(
+      expectedBlocks: Array<Array<Int>>,
+      type: Int,
+      direction: Int,
+      x: Int,
+      y: Int
+    ): Array<Array<Int>> {
+      when (type) {
+        1 -> insertStraightBlock(
+          expectedBlocks,
+          8,
+          direction,
+          x,
+          y
+        )
+      }
+      return expectedBlocks
+    }
+
     private fun insertStraightBlock(
       expectedBlocks: Array<Array<Int>>,
+      type: Int,
       direction: Int,
       x: Int,
       y: Int
@@ -80,12 +116,12 @@ class Utilities {
       when (direction) {
         0 -> {
           for (i in 0..3) {
-            expectedBlocks[y][x + i] = 1
+            expectedBlocks[y][x + i] = type
           }
         }
         1 -> {
           for (i in 0..3) {
-            expectedBlocks[y + i][x] = 1
+            expectedBlocks[y + i][x] = type
           }
         }
       }

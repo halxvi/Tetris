@@ -54,6 +54,20 @@ class Field(
     return combinedBlocks
   }
 
+  fun combineShadowBlock(): Array<Array<Int>> {
+    val shadowBlock = selectedBlock
+    val combinedBlocks = blocks
+    while (canMoveBlock()) {
+      for ((index, elem) in selectedBlock.coordinates.withIndex()) {
+        shadowBlock.coordinates[index] = arrayOf(elem[0], elem[1] + 1)
+      }
+    }
+    shadowBlock.coordinates.forEach {
+      combinedBlocks[it[1]][it[0]] = 8
+    }
+    return combinedBlocks
+  }
+
   fun moveBlock() {
     if (!canMoveBlock()) return
     for ((index, elem) in selectedBlock.coordinates.withIndex()) {

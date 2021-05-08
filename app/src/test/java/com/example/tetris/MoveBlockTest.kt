@@ -2,6 +2,7 @@ package com.example.tetris
 
 import com.example.tetris.Utilities.Companion.addWallToBlocks
 import com.example.tetris.Utilities.Companion.insertBlock
+import com.example.tetris.Utilities.Companion.testBlock
 import com.example.tetris.block.*
 import com.example.tetris.model.Field
 import org.junit.Assert.*
@@ -155,18 +156,5 @@ class MoveBlockTest : KoinTest {
       addWallToBlocks(expectedBlocks)
     }
     assertArrayEquals(expectedBlocks, field.combineBlocks())
-  }
-
-  private fun testBlock(blockType: Int): BlockInterface {
-    return when (blockType) {
-      1 -> StraightBlock()
-      2 -> SquareBlock()
-      3 -> ZBlock()
-      4 -> ZReverseBlock()
-      5 -> LBlock()
-      6 -> LReverseBlock()
-      7 -> TBlock()
-      else -> SquareBlock()
-    }
   }
 }
