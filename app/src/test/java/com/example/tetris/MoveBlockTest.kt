@@ -25,14 +25,12 @@ class MoveBlockTest : KoinTest {
                    selectedBlocks: BlockInterface,
                    blocks: Array<Array<Int>>,
                    nextBlocks: MutableList<Int>,
-                   heldBlock: Int,
                    random: Random
                  ) ->
           Field(
             selectedBlocks,
             blocks,
             nextBlocks,
-            heldBlock,
             random
           )
         }
@@ -47,7 +45,6 @@ class MoveBlockTest : KoinTest {
         InitBlock(),
         Array(24) { Array<Int>(12) { 0 } },
         mutableListOf(0, 0, 0),
-        0,
         Random
       )
     }
@@ -74,7 +71,6 @@ class MoveBlockTest : KoinTest {
         InitBlock(),
         Array(24) { Array<Int>(12) { 0 } },
         mutableListOf(0, 0, 0),
-        0,
         Random
       )
     }
@@ -98,7 +94,6 @@ class MoveBlockTest : KoinTest {
         StraightBlock(),
         blocks,
         mutableListOf(0, 0, 0),
-        0,
         Random
       )
     }
@@ -119,7 +114,6 @@ class MoveBlockTest : KoinTest {
         ),
         Array(24) { Array<Int>(12) { 0 } },
         mutableListOf(0, 0, 0),
-        0,
         Random
       )
     }
@@ -133,7 +127,6 @@ class MoveBlockTest : KoinTest {
         InitBlock(),
         Array(24) { Array<Int>(12) { 0 } },
         mutableListOf(0, 0, 0),
-        0,
         Random
       )
     }

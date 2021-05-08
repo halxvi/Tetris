@@ -22,7 +22,6 @@ class RandomBlockTest : KoinTest {
                    selectedBlocks: BlockInterface,
                    blocks: Array<Array<Int>>,
                    nextBlocks: MutableList<Int>,
-                   heldBlock: Int,
                    random: Random
                  )
           ->
@@ -30,7 +29,6 @@ class RandomBlockTest : KoinTest {
             selectedBlocks,
             blocks,
             nextBlocks,
-            heldBlock,
             random
           )
         }
@@ -45,7 +43,6 @@ class RandomBlockTest : KoinTest {
         StraightBlock(),
         Array(24) { Array<Int>(12) { 0 } },
         mutableListOf(0, 0, 0),
-        0,
         Random(0)
       )
     }
