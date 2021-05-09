@@ -42,8 +42,8 @@ class MoveBlockTest : KoinTest {
 
   @ParameterizedTest
   @CsvSource(
-    "1 | 0 | 5 | 4",
-    "1 | 1 | 5 | 1",
+    "1 | 0 | 5 | 3",
+    "1 | 1 | 5 | 0",
     delimiter = '|'
   )
   fun moveBlock(blockType: Int, direction: Int, tx: Int, ty: Int) {
@@ -96,7 +96,7 @@ class MoveBlockTest : KoinTest {
         1,
         0,
         5,
-        4
+        3
       )
     }
     val field: Field by inject {
@@ -162,14 +162,25 @@ class MoveBlockTest : KoinTest {
   @ParameterizedTest
   @CsvSource("1", "2", "3", "4", "5", "6", "7")
   fun moveBlockToBlock(type: Int) {
+    val block = Array(24) { Array<Int>(12) { 0 } }
+    block.apply {
+      insertBlock(
+        block,
+        type,
+        0,
+        5,
+        21
+      )
+    }
     val field: Field by inject {
       parametersOf(
         InitBlock(),
-        Array(24) { Array<Int>(12) { 0 } },
+        block,
         mutableListOf(type, 0, 0),
         Random
       )
     }
+
     field.addBlock()
     while (field.canMoveBlock()) {
       field.moveBlock()
@@ -181,14 +192,14 @@ class MoveBlockTest : KoinTest {
         type,
         field.selectedBlock.direction,
         5,
-        21
+        if (type == 1) 20 else 19
       )
       insertBlock(
         expectedBlocks,
         type,
         field.selectedBlock.direction,
         5,
-        20
+        21
       )
       addWallToBlocks(expectedBlocks)
     }
