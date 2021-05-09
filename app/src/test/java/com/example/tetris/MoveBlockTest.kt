@@ -130,13 +130,43 @@ class MoveBlockTest : KoinTest {
     assertFalse(field.canMoveBlock())
   }
 
-  @Test
-  fun moveBlockToBottom() {
+  @ParameterizedTest
+  @CsvSource("1", "2", "3", "4", "5", "6", "7")
+  fun moveBlockToBottom(type: Int) {
     val field: Field by inject {
       parametersOf(
         InitBlock(),
         Array(24) { Array<Int>(12) { 0 } },
-        mutableListOf(0, 0, 0),
+        mutableListOf(type, 0, 0),
+        Random
+      )
+    }
+    field.addBlock()
+    while (field.canMoveBlock()) {
+      field.moveBlock()
+    }
+    val expectedBlocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
+    expectedBlocks.apply {
+      insertBlock(
+        expectedBlocks,
+        type,
+        0,
+        5,
+        21
+      )
+      addWallToBlocks(expectedBlocks)
+    }
+    assertArrayEquals(expectedBlocks, field.combineBlocks())
+  }
+
+  @ParameterizedTest
+  @CsvSource("1", "2", "3", "4", "5", "6", "7")
+  fun moveBlockToBlock(type: Int) {
+    val field: Field by inject {
+      parametersOf(
+        InitBlock(),
+        Array(24) { Array<Int>(12) { 0 } },
+        mutableListOf(type, 0, 0),
         Random
       )
     }

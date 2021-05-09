@@ -25,7 +25,7 @@ class AddBlockTest : KoinTest {
   }
 
   @ParameterizedTest
-  @CsvSource("1", "2", "3", "4", "5", "7")
+  @CsvSource("1", "2", "3", "4", "5", "6", "7")
   fun addBlock(blockType: Int) {
     val field: Field by inject()
     field.nextBlocks[0] = blockType
