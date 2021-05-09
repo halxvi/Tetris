@@ -29,6 +29,32 @@ class StraightBlock(
 
   // d0 : direction 0
 
+  private fun canRotateD0(blocks: Array<Array<Int>>): Boolean {
+    if (getX(0) <= 5) {
+      if (blocks[getY(1) - 1][getX(1) - 1] != 0) return false
+      if (blocks[getY(2) - 2][getX(2) - 2] != 0) return false
+      if (blocks[getY(3) - 3][getX(3) - 3] != 0) return false
+    } else {
+      if (blocks[getY(0) - 3][getX(0) + 3] != 0) return false
+      if (blocks[getY(1) - 2][getX(1) + 2] != 0) return false
+      if (blocks[getY(2) - 1][getX(2) + 1] != 0) return false
+    }
+    return true
+  }
+
+  private fun canRotateD1(blocks: Array<Array<Int>>): Boolean {
+    if (getX(0) <= 5) {
+      if (blocks[getY(0) + 3][getX(0) + 3] != 0) return false
+      if (blocks[getY(1) + 2][getX(1) + 2] != 0) return false
+      if (blocks[getY(2) + 1][getX(2) + 1] != 0) return false
+    } else {
+      if (blocks[getY(0) + 3][getX(0) - 3] != 0) return false
+      if (blocks[getY(1) + 2][getX(1) - 2] != 0) return false
+      if (blocks[getY(2) + 1][getX(2) - 1] != 0) return false
+    }
+    return true
+  }
+
   private fun rotateD0() {
     val nextCoordinates: Array<Array<Int>> = arrayOf(
       arrayOf(0, 0),
@@ -65,32 +91,6 @@ class StraightBlock(
       }
     }
     coordinates = nextCoordinates
-  }
-
-  private fun canRotateD0(blocks: Array<Array<Int>>): Boolean {
-    if (getX(0) <= 5) {
-      if (blocks[getY(1) - 1][getX(1) - 1] != 0) return false
-      if (blocks[getY(2) - 2][getX(2) - 2] != 0) return false
-      if (blocks[getY(3) - 3][getX(3) - 3] != 0) return false
-    } else {
-      if (blocks[getY(0) - 3][getX(0) + 3] != 0) return false
-      if (blocks[getY(1) - 2][getX(1) + 2] != 0) return false
-      if (blocks[getY(2) - 1][getX(2) + 1] != 0) return false
-    }
-    return true
-  }
-
-  private fun canRotateD1(blocks: Array<Array<Int>>): Boolean {
-    if (getX(0) <= 5) {
-      if (blocks[getY(0) + 3][getX(0) + 3] != 0) return false
-      if (blocks[getY(1) + 2][getX(1) + 2] != 0) return false
-      if (blocks[getY(2) + 1][getX(2) + 1] != 0) return false
-    } else {
-      if (blocks[getY(0) + 3][getX(0) - 3] != 0) return false
-      if (blocks[getY(1) + 2][getX(1) - 2] != 0) return false
-      if (blocks[getY(2) + 1][getX(2) - 1] != 0) return false
-    }
-    return true
   }
 
   private fun getX(i: Int): Int {
