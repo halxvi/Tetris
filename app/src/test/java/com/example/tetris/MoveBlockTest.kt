@@ -57,7 +57,7 @@ class MoveBlockTest : KoinTest {
     }
 
     if (direction != 0) {
-      for (n in 1 .. direction) field.rotate()
+      for (n in 1..direction) field.rotate()
     }
     field.moveBlock()
     val expectedBlocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
