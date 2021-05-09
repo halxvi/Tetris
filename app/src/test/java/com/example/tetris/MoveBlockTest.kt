@@ -1,8 +1,8 @@
 package com.example.tetris
 
 import com.example.tetris.Utilities.Companion.addWallToBlocks
+import com.example.tetris.Utilities.Companion.getTestBlock
 import com.example.tetris.Utilities.Companion.insertBlock
-import com.example.tetris.Utilities.Companion.testBlock
 import com.example.tetris.block.*
 import com.example.tetris.model.Field
 import org.junit.Assert.*
@@ -49,7 +49,7 @@ class MoveBlockTest : KoinTest {
   fun moveBlock(blockType: Int, direction: Int, tx: Int, ty: Int) {
     val field: Field by inject {
       parametersOf(
-        testBlock(blockType),
+        getTestBlock(blockType),
         Array(24) { Array<Int>(12) { 0 } },
         mutableListOf(0, 0, 0),
         Random

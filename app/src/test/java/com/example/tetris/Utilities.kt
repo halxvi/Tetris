@@ -13,7 +13,7 @@ class Utilities {
       return array
     }
 
-    fun testBlock(blockType: Int): BlockInterface {
+    fun getTestBlock(blockType: Int): BlockInterface {
       return when (blockType) {
         1 -> StraightBlock()
         2 -> SquareBlock()

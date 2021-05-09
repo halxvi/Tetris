@@ -2,7 +2,7 @@ package com.example.tetris
 
 import com.example.tetris.Utilities.Companion.addWallToBlocks
 import com.example.tetris.Utilities.Companion.insertShadowBlock
-import com.example.tetris.Utilities.Companion.testBlock
+import com.example.tetris.Utilities.Companion.getTestBlock
 import com.example.tetris.block.*
 import com.example.tetris.model.Field
 import org.junit.Assert.assertArrayEquals
@@ -39,7 +39,7 @@ class ShadowBlockTest : KoinTest {
   fun createShadowBlock(type: Int) {
     val field: Field by inject {
       parametersOf(
-        testBlock(type)
+        getTestBlock(type)
       )
     }
     val expectedBlocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
