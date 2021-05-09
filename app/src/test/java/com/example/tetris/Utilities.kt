@@ -61,27 +61,27 @@ class Utilities {
           x,
           y
         )
-        5 -> {
-          if (x > 7) return expectedBlocks
-          expectedBlocks[y][x + 2] = 5
-          for (i in 0..2) {
-            expectedBlocks[y + 1][x + i] = 5
-          }
-        }
-        6 -> {
-          if (x > 7) return expectedBlocks
-          expectedBlocks[y][x] = 6
-          for (i in 0..2) {
-            expectedBlocks[y + 1][x + i] = 6
-          }
-        }
-        7 -> {
-          if (x > 8) return expectedBlocks
-          expectedBlocks[y][x + 1] = 7
-          for (i in 0..2) {
-            expectedBlocks[y + 1][x + i] = 7
-          }
-        }
+        5 -> return insertLBlock(
+          expectedBlocks,
+          type,
+          direction,
+          x,
+          y
+        )
+        6 -> return insertLReverseBlock(
+          expectedBlocks,
+          type,
+          direction,
+          x,
+          y
+        )
+        7 -> return insertTBlock(
+          expectedBlocks,
+          type,
+          direction,
+          x,
+          y
+        )
       }
       return expectedBlocks
     }
@@ -115,6 +115,27 @@ class Utilities {
           y
         )
         4 -> return insertZReverseBlock(
+          expectedBlocks,
+          8,
+          direction,
+          x,
+          y
+        )
+        5 -> return insertLBlock(
+          expectedBlocks,
+          8,
+          direction,
+          x,
+          y
+        )
+        6 -> return insertLReverseBlock(
+          expectedBlocks,
+          8,
+          direction,
+          x,
+          y
+        )
+        7 -> return insertTBlock(
           expectedBlocks,
           8,
           direction,
@@ -193,16 +214,124 @@ class Utilities {
     ): Array<Array<Int>> {
       when (direction) {
         0 -> {
-          expectedBlocks[y][x + 1] = 4
-          expectedBlocks[y][x + 2] = 4
-          expectedBlocks[y + 1][x] = 4
-          expectedBlocks[y + 1][x + 1] = 4
+          expectedBlocks[y][x + 1] = type
+          expectedBlocks[y][x + 2] = type
+          expectedBlocks[y + 1][x] = type
+          expectedBlocks[y + 1][x + 1] = type
         }
         1 -> {
           expectedBlocks[y][x] = type
           expectedBlocks[y - 1][x] = type
           expectedBlocks[y - 1][x + 1] = type
           expectedBlocks[y - 2][x + 1] = type
+        }
+      }
+      return expectedBlocks
+    }
+
+    private fun insertLBlock(
+      expectedBlocks: Array<Array<Int>>,
+      type: Int,
+      direction: Int,
+      x: Int,
+      y: Int
+    ): Array<Array<Int>> {
+      when (direction) {
+        0 -> {
+          expectedBlocks[y][x + 2] = type
+          expectedBlocks[y + 1][x] = type
+          expectedBlocks[y + 1][x + 1] = type
+          expectedBlocks[y + 1][x + 2] = type
+        }
+        1 -> {
+          expectedBlocks[y][x] = type
+          expectedBlocks[y + 1][x] = type
+          expectedBlocks[y + 2][x] = type
+          expectedBlocks[y + 2][x + 1] = type
+        }
+        2 -> {
+          expectedBlocks[y][x] = type
+          expectedBlocks[y][x + 1] = type
+          expectedBlocks[y][x + 2] = type
+          expectedBlocks[y + 1][x] = type
+        }
+        3 -> {
+          expectedBlocks[y][x] = type
+          expectedBlocks[y][x + 1] = type
+          expectedBlocks[y + 1][x + 1] = type
+          expectedBlocks[y + 2][x + 1] = type
+        }
+      }
+      return expectedBlocks
+    }
+
+    private fun insertLReverseBlock(
+      expectedBlocks: Array<Array<Int>>,
+      type: Int,
+      direction: Int,
+      x: Int,
+      y: Int
+    ): Array<Array<Int>> {
+      when (direction) {
+        0 -> {
+          expectedBlocks[y][x] = type
+          expectedBlocks[y + 1][x] = type
+          expectedBlocks[y + 1][x + 1] = type
+          expectedBlocks[y + 1][x + 2] = type
+        }
+        1 -> {
+          expectedBlocks[y][x] = type
+          expectedBlocks[y][x + 1] = type
+          expectedBlocks[y + 1][x] = type
+          expectedBlocks[y + 2][x] = type
+        }
+        2 -> {
+          expectedBlocks[y][x] = type
+          expectedBlocks[y][x + 1] = type
+          expectedBlocks[y][x + 2] = type
+          expectedBlocks[y + 1][x + 2] = type
+        }
+        3 -> {
+          expectedBlocks[y + 2][x] = type
+          expectedBlocks[y][x + 1] = type
+          expectedBlocks[y + 1][x + 1] = type
+          expectedBlocks[y + 2][x + 2] = type
+        }
+      }
+      return expectedBlocks
+    }
+
+    private fun insertTBlock(
+      expectedBlocks: Array<Array<Int>>,
+      type: Int,
+      direction: Int,
+      x: Int,
+      y: Int
+    ): Array<Array<Int>> {
+      when (direction) {
+        0 -> {
+          expectedBlocks[y][x + 1] = type
+          expectedBlocks[y + 1][x] = type
+          expectedBlocks[y + 1][x + 1] = type
+          expectedBlocks[y + 1][x + 2] = type
+        }
+        1 -> {
+          expectedBlocks[y][x] = type
+          expectedBlocks[y + 1][x] = type
+          expectedBlocks[y + 1][x + 1] = type
+          expectedBlocks[y + 2][x] = type
+        }
+        2 -> {
+          expectedBlocks[y][x] = type
+          expectedBlocks[y][x + 1] = type
+          expectedBlocks[y][x + 2] = type
+          expectedBlocks[y + 1][x + 1] = type
+        }
+        3 -> {
+          expectedBlocks[y][x + 1] = type
+          expectedBlocks[y + 1][x] = type
+          expectedBlocks[y + 1][x + 1] = type
+          expectedBlocks[y + 2][x + 1] = type
         }
       }
       return expectedBlocks
