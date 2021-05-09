@@ -161,7 +161,7 @@ class Utilities {
         }
         1 -> {
           for (i in 0..3) {
-            expectedBlocks[y + i + 1][x] = type
+            expectedBlocks[y + i][x] = type
           }
         }
       }

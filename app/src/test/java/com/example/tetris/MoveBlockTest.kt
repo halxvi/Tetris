@@ -43,7 +43,7 @@ class MoveBlockTest : KoinTest {
   @ParameterizedTest
   @CsvSource(
     "1 | 0 | 5 | 3",
-    "1 | 1 | 5 | 0",
+    "1 | 1 | 5 | 1",
     delimiter = '|'
   )
   fun moveBlock(blockType: Int, direction: Int, tx: Int, ty: Int) {

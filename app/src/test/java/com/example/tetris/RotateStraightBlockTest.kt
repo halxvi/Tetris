@@ -188,7 +188,7 @@ class RotateStraightBlockTest : KoinTest {
     field.rotate()
     val expectedBlocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
     expectedBlocks.apply {
-      insertBlock(expectedBlocks, 1, 1, tx, 16)
+      insertBlock(expectedBlocks, 1, 1, tx, 17)
       addWallToBlocks(expectedBlocks)
     }
     assertArrayEquals(expectedBlocks, field.combineBlocks())
