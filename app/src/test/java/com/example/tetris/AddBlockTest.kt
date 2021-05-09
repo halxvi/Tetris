@@ -32,7 +32,13 @@ class AddBlockTest : KoinTest {
     field.addBlock()
     val expectedBlocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
     expectedBlocks.apply {
-      insertBlock(expectedBlocks, field.selectedBlock.type, field.selectedBlock.direction, 5, 3)
+      insertBlock(
+        expectedBlocks,
+        field.selectedBlock.type,
+        field.selectedBlock.direction,
+        5,
+        2
+      )
       addWallToBlocks(expectedBlocks)
     }
     assertEquals(field.selectedBlock.type, blockType)

@@ -54,13 +54,13 @@ class Utilities {
           x,
           y
         )
-        4 -> {
-          if (x > 7) return expectedBlocks
-          for (i in 0..1) {
-            expectedBlocks[y][x + i + 1] = 4
-            expectedBlocks[y + 1][x + i] = 4
-          }
-        }
+        4 -> return insertZReverseBlock(
+          expectedBlocks,
+          type,
+          direction,
+          x,
+          y
+        )
         5 -> {
           if (x > 7) return expectedBlocks
           expectedBlocks[y][x + 2] = 5
@@ -114,6 +114,13 @@ class Utilities {
           x,
           y
         )
+        4 -> return insertZReverseBlock(
+          expectedBlocks,
+          8,
+          direction,
+          x,
+          y
+        )
       }
       return expectedBlocks
     }
@@ -128,12 +135,12 @@ class Utilities {
       when (direction) {
         0 -> {
           for (i in 0..3) {
-            expectedBlocks[y][x + i] = type
+            expectedBlocks[y + 1][x + i] = type
           }
         }
         1 -> {
           for (i in 0..3) {
-            expectedBlocks[y + i][x] = type
+            expectedBlocks[y + i + 1][x] = type
           }
         }
       }
@@ -146,10 +153,10 @@ class Utilities {
       x: Int,
       y: Int
     ): Array<Array<Int>> {
-      for (i in 0..1) {
-        expectedBlocks[y - 1][x + i] = type
-        expectedBlocks[y][x + i] = type
-      }
+      expectedBlocks[y][x] = type
+      expectedBlocks[y][x + 1] = type
+      expectedBlocks[y + 1][x] = type
+      expectedBlocks[y + 1][x + 1] = type
       return expectedBlocks
     }
 
@@ -162,16 +169,40 @@ class Utilities {
     ): Array<Array<Int>> {
       when (direction) {
         0 -> {
-          for (i in 0..1) {
-            expectedBlocks[y - 1][x + i] = type
-            expectedBlocks[y][x + 1 + i] = type
-          }
+          expectedBlocks[y][x] = type
+          expectedBlocks[y][x + 1] = type
+          expectedBlocks[y + 1][x + 1] = type
+          expectedBlocks[y + 1][x + 2] = type
         }
         1 -> {
-          for (i in 0..1) {
-            expectedBlocks[y - 1 - i][x + i] = type
-            expectedBlocks[y - i][x + i] = type
-          }
+          expectedBlocks[y + 1][x] = type
+          expectedBlocks[y + 2][x] = type
+          expectedBlocks[y][x + 1] = type
+          expectedBlocks[y + 1][x + 1] = type
+        }
+      }
+      return expectedBlocks
+    }
+
+    private fun insertZReverseBlock(
+      expectedBlocks: Array<Array<Int>>,
+      type: Int,
+      direction: Int,
+      x: Int,
+      y: Int
+    ): Array<Array<Int>> {
+      when (direction) {
+        0 -> {
+          expectedBlocks[y][x + 1] = 4
+          expectedBlocks[y][x + 2] = 4
+          expectedBlocks[y + 1][x] = 4
+          expectedBlocks[y + 1][x + 1] = 4
+        }
+        1 -> {
+          expectedBlocks[y][x] = type
+          expectedBlocks[y - 1][x] = type
+          expectedBlocks[y - 1][x + 1] = type
+          expectedBlocks[y - 2][x + 1] = type
         }
       }
       return expectedBlocks

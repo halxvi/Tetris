@@ -44,7 +44,7 @@ class ShadowBlockTest : KoinTest {
     }
     val expectedBlocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
     expectedBlocks.apply {
-      insertShadowBlock(expectedBlocks, type, 0, 5, 22)
+      insertShadowBlock(expectedBlocks, type, 0, 5, 21)
       addWallToBlocks(expectedBlocks)
     }
     assertArrayEquals(expectedBlocks, field.combineShadowBlock())

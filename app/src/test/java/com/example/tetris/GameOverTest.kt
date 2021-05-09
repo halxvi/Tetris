@@ -40,8 +40,8 @@ class GameOverTest : KoinTest {
     val blocks: Array<Array<Int>> =
       Array(24) { Array<Int>(12) { 0 } }
     blocks.apply {
-      insertBlock(blocks, 1, 0, x, 4)
       insertBlock(blocks, 1, 0, x, 3)
+      insertBlock(blocks, 1, 0, x, 2)
     }
 
     val field: Field by inject {

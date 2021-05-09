@@ -75,7 +75,7 @@ class FlickBlockTest : KoinTest {
     field.flickToRight()
     val expectedBlocks = Array(24) { Array<Int>(12) { 0 } }
     expectedBlocks.apply {
-      insertBlock(expectedBlocks, field.selectedBlock.type, field.selectedBlock.direction, 7, 3)
+      insertBlock(expectedBlocks, field.selectedBlock.type, field.selectedBlock.direction, 7, 2)
       addWallToBlocks(expectedBlocks)
     }
     assertArrayEquals(expectedBlocks, field.combineBlocks())
@@ -132,7 +132,7 @@ class FlickBlockTest : KoinTest {
     field.flickToLeft()
     val expectedBlocks = Array(24) { Array<Int>(12) { 0 } }
     expectedBlocks.apply {
-      insertBlock(expectedBlocks, field.selectedBlock.type, field.selectedBlock.direction, 1, 3)
+      insertBlock(expectedBlocks, field.selectedBlock.type, field.selectedBlock.direction, 1, 2)
       addWallToBlocks(expectedBlocks)
     }
     assertArrayEquals(expectedBlocks, field.combineBlocks())

@@ -148,10 +148,17 @@ class MoveBlockTest : KoinTest {
     expectedBlocks.apply {
       insertBlock(
         expectedBlocks,
-        field.selectedBlock.type,
+        type,
         field.selectedBlock.direction,
         5,
-        if (field.selectedBlock.type == 1) 22 else 21
+        21
+      )
+      insertBlock(
+        expectedBlocks,
+        type,
+        field.selectedBlock.direction,
+        5,
+        20
       )
       addWallToBlocks(expectedBlocks)
     }

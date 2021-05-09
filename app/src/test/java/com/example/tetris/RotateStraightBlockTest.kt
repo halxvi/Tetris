@@ -121,7 +121,7 @@ class RotateStraightBlockTest : KoinTest {
     }
     val expectedBlocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
     expectedBlocks.apply {
-      insertBlock(expectedBlocks, 1, 0, x1, 19)
+      insertBlock(expectedBlocks, 1, 0, x1, 18)
       addWallToBlocks(expectedBlocks)
     }
     assertFalse(straightBlock.canRotate(expectedBlocks))
@@ -155,7 +155,7 @@ class RotateStraightBlockTest : KoinTest {
     }
     val expectedBlocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
     expectedBlocks.apply {
-      insertBlock(expectedBlocks, 1, 0, tx, 20)
+      insertBlock(expectedBlocks, 1, 0, tx, 19)
       addWallToBlocks(expectedBlocks)
     }
     assertFalse(straightBlock.canRotate(expectedBlocks))
@@ -188,7 +188,7 @@ class RotateStraightBlockTest : KoinTest {
     field.rotate()
     val expectedBlocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
     expectedBlocks.apply {
-      insertBlock(expectedBlocks, 1, 1, tx, 17)
+      insertBlock(expectedBlocks, 1, 1, tx, 16)
       addWallToBlocks(expectedBlocks)
     }
     assertArrayEquals(expectedBlocks, field.combineBlocks())
@@ -225,7 +225,7 @@ class RotateStraightBlockTest : KoinTest {
     field.rotate()
     val expectedBlocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
     expectedBlocks.apply {
-      insertBlock(expectedBlocks, 1, 0, tx, 20)
+      insertBlock(expectedBlocks, 1, 0, tx, 19)
       addWallToBlocks(expectedBlocks)
     }
     assertArrayEquals(expectedBlocks, field.combineBlocks())
