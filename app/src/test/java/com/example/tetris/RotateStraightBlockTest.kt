@@ -66,7 +66,7 @@ class RotateStraightBlockTest : KoinTest {
         0
       )
     }
-    val expectedBlocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
     expectedBlocks.apply {
       addWallToBlocks(expectedBlocks)
     }
@@ -89,7 +89,7 @@ class RotateStraightBlockTest : KoinTest {
         1
       )
     }
-    val expectedBlocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
     expectedBlocks.apply {
       addWallToBlocks(expectedBlocks)
     }
@@ -119,7 +119,7 @@ class RotateStraightBlockTest : KoinTest {
         0
       )
     }
-    val expectedBlocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(expectedBlocks, 1, 0, x1, 18)
       addWallToBlocks(expectedBlocks)
@@ -129,16 +129,16 @@ class RotateStraightBlockTest : KoinTest {
 
   @ParameterizedTest
   @CsvSource(
-    "1 | 2",
-    "2 | 3",
-    "3 | 4",
-    "4 | 5",
-    "5 | 6",
-    "6 | 2",
-    "7 | 3",
-    "8 | 4",
-    "9 | 5",
     "10 | 6",
+    "9 | 5",
+    "8 | 4",
+    "7 | 3",
+    "6 | 2",
+    "5 | 6",
+    "4 | 5",
+    "3 | 4",
+    "2 | 3",
+    "1 | 2",
     delimiter = '|'
   )
   fun cantRotateD1Cwb(x: Int, tx: Int) {
@@ -153,7 +153,7 @@ class RotateStraightBlockTest : KoinTest {
         1
       )
     }
-    val expectedBlocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(expectedBlocks, 1, 0, tx, 19)
       addWallToBlocks(expectedBlocks)
@@ -186,7 +186,7 @@ class RotateStraightBlockTest : KoinTest {
     }
     val field: Field by inject { parametersOf(straightBlock) }
     field.rotate()
-    val expectedBlocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(expectedBlocks, 1, 1, tx, 17)
       addWallToBlocks(expectedBlocks)
@@ -197,16 +197,16 @@ class RotateStraightBlockTest : KoinTest {
 
   @ParameterizedTest
   @CsvSource(
-    "1 | 1",
-    "2 | 2",
-    "3 | 3",
-    "4 | 4",
-    "5 | 5",
-    "6 | 3",
-    "7 | 4",
-    "8 | 5",
-    "9 | 6",
     "10 | 7",
+    "9 | 6",
+    "8 | 5",
+    "7 | 4",
+    "6 | 3",
+    "5 | 5",
+    "4 | 4",
+    "3 | 3",
+    "2 | 2",
+    "1 | 1",
     delimiter = '|'
   )
   fun rotateD1(x: Int, tx: Int) {
@@ -223,7 +223,7 @@ class RotateStraightBlockTest : KoinTest {
     }
     val field: Field by inject { parametersOf(straightBlock) }
     field.rotate()
-    val expectedBlocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(expectedBlocks, 1, 0, tx, 19)
       addWallToBlocks(expectedBlocks)
