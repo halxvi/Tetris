@@ -31,10 +31,16 @@ class StraightBlock(
 
   private fun canRotateD0(blocks: Array<Array<Int>>): Boolean {
     if (getX(0) <= 5) {
+      if (blocks[getY(1) - 1][getX(1)] != 0) return false
+      if (blocks[getY(2) - 1][getX(2)] != 0) return false
+      if (blocks[getY(3) - 1][getX(3)] != 0) return false
       if (blocks[getY(1) - 1][getX(1) - 1] != 0) return false
       if (blocks[getY(2) - 2][getX(2) - 2] != 0) return false
       if (blocks[getY(3) - 3][getX(3) - 3] != 0) return false
     } else {
+      if (blocks[getY(0) - 1][getX(0)] != 0) return false
+      if (blocks[getY(1) - 1][getX(1)] != 0) return false
+      if (blocks[getY(2) - 1][getX(2)] != 0) return false
       if (blocks[getY(0) - 3][getX(0) + 3] != 0) return false
       if (blocks[getY(1) - 2][getX(1) + 2] != 0) return false
       if (blocks[getY(2) - 1][getX(2) + 1] != 0) return false
@@ -44,10 +50,16 @@ class StraightBlock(
 
   private fun canRotateD1(blocks: Array<Array<Int>>): Boolean {
     if (getX(0) <= 5) {
+      if (blocks[getY(0)][getX(0) + 1] != 0) return false
+      if (blocks[getY(1)][getX(1) + 1] != 0) return false
+      if (blocks[getY(2)][getX(2) + 1] != 0) return false
       if (blocks[getY(0) + 3][getX(0) + 3] != 0) return false
       if (blocks[getY(1) + 2][getX(1) + 2] != 0) return false
       if (blocks[getY(2) + 1][getX(2) + 1] != 0) return false
     } else {
+      if (blocks[getY(0)][getX(0) - 1] != 0) return false
+      if (blocks[getY(1)][getX(1) - 1] != 0) return false
+      if (blocks[getY(2)][getX(2) - 1] != 0) return false
       if (blocks[getY(0) + 3][getX(0) - 3] != 0) return false
       if (blocks[getY(1) + 2][getX(1) - 2] != 0) return false
       if (blocks[getY(2) + 1][getX(2) - 1] != 0) return false

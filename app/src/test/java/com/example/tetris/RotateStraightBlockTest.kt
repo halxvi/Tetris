@@ -54,7 +54,12 @@ class RotateStraightBlockTest : KoinTest {
     "1 | 2 | 3 | 4",
     delimiter = '|'
   )
-  fun canRotateD0(x1: Int, x2: Int, x3: Int, x4: Int) {
+  fun canRotateD0(
+    x1: Int,
+    x2: Int,
+    x3: Int,
+    x4: Int
+  ) {
     val straightBlock: StraightBlock by inject {
       parametersOf(
         arrayOf(
@@ -98,30 +103,40 @@ class RotateStraightBlockTest : KoinTest {
 
   @ParameterizedTest
   @CsvSource(
-    "7 | 8 | 9 | 10",
-    "6 | 7 | 8 | 9",
-    "5 | 6 | 7 | 8",
-    "4 | 5 | 6 | 7",
-    "3 | 4 | 5 | 6",
-    "2 | 3 | 4 | 5",
-    "1 | 2 | 3 | 4",
+    "7 | 1 | 9 | 17",
+    "7 | 1 | 8 | 17",
+    "7 | 1 | 7 | 17",
+    "7 | 0 | 7 | 18",
+    "7 | 0 | 7 | 17",
+    "7 | 0 | 7 | 16",
+    "1 | 1 | 4 | 17",
+    "1 | 1 | 3 | 17",
+    "1 | 1 | 2 | 17",
+    "1 | 0 | 1 | 18",
+    "1 | 0 | 1 | 17",
+    "1 | 0 | 1 | 16",
     delimiter = '|'
   )
-  fun cantRotateD0Cwb(x1: Int, x2: Int, x3: Int, x4: Int) {
+  fun cantRotateD0Cwb(
+    x: Int,
+    direction: Int,
+    tx: Int,
+    ty: Int
+  ) {
     val straightBlock: StraightBlock by inject {
       parametersOf(
         arrayOf(
-          arrayOf(x1, 20),
-          arrayOf(x2, 20),
-          arrayOf(x3, 20),
-          arrayOf(x4, 20)
+          arrayOf(x, 20),
+          arrayOf(x + 1, 20),
+          arrayOf(x + 2, 20),
+          arrayOf(x + 3, 20)
         ),
         0
       )
     }
     val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
     expectedBlocks.apply {
-      insertBlock(expectedBlocks, 1, 0, x1, 18)
+      insertBlock(expectedBlocks, 1, direction, tx, ty)
       addWallToBlocks(expectedBlocks)
     }
     assertFalse(straightBlock.canRotate(expectedBlocks))
@@ -129,19 +144,26 @@ class RotateStraightBlockTest : KoinTest {
 
   @ParameterizedTest
   @CsvSource(
-    "10 | 6",
-    "9 | 5",
-    "8 | 4",
-    "7 | 3",
-    "6 | 2",
-    "5 | 6",
-    "4 | 5",
-    "3 | 4",
-    "2 | 3",
-    "1 | 2",
+    "10 | 1 | 9 | 17",
+    "10 | 1 | 8 | 17",
+    "10 | 1 | 7 | 17",
+    "10 | 0 | 6 | 18",
+    "10 | 0 | 6 | 17",
+    "10 | 0 | 6 | 16",
+    "1 | 1 | 4 | 17",
+    "1 | 1 | 3 | 17",
+    "1 | 1 | 2 | 17",
+    "1 | 0 | 2 | 18",
+    "1 | 0 | 2 | 17",
+    "1 | 0 | 2 | 16",
     delimiter = '|'
   )
-  fun cantRotateD1Cwb(x: Int, tx: Int) {
+  fun cantRotateD1Cwb(
+    x: Int,
+    direction: Int,
+    tx: Int,
+    ty: Int
+  ) {
     val straightBlock: StraightBlock by inject {
       parametersOf(
         arrayOf(
@@ -155,7 +177,7 @@ class RotateStraightBlockTest : KoinTest {
     }
     val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
     expectedBlocks.apply {
-      insertBlock(expectedBlocks, 1, 0, tx, 19)
+      insertBlock(expectedBlocks, 1, direction, tx, ty)
       addWallToBlocks(expectedBlocks)
     }
     assertFalse(straightBlock.canRotate(expectedBlocks))
@@ -172,7 +194,13 @@ class RotateStraightBlockTest : KoinTest {
     "1 | 2 | 3 | 4 | 1",
     delimiter = '|'
   )
-  fun rotateD0(x1: Int, x2: Int, x3: Int, x4: Int, tx: Int) {
+  fun rotateD0(
+    x1: Int,
+    x2: Int,
+    x3: Int,
+    x4: Int,
+    tx: Int
+  ) {
     val straightBlock: StraightBlock by inject {
       parametersOf(
         arrayOf(
