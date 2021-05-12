@@ -29,11 +29,12 @@ class ZBlock(
 
   private fun canRotateD0(blocks: Array<Array<Int>>): Boolean {
     if (getX(0) <= 5) {
-      if (blocks[getY(0) - 1][getX(0) + 1] != 0) return false
-      if (blocks[getY(3)][getX(3) - 2] != 0) return false
+      if (blocks[getY(0) - 1][getX(0)] != 0) return false
+      if (blocks[getY(0) + 1][getX(0)] != 0) return false
+      if (blocks[getY(1) - 1][getX(1)] != 0) return false
     } else {
-      if (blocks[getY(0) - 1][getX(0) + 2] != 0) return false
-      if (blocks[getY(2)][getX(2) + 1] != 0) return false
+      if (blocks[getY(0) - 1][getX(0)] != 0) return false
+      if (blocks[getY(1) - 1][getX(1)] != 0) return false
     }
     return true
   }
@@ -41,10 +42,10 @@ class ZBlock(
   private fun canRotateD1(blocks: Array<Array<Int>>): Boolean {
     if (getX(0) <= 5) {
       if (blocks[getY(2) + 1][getX(2)] != 0) return false
-      if (blocks[getY(3)][getX(3) + 2] != 0) return false
+      if (blocks[getY(2) + 1][getX(2) + 1] != 0) return false
     } else {
-      if (blocks[getY(0) + 1][getX(0) - 2] != 0) return false
-      if (blocks[getY(3)][getX(3) + 1] != 0) return false
+      if (blocks[getY(1)][getX(1) - 1] != 0) return false
+      if (blocks[getY(2) + 1][getX(2)] != 0) return false
     }
     return true
   }
@@ -58,14 +59,14 @@ class ZBlock(
     )
     if (getX(0) <= 5) {
       nextCoordinates[0] = arrayOf(getX(0) + 1, getY(0) - 1)
-      nextCoordinates[1] = arrayOf(getX(0), getY(0))
-      nextCoordinates[2] = arrayOf(getX(1), getY(1))
-      nextCoordinates[3] = arrayOf(getX(0), getY(0) + 1)
+      nextCoordinates[1] = arrayOf(getX(1) - 1, getY(1))
+      nextCoordinates[2] = arrayOf(getX(2), getY(2) - 1)
+      nextCoordinates[3] = arrayOf(getX(3) - 2, getY(3))
     } else {
-      nextCoordinates[0] = arrayOf(getX(1) + 1, getY(1) - 1)
+      nextCoordinates[0] = arrayOf(getX(0) + 2, getY(0) - 1)
       nextCoordinates[1] = arrayOf(getX(1), getY(1))
-      nextCoordinates[2] = arrayOf(getX(1) + 1, getY(1))
-      nextCoordinates[3] = arrayOf(getX(2), getY(2))
+      nextCoordinates[2] = arrayOf(getX(2) + 1, getY(2) - 1)
+      nextCoordinates[3] = arrayOf(getX(3) - 1, getY(3))
     }
     coordinates = nextCoordinates
   }
@@ -78,14 +79,14 @@ class ZBlock(
       arrayOf(0, 0)
     )
     if (getX(0) <= 5) {
-      nextCoordinates[0] = arrayOf(getX(1), getY(1))
-      nextCoordinates[1] = arrayOf(getX(2), getY(2))
-      nextCoordinates[2] = arrayOf(getX(3) + 1, getY(3))
+      nextCoordinates[0] = arrayOf(getX(0) - 1, getY(0) + 1)
+      nextCoordinates[1] = arrayOf(getX(1) + 1, getY(1))
+      nextCoordinates[2] = arrayOf(getX(2), getY(2) + 1)
       nextCoordinates[3] = arrayOf(getX(3) + 2, getY(3))
     } else {
-      nextCoordinates[0] = arrayOf(getX(1) - 1, getY(1))
+      nextCoordinates[0] = arrayOf(getX(0) - 2, getY(0) + 1)
       nextCoordinates[1] = arrayOf(getX(1), getY(1))
-      nextCoordinates[2] = arrayOf(getX(3), getY(3))
+      nextCoordinates[2] = arrayOf(getX(2) - 1, getY(2) + 1)
       nextCoordinates[3] = arrayOf(getX(3) + 1, getY(3))
     }
     coordinates = nextCoordinates
