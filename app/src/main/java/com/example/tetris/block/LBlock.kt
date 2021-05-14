@@ -18,7 +18,7 @@ class LBlock(
       2 -> rotateD2()
       3 -> rotateD3()
     }
-    direction = if (direction == 0) 1 else 0
+    direction = (direction + 1) % 4
   }
 
   fun canRotate(blocks: Array<Array<Int>>): Boolean {
@@ -87,8 +87,8 @@ class LBlock(
       arrayOf(0, 0)
     )
     if (getX(0) <= 5) {
-      nextCoordinates[0] = arrayOf(getX(0) + 2, getY(0) - 1)
-      nextCoordinates[1] = arrayOf(getX(1), getY(1) + 1)
+      nextCoordinates[0] = arrayOf(getX(0) - 2, getY(0) - 1)
+      nextCoordinates[1] = arrayOf(getX(1), getY(1) - 1)
       nextCoordinates[2] = arrayOf(getX(2) - 1, getY(2))
       nextCoordinates[3] = arrayOf(getX(3) - 1, getY(3))
     } else {
@@ -150,7 +150,7 @@ class LBlock(
       arrayOf(0, 0)
     )
     if (getX(0) <= 5) {
-      nextCoordinates[0] = arrayOf(getX(0) + 2, getY(0) - 1)
+      nextCoordinates[0] = arrayOf(getX(0) + 2, getY(0) + 1)
       nextCoordinates[1] = arrayOf(getX(1) - 1, getY(1) + 2)
       nextCoordinates[2] = arrayOf(getX(2), getY(2) + 1)
       nextCoordinates[3] = arrayOf(getX(3) + 1, getY(3))
