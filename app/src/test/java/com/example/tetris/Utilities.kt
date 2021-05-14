@@ -292,10 +292,10 @@ class Utilities {
           expectedBlocks[y + 1][x + 2] = type
         }
         3 -> {
-          expectedBlocks[y + 2][x] = type
           expectedBlocks[y][x + 1] = type
           expectedBlocks[y + 1][x + 1] = type
-          expectedBlocks[y + 2][x + 2] = type
+          expectedBlocks[y + 2][x] = type
+          expectedBlocks[y + 2][x + 1] = type
         }
       }
       return expectedBlocks
