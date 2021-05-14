@@ -78,6 +78,7 @@ class LBlock(
     return true
   }
 
+
   private fun rotateD0() {
     val nextCoordinates: Array<Array<Int>> = arrayOf(
       arrayOf(0, 0),
