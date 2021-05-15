@@ -2,7 +2,7 @@ package com.example.tetris
 
 import com.example.tetris.block.BlockInterface
 import com.example.tetris.block.StraightBlock
-import com.example.tetris.model.Field
+import com.example.tetris.model.Tetris
 import org.junit.Rule
 import org.junit.Test
 import org.junit.Assert.*
@@ -25,7 +25,7 @@ class RandomBlockTest : KoinTest {
                    random: Random
                  )
           ->
-          Field(
+          Tetris(
             selectedBlocks,
             blocks,
             nextBlocks,
@@ -38,7 +38,7 @@ class RandomBlockTest : KoinTest {
 
   @Test
   fun checkInitNextBlocks() {
-    val field: Field by inject {
+    val tetris: Tetris by inject {
       parametersOf(
         StraightBlock(),
         Array(24) { Array<Int>(12) { 0 } },
@@ -52,6 +52,6 @@ class RandomBlockTest : KoinTest {
     for (index in expectedNextBlocks.indices) {
       expectedNextBlocks[index] = r.nextInt(1, 7)
     }
-    assertEquals(expectedNextBlocks, field.nextBlocks)
+    assertEquals(expectedNextBlocks, tetris.nextBlocks)
   }
 }

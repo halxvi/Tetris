@@ -4,7 +4,7 @@ import com.example.tetris.Utilities.Companion.addWallToBlocks
 import com.example.tetris.Utilities.Companion.insertBlock
 import com.example.tetris.block.BlockInterface
 import com.example.tetris.block.LReverseBlock
-import com.example.tetris.model.Field
+import com.example.tetris.model.Tetris
 import org.junit.Assert.*
 import org.junit.jupiter.api.extension.RegisterExtension
 import org.junit.jupiter.params.ParameterizedTest
@@ -33,7 +33,7 @@ class RotateLReverseBlockTest : KoinTest {
         single { (
                    selectedBlock: BlockInterface
                  ) ->
-          Field(
+          Tetris(
             selectedBlock
           )
         }
@@ -282,15 +282,15 @@ class RotateLReverseBlockTest : KoinTest {
         0
       )
     }
-    val field: Field by inject { parametersOf(lReverseBlock) }
-    field.rotate()
+    val tetris: Tetris by inject { parametersOf(lReverseBlock) }
+    tetris.rotate()
     val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(expectedBlocks, 6, 1, tx, 18)
       addWallToBlocks(expectedBlocks)
     }
-    assertArrayEquals(expectedBlocks, field.combineBlocks())
-    assertEquals(field.selectedBlock.direction, 1)
+    assertArrayEquals(expectedBlocks, tetris.combineBlocks())
+    assertEquals(tetris.selectedBlock.direction, 1)
   }
 
   @ParameterizedTest
@@ -318,15 +318,15 @@ class RotateLReverseBlockTest : KoinTest {
         1
       )
     }
-    val field: Field by inject { parametersOf(lReverseBlock) }
-    field.rotate()
+    val tetris: Tetris by inject { parametersOf(lReverseBlock) }
+    tetris.rotate()
     val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(expectedBlocks, 6, 2, tx, 19)
       addWallToBlocks(expectedBlocks)
     }
-    assertArrayEquals(expectedBlocks, field.combineBlocks())
-    assertEquals(field.selectedBlock.direction, 2)
+    assertArrayEquals(expectedBlocks, tetris.combineBlocks())
+    assertEquals(tetris.selectedBlock.direction, 2)
   }
 
   @ParameterizedTest
@@ -353,15 +353,15 @@ class RotateLReverseBlockTest : KoinTest {
         2
       )
     }
-    val field: Field by inject { parametersOf(lReverseBlock) }
-    field.rotate()
+    val tetris: Tetris by inject { parametersOf(lReverseBlock) }
+    tetris.rotate()
     val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(expectedBlocks, 6, 3, tx, 17)
       addWallToBlocks(expectedBlocks)
     }
-    assertArrayEquals(expectedBlocks, field.combineBlocks())
-    assertEquals(field.selectedBlock.direction, 3)
+    assertArrayEquals(expectedBlocks, tetris.combineBlocks())
+    assertEquals(tetris.selectedBlock.direction, 3)
   }
 
   @ParameterizedTest
@@ -389,14 +389,14 @@ class RotateLReverseBlockTest : KoinTest {
         3
       )
     }
-    val field: Field by inject { parametersOf(lReverseBlock) }
-    field.rotate()
+    val tetris: Tetris by inject { parametersOf(lReverseBlock) }
+    tetris.rotate()
     val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(expectedBlocks, 6, 0, tx, 19)
       addWallToBlocks(expectedBlocks)
     }
-    assertArrayEquals(expectedBlocks, field.combineBlocks())
-    assertEquals(field.selectedBlock.direction, 0)
+    assertArrayEquals(expectedBlocks, tetris.combineBlocks())
+    assertEquals(tetris.selectedBlock.direction, 0)
   }
 }

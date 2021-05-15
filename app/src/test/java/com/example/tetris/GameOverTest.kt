@@ -3,7 +3,7 @@ package com.example.tetris
 import com.example.tetris.Utilities.Companion.insertBlock
 import com.example.tetris.block.BlockInterface
 import com.example.tetris.block.InitBlock
-import com.example.tetris.model.Field
+import com.example.tetris.model.Tetris
 import org.junit.Assert.*
 import org.junit.jupiter.api.extension.RegisterExtension
 import org.junit.jupiter.params.ParameterizedTest
@@ -24,7 +24,7 @@ class GameOverTest : KoinTest {
                    selectedBlock: BlockInterface,
                    blocks: Array<Array<Int>>
                  ) ->
-          Field(
+          Tetris(
             selectedBlock,
             blocks
           )
@@ -44,14 +44,14 @@ class GameOverTest : KoinTest {
       insertBlock(blocks, 1, 0, x, 2)
     }
 
-    val field: Field by inject {
+    val tetris: Tetris by inject {
       parametersOf(
         InitBlock(),
         blocks
       )
     }
 
-    assertTrue(field.isGameover())
+    assertTrue(tetris.isGameover())
   }
 
   @ParameterizedTest
@@ -66,13 +66,13 @@ class GameOverTest : KoinTest {
       insertBlock(blocks, 1, 0, x, 2)
     }
 
-    val field: Field by inject {
+    val tetris: Tetris by inject {
       parametersOf(
         InitBlock(),
         blocks
       )
     }
 
-    assertFalse(field.isGameover())
+    assertFalse(tetris.isGameover())
   }
 }

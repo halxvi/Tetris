@@ -3,7 +3,7 @@ package com.example.tetris
 import com.example.tetris.Utilities.Companion.addWallToBlocks
 import com.example.tetris.block.BlockInterface
 import com.example.tetris.block.InitBlock
-import com.example.tetris.model.Field
+import com.example.tetris.model.Tetris
 import org.junit.Assert.*
 import org.junit.jupiter.api.extension.RegisterExtension
 import org.junit.jupiter.params.ParameterizedTest
@@ -24,7 +24,7 @@ class EraseBlocksTest : KoinTest {
                    selectedBlock: BlockInterface,
                    blocks: Array<Array<Int>>
                  ) ->
-          Field(
+          Tetris(
             selectedBlock,
             blocks
           )
@@ -44,14 +44,14 @@ class EraseBlocksTest : KoinTest {
       Array(24) { Array<Int>(12) { 0 } }
     for (n in 1..10) blocks[i][n] = 1
 
-    val field: Field by inject {
+    val tetris: Tetris by inject {
       parametersOf(
         InitBlock(),
         blocks
       )
     }
 
-    assertEquals(i, field.findErasableBlocks())
+    assertEquals(i, tetris.findErasableBlocks())
   }
 
   @ParameterizedTest
@@ -66,14 +66,14 @@ class EraseBlocksTest : KoinTest {
       Array(24) { Array<Int>(12) { 0 } }
     for (n in 1..9) blocks[i][n] = 1
 
-    val field: Field by inject {
+    val tetris: Tetris by inject {
       parametersOf(
         InitBlock(),
         blocks
       )
     }
 
-    assertEquals(-1, field.findErasableBlocks())
+    assertEquals(-1, tetris.findErasableBlocks())
   }
 
   @ParameterizedTest
@@ -88,7 +88,7 @@ class EraseBlocksTest : KoinTest {
       Array(24) { Array<Int>(12) { 0 } }
     for (n in 1..10) blocks[i][n] = 1
 
-    val field: Field by inject {
+    val tetris: Tetris by inject {
       parametersOf(
         InitBlock(),
         blocks
@@ -100,8 +100,8 @@ class EraseBlocksTest : KoinTest {
     expectedBlocks.apply {
       addWallToBlocks(expectedBlocks)
     }
-    field.eraseBlocks()
-    assertArrayEquals(expectedBlocks, field.blocks)
+    tetris.eraseBlocks()
+    assertArrayEquals(expectedBlocks, tetris.blocks)
   }
 
   @ParameterizedTest
@@ -117,7 +117,7 @@ class EraseBlocksTest : KoinTest {
     for (n in 1..10) blocks[i][n] = 1
     for (n in 1..9) blocks[i - 1][n] = 1
 
-    val field: Field by inject {
+    val tetris: Tetris by inject {
       parametersOf(
         InitBlock(),
         blocks
@@ -130,8 +130,8 @@ class EraseBlocksTest : KoinTest {
     expectedBlocks.apply {
       addWallToBlocks(expectedBlocks)
     }
-    field.eraseBlocks()
-    assertArrayEquals(expectedBlocks, field.blocks)
+    tetris.eraseBlocks()
+    assertArrayEquals(expectedBlocks, tetris.blocks)
   }
 
   @ParameterizedTest
@@ -148,7 +148,7 @@ class EraseBlocksTest : KoinTest {
     for (n in 1..10) blocks[i - 1][n] = 2
     for (n in 1..10) blocks[i - 2][n] = 2
 
-    val field: Field by inject {
+    val tetris: Tetris by inject {
       parametersOf(
         InitBlock(),
         blocks
@@ -160,7 +160,7 @@ class EraseBlocksTest : KoinTest {
     expectedBlocks.apply {
       addWallToBlocks(expectedBlocks)
     }
-    field.eraseBlocks()
-    assertArrayEquals(expectedBlocks, field.blocks)
+    tetris.eraseBlocks()
+    assertArrayEquals(expectedBlocks, tetris.blocks)
   }
 }

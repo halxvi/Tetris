@@ -4,7 +4,7 @@ import com.example.tetris.Utilities.Companion.addWallToBlocks
 import com.example.tetris.Utilities.Companion.getTestBlock
 import com.example.tetris.Utilities.Companion.insertBlock
 import com.example.tetris.block.*
-import com.example.tetris.model.Field
+import com.example.tetris.model.Tetris
 import org.junit.Assert.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.RegisterExtension
@@ -29,7 +29,7 @@ class MoveBlockTest : KoinTest {
                    nextBlocks: MutableList<Int>,
                    random: Random
                  ) ->
-          Field(
+          Tetris(
             selectedBlocks,
             blocks,
             nextBlocks,
@@ -47,7 +47,7 @@ class MoveBlockTest : KoinTest {
     delimiter = '|'
   )
   fun moveBlock(blockType: Int, direction: Int, tx: Int, ty: Int) {
-    val field: Field by inject {
+    val tetris: Tetris by inject {
       parametersOf(
         getTestBlock(blockType),
         Array(24) { Array<Int>(12) { 0 } },
@@ -57,9 +57,9 @@ class MoveBlockTest : KoinTest {
     }
 
     if (direction != 0) {
-      for (n in 1..direction) field.rotate()
+      for (n in 1..direction) tetris.rotate()
     }
-    field.moveBlock()
+    tetris.moveBlock()
     val expectedBlocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(
@@ -71,12 +71,12 @@ class MoveBlockTest : KoinTest {
       )
       addWallToBlocks(expectedBlocks)
     }
-    assertArrayEquals(expectedBlocks, field.combineBlocks())
+    assertArrayEquals(expectedBlocks, tetris.combineBlocks())
   }
 
   @Test
   fun canMoveBlock() {
-    val field: Field by inject {
+    val tetris: Tetris by inject {
       parametersOf(
         InitBlock(),
         Array(24) { Array<Int>(12) { 0 } },
@@ -84,7 +84,7 @@ class MoveBlockTest : KoinTest {
         Random
       )
     }
-    assertTrue(field.canMoveBlock())
+    assertTrue(tetris.canMoveBlock())
   }
 
   @Test
@@ -99,7 +99,7 @@ class MoveBlockTest : KoinTest {
         3
       )
     }
-    val field: Field by inject {
+    val tetris: Tetris by inject {
       parametersOf(
         StraightBlock(),
         blocks,
@@ -107,12 +107,12 @@ class MoveBlockTest : KoinTest {
         Random
       )
     }
-    assertFalse(field.canMoveBlock())
+    assertFalse(tetris.canMoveBlock())
   }
 
   @Test
   fun cantMoveBlockWithBottom() {
-    val field: Field by inject {
+    val tetris: Tetris by inject {
       parametersOf(
         StraightBlock(
           arrayOf(
@@ -127,13 +127,13 @@ class MoveBlockTest : KoinTest {
         Random
       )
     }
-    assertFalse(field.canMoveBlock())
+    assertFalse(tetris.canMoveBlock())
   }
 
   @ParameterizedTest
   @CsvSource("1", "2", "3", "4", "5", "6", "7")
   fun moveBlockToBottom(type: Int) {
-    val field: Field by inject {
+    val tetris: Tetris by inject {
       parametersOf(
         InitBlock(),
         Array(24) { Array<Int>(12) { 0 } },
@@ -141,9 +141,9 @@ class MoveBlockTest : KoinTest {
         Random
       )
     }
-    field.addBlock()
-    while (field.canMoveBlock()) {
-      field.moveBlock()
+    tetris.addBlock()
+    while (tetris.canMoveBlock()) {
+      tetris.moveBlock()
     }
     val expectedBlocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
     expectedBlocks.apply {
@@ -156,7 +156,7 @@ class MoveBlockTest : KoinTest {
       )
       addWallToBlocks(expectedBlocks)
     }
-    assertArrayEquals(expectedBlocks, field.combineBlocks())
+    assertArrayEquals(expectedBlocks, tetris.combineBlocks())
   }
 
   @ParameterizedTest
@@ -172,7 +172,7 @@ class MoveBlockTest : KoinTest {
         21
       )
     }
-    val field: Field by inject {
+    val tetris: Tetris by inject {
       parametersOf(
         InitBlock(),
         block,
@@ -181,28 +181,28 @@ class MoveBlockTest : KoinTest {
       )
     }
 
-    field.addBlock()
-    while (field.canMoveBlock()) {
-      field.moveBlock()
+    tetris.addBlock()
+    while (tetris.canMoveBlock()) {
+      tetris.moveBlock()
     }
     val expectedBlocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(
         expectedBlocks,
         type,
-        field.selectedBlock.direction,
+        tetris.selectedBlock.direction,
         5,
         if (type == 1) 20 else 19
       )
       insertBlock(
         expectedBlocks,
         type,
-        field.selectedBlock.direction,
+        tetris.selectedBlock.direction,
         5,
         21
       )
       addWallToBlocks(expectedBlocks)
     }
-    assertArrayEquals(expectedBlocks, field.combineBlocks())
+    assertArrayEquals(expectedBlocks, tetris.combineBlocks())
   }
 }

@@ -4,7 +4,7 @@ import com.example.tetris.Utilities.Companion.addWallToBlocks
 import com.example.tetris.Utilities.Companion.insertBlock
 import com.example.tetris.block.BlockInterface
 import com.example.tetris.block.StraightBlock
-import com.example.tetris.model.Field
+import com.example.tetris.model.Tetris
 import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
@@ -19,14 +19,14 @@ class FlickBlockTest : KoinTest {
   val koinTestRule = KoinTestRule.create {
     modules(
       module {
-        single { (selectedBlocks: BlockInterface) -> Field(selectedBlocks) }
+        single { (selectedBlocks: BlockInterface) -> Tetris(selectedBlocks) }
       }
     )
   }
 
   @Test
   fun canFlickToRight() {
-    val field: Field by inject {
+    val tetris: Tetris by inject {
       parametersOf(
         StraightBlock(
           arrayOf(
@@ -38,12 +38,12 @@ class FlickBlockTest : KoinTest {
         )
       )
     }
-    assertTrue(field.canFlickToRight())
+    assertTrue(tetris.canFlickToRight())
   }
 
   @Test
   fun cantFlickToRight() {
-    val field: Field by inject {
+    val tetris: Tetris by inject {
       parametersOf(
         StraightBlock(
           arrayOf(
@@ -55,12 +55,12 @@ class FlickBlockTest : KoinTest {
         )
       )
     }
-    assertFalse(field.canFlickToRight())
+    assertFalse(tetris.canFlickToRight())
   }
 
   @Test
   fun flickToRight() {
-    val field: Field by inject {
+    val tetris: Tetris by inject {
       parametersOf(
         StraightBlock(
           arrayOf(
@@ -72,18 +72,18 @@ class FlickBlockTest : KoinTest {
         )
       )
     }
-    field.flickToRight()
+    tetris.flickToRight()
     val expectedBlocks = Array(24) { Array<Int>(12) { 0 } }
     expectedBlocks.apply {
-      insertBlock(expectedBlocks, field.selectedBlock.type, field.selectedBlock.direction, 7, 2)
+      insertBlock(expectedBlocks, tetris.selectedBlock.type, tetris.selectedBlock.direction, 7, 2)
       addWallToBlocks(expectedBlocks)
     }
-    assertArrayEquals(expectedBlocks, field.combineBlocks())
+    assertArrayEquals(expectedBlocks, tetris.combineBlocks())
   }
 
   @Test
   fun canFlickToLeft() {
-    val field: Field by inject {
+    val tetris: Tetris by inject {
       parametersOf(
         StraightBlock(
           arrayOf(
@@ -95,12 +95,12 @@ class FlickBlockTest : KoinTest {
         )
       )
     }
-    assertTrue(field.canFlickToLeft())
+    assertTrue(tetris.canFlickToLeft())
   }
 
   @Test
   fun cantFlickToLeft() {
-    val field: Field by inject {
+    val tetris: Tetris by inject {
       parametersOf(
         StraightBlock(
           arrayOf(
@@ -112,12 +112,12 @@ class FlickBlockTest : KoinTest {
         )
       )
     }
-    assertFalse(field.canFlickToLeft())
+    assertFalse(tetris.canFlickToLeft())
   }
 
   @Test
   fun flickToLeft() {
-    val field: Field by inject {
+    val tetris: Tetris by inject {
       parametersOf(
         StraightBlock(
           arrayOf(
@@ -129,12 +129,12 @@ class FlickBlockTest : KoinTest {
         )
       )
     }
-    field.flickToLeft()
+    tetris.flickToLeft()
     val expectedBlocks = Array(24) { Array<Int>(12) { 0 } }
     expectedBlocks.apply {
-      insertBlock(expectedBlocks, field.selectedBlock.type, field.selectedBlock.direction, 1, 2)
+      insertBlock(expectedBlocks, tetris.selectedBlock.type, tetris.selectedBlock.direction, 1, 2)
       addWallToBlocks(expectedBlocks)
     }
-    assertArrayEquals(expectedBlocks, field.combineBlocks())
+    assertArrayEquals(expectedBlocks, tetris.combineBlocks())
   }
 }

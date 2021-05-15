@@ -2,7 +2,7 @@ package com.example.tetris
 
 import com.example.tetris.Utilities.Companion.addWallToBlocks
 import com.example.tetris.Utilities.Companion.insertBlock
-import com.example.tetris.model.Field
+import com.example.tetris.model.Tetris
 import org.junit.Assert.*
 import org.junit.jupiter.api.extension.RegisterExtension
 import org.junit.jupiter.params.ParameterizedTest
@@ -19,7 +19,7 @@ class AddBlockTest : KoinTest {
     modules(
       module {
         single {
-          Field()
+          Tetris()
         }
       })
   }
@@ -27,21 +27,21 @@ class AddBlockTest : KoinTest {
   @ParameterizedTest
   @CsvSource("1", "2", "3", "4", "5", "6", "7")
   fun addBlock(blockType: Int) {
-    val field: Field by inject()
-    field.nextBlocks[0] = blockType
-    field.addBlock()
+    val tetris: Tetris by inject()
+    tetris.nextBlocks[0] = blockType
+    tetris.addBlock()
     val expectedBlocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(
         expectedBlocks,
-        field.selectedBlock.type,
-        field.selectedBlock.direction,
+        tetris.selectedBlock.type,
+        tetris.selectedBlock.direction,
         5,
         2
       )
       addWallToBlocks(expectedBlocks)
     }
-    assertEquals(field.selectedBlock.type, blockType)
-    assertArrayEquals(expectedBlocks, field.combineBlocks())
+    assertEquals(tetris.selectedBlock.type, blockType)
+    assertArrayEquals(expectedBlocks, tetris.combineBlocks())
   }
 }

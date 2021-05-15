@@ -4,7 +4,7 @@ import com.example.tetris.Utilities.Companion.addWallToBlocks
 import com.example.tetris.Utilities.Companion.insertBlock
 import com.example.tetris.block.BlockInterface
 import com.example.tetris.block.ZBlock
-import com.example.tetris.model.Field
+import com.example.tetris.model.Tetris
 import org.junit.Assert.*
 import org.junit.jupiter.api.extension.RegisterExtension
 import org.junit.jupiter.params.ParameterizedTest
@@ -33,7 +33,7 @@ class RotateZBlockTest : KoinTest {
         single { (
                    selectedBlock: BlockInterface
                  ) ->
-          Field(
+          Tetris(
             selectedBlock
           )
         }
@@ -170,15 +170,15 @@ class RotateZBlockTest : KoinTest {
         0
       )
     }
-    val field: Field by inject { parametersOf(zBlock) }
-    field.rotate()
+    val tetris: Tetris by inject { parametersOf(zBlock) }
+    tetris.rotate()
     val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(expectedBlocks, 3, 1, tx, 18)
       addWallToBlocks(expectedBlocks)
     }
-    assertArrayEquals(expectedBlocks, field.combineBlocks())
-    assertEquals(field.selectedBlock.direction, 1)
+    assertArrayEquals(expectedBlocks, tetris.combineBlocks())
+    assertEquals(tetris.selectedBlock.direction, 1)
   }
 
   @ParameterizedTest
@@ -206,14 +206,14 @@ class RotateZBlockTest : KoinTest {
         1
       )
     }
-    val field: Field by inject { parametersOf(zBlock) }
-    field.rotate()
+    val tetris: Tetris by inject { parametersOf(zBlock) }
+    tetris.rotate()
     val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(expectedBlocks, 3, 0, tx, 19)
       addWallToBlocks(expectedBlocks)
     }
-    assertArrayEquals(expectedBlocks, field.combineBlocks())
-    assertEquals(field.selectedBlock.direction, 0)
+    assertArrayEquals(expectedBlocks, tetris.combineBlocks())
+    assertEquals(tetris.selectedBlock.direction, 0)
   }
 }

@@ -4,7 +4,7 @@ import com.example.tetris.Utilities.Companion.addWallToBlocks
 import com.example.tetris.Utilities.Companion.insertShadowBlock
 import com.example.tetris.Utilities.Companion.getTestBlock
 import com.example.tetris.block.*
-import com.example.tetris.model.Field
+import com.example.tetris.model.Tetris
 import org.junit.Assert.assertArrayEquals
 import org.junit.jupiter.api.extension.RegisterExtension
 import org.junit.jupiter.params.ParameterizedTest
@@ -24,7 +24,7 @@ class ShadowBlockTest : KoinTest {
         single { (
                    selectedBlock: BlockInterface
                  ) ->
-          Field(
+          Tetris(
             selectedBlock
           )
         }
@@ -37,7 +37,7 @@ class ShadowBlockTest : KoinTest {
     "1", "2", "3", "4", "5", "6", "7"
   )
   fun createShadowBlock(type: Int) {
-    val field: Field by inject {
+    val tetris: Tetris by inject {
       parametersOf(
         getTestBlock(type)
       )
@@ -47,6 +47,6 @@ class ShadowBlockTest : KoinTest {
       insertShadowBlock(expectedBlocks, type, 0, 5, 21)
       addWallToBlocks(expectedBlocks)
     }
-    assertArrayEquals(expectedBlocks, field.combineShadowBlock())
+    assertArrayEquals(expectedBlocks, tetris.combineShadowBlock())
   }
 }
