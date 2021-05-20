@@ -1,8 +1,10 @@
 package com.example.tetris
 
+import com.example.tetris.Utilities.Companion.addWallToBlocks
 import com.example.tetris.Utilities.Companion.insertBlock
 import com.example.tetris.block.BlockInterface
 import com.example.tetris.block.InitBlock
+import com.example.tetris.block.StraightBlock
 import com.example.tetris.model.Tetris
 import org.junit.Assert.*
 import org.junit.jupiter.api.extension.RegisterExtension
@@ -41,12 +43,19 @@ class GameOverTest : KoinTest {
       Array(24) { Array<Int>(12) { 0 } }
     blocks.apply {
       insertBlock(blocks, 1, 0, x, 3)
-      insertBlock(blocks, 1, 0, x, 2)
+      addWallToBlocks(blocks)
     }
 
     val tetris: Tetris by inject {
       parametersOf(
-        InitBlock(),
+        StraightBlock(
+          arrayOf(
+            arrayOf(x, 3),
+            arrayOf(x + 1, 3),
+            arrayOf(x + 2, 3),
+            arrayOf(x + 3, 3)
+          )
+        ),
         blocks
       )
     }
@@ -62,8 +71,9 @@ class GameOverTest : KoinTest {
     val blocks: Array<Array<Int>> =
       Array(24) { Array<Int>(12) { 0 } }
     blocks.apply {
-      insertBlock(blocks, 1, 0, x, 4)
+      insertBlock(blocks, 1, 0, x, 3)
       insertBlock(blocks, 1, 0, x, 2)
+      addWallToBlocks(blocks)
     }
 
     val tetris: Tetris by inject {
