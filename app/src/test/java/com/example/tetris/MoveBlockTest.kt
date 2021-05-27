@@ -78,12 +78,13 @@ class MoveBlockTest : KoinTest {
   fun canMoveBlock() {
     val tetris: Tetris by inject {
       parametersOf(
-        InitBlock(),
+        StraightBlock(),
         Array(24) { Array<Int>(12) { 0 } },
         mutableListOf(0, 0, 0),
         Random
       )
     }
+
     assertTrue(tetris.canMoveBlock())
   }
 
@@ -131,12 +132,21 @@ class MoveBlockTest : KoinTest {
   }
 
   @ParameterizedTest
-  @CsvSource("1", "2", "3", "4", "5", "6", "7")
-  fun moveBlockToBottom(type: Int) {
+  @CsvSource(
+    "1 | 21",
+    "2 | 21",
+    "3 | 21",
+    "4 | 21",
+    "5 | 21",
+    "6 | 21",
+    "7 | 21",
+    delimiter = '|'
+  )
+  fun moveBlockToBottom(type: Int, ty: Int) {
     val tetris: Tetris by inject {
       parametersOf(
         InitBlock(),
-        Array(24) { Array<Int>(12) { 0 } },
+        Array(24) { Array(12) { 0 } },
         mutableListOf(type, 0, 0),
         Random
       )
@@ -145,14 +155,14 @@ class MoveBlockTest : KoinTest {
     while (tetris.canMoveBlock()) {
       tetris.moveBlock()
     }
-    val expectedBlocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(
         expectedBlocks,
         type,
         0,
         5,
-        21
+        ty
       )
       addWallToBlocks(expectedBlocks)
     }
@@ -160,8 +170,17 @@ class MoveBlockTest : KoinTest {
   }
 
   @ParameterizedTest
-  @CsvSource("1", "2", "3", "4", "5", "6", "7")
-  fun moveBlockToBlock(type: Int) {
+  @CsvSource(
+    "1 | 19",
+    "2 | 20",
+    "3 | 20",
+    "4 | 20",
+    "5 | 20",
+    "6 | 20",
+    "7 | 20",
+    delimiter = '|'
+  )
+  fun moveBlockToBlock(type: Int, ty: Int) {
     val block = Array(24) { Array<Int>(12) { 0 } }
     block.apply {
       insertBlock(
@@ -169,7 +188,7 @@ class MoveBlockTest : KoinTest {
         type,
         0,
         5,
-        21
+        ty + 2
       )
     }
     val tetris: Tetris by inject {
@@ -180,7 +199,6 @@ class MoveBlockTest : KoinTest {
         Random
       )
     }
-
     tetris.addBlock()
     while (tetris.canMoveBlock()) {
       tetris.moveBlock()
@@ -192,14 +210,14 @@ class MoveBlockTest : KoinTest {
         type,
         tetris.selectedBlock.direction,
         5,
-        if (type == 1) 20 else 19
+        if (type == 1) ty + 1 else ty
       )
       insertBlock(
         expectedBlocks,
         type,
         tetris.selectedBlock.direction,
         5,
-        21
+        ty + 2
       )
       addWallToBlocks(expectedBlocks)
     }

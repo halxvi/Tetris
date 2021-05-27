@@ -77,7 +77,7 @@ class Tetris(
 
   fun canMoveBlock(): Boolean {
     selectedBlock.coordinates.forEach {
-      if (blocks[it[1] + 1][it[0]] != 0) return false
+      if (blocks[it[1] + 1][it[0]] != 0 && blocks[it[1] + 1][it[0]] != 8) return false
     }
     return true
   }
