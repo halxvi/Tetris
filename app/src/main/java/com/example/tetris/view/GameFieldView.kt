@@ -6,12 +6,16 @@ import android.graphics.Paint
 import android.graphics.Rect
 import android.os.Build
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.view.View
 import androidx.annotation.RequiresApi
+import androidx.databinding.DataBindingUtil
 import com.example.tetris.R
 
-class GameFieldView(context: Context, attributeSet: AttributeSet) : View(context, attributeSet) {
-  private lateinit var field: Array<Array<Int>>
+class GameFieldView(
+  context: Context, attributeSet: AttributeSet
+) : View(context, attributeSet) {
+  private var field: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
   private var mRect = Rect()
   private var fillPaint = Paint().apply {
     style = Paint.Style.FILL
@@ -31,7 +35,7 @@ class GameFieldView(context: Context, attributeSet: AttributeSet) : View(context
     5 to R.color.colorBlockBlue,
     6 to R.color.colorBlockOrange,
     7 to R.color.colorBlockPurple,
-    8 to R.color.colorBlockBackground
+    8 to R.color.colorBlockTargetBackground
   )
 
   @RequiresApi(Build.VERSION_CODES.M)
@@ -39,7 +43,7 @@ class GameFieldView(context: Context, attributeSet: AttributeSet) : View(context
     super.onDraw(canvas)
     mRect.set(0, 0, width / 10, height / 20)
     var offsetHeight = 0
-    for (y in 1..20) {
+    for (y in 4..22) {
       var offsetWidth = 0
       for (x in 1..10) {
         mRect.offsetTo(offsetWidth, offsetHeight)
@@ -60,5 +64,6 @@ class GameFieldView(context: Context, attributeSet: AttributeSet) : View(context
 
   fun setField(field: Array<Array<Int>>) {
     this.field = field
+    invalidate()
   }
 }
