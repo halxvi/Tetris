@@ -29,6 +29,6 @@ fun blockImage(view: ImageView, blockType: Int) {
 }
 
 @BindingAdapter("app:gameField")
-fun setField(view: GameFieldView, field: Array<Array<Int>>) {
+fun setGameField(view: GameFieldView, field: Array<Array<Int>>) {
   view.setField(field)
 }
