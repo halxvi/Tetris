@@ -74,12 +74,28 @@ class MoveBlockTest : KoinTest {
     assertArrayEquals(expectedBlocks, tetris.combineBlocks())
   }
 
-  @Test
-  fun canMoveBlock() {
+  @ParameterizedTest
+  @CsvSource(
+    "true",
+    "false"
+  )
+  fun canMoveBlock(isSelectedBlockStartPosition: Boolean) {
+    val initBlock = if (isSelectedBlockStartPosition) {
+      StraightBlock()
+    } else {
+      StraightBlock(
+        arrayOf(
+          arrayOf(5, 4),
+          arrayOf(6, 4),
+          arrayOf(7, 4),
+          arrayOf(8, 4)
+        )
+      )
+    }
     val tetris: Tetris by inject {
       parametersOf(
-        StraightBlock(),
-        Array(24) { Array<Int>(12) { 0 } },
+        initBlock,
+        Array(24) { Array(12) { 0 } },
         mutableListOf(0, 0, 0),
         Random
       )
@@ -88,26 +104,44 @@ class MoveBlockTest : KoinTest {
     assertTrue(tetris.canMoveBlock())
   }
 
-  @Test
-  fun cantMoveBlockWithCollision() {
-    val blocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
+  @ParameterizedTest
+  @CsvSource(
+    "true | 3",
+    "false | 4",
+    delimiter = '|'
+  )
+  fun cantMoveBlockWithCollision(isSelectedBlockStartPosition: Boolean, ty: Int) {
+    val initBlock = if (isSelectedBlockStartPosition) {
+      StraightBlock()
+    } else {
+      StraightBlock(
+        arrayOf(
+          arrayOf(5, 4),
+          arrayOf(6, 4),
+          arrayOf(7, 4),
+          arrayOf(8, 4)
+        )
+      )
+    }
+    val blocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
     blocks.apply {
       insertBlock(
         blocks,
         1,
         0,
         5,
-        3
+        ty
       )
     }
     val tetris: Tetris by inject {
       parametersOf(
-        StraightBlock(),
+        initBlock,
         blocks,
         mutableListOf(0, 0, 0),
         Random
       )
     }
+
     assertFalse(tetris.canMoveBlock())
   }
 
