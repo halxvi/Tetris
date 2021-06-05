@@ -23,35 +23,40 @@ class MainActivity : AppCompatActivity() {
     fragmentTransaction.commit()
   }
 
-  override fun onTouchEvent(event: MotionEvent): Boolean {
-    mDetector.onTouchEvent(event)
-    return super.onTouchEvent(event)
+  override fun onTouchEvent(e: MotionEvent): Boolean {
+    mDetector.onTouchEvent(e)
+    return super.onTouchEvent(e)
   }
 
   private class MyGestureListener(val viewModel: TetrisViewModel) :
     GestureDetector.SimpleOnGestureListener() {
     override fun onFling(
-      e1: MotionEvent?,
-      e2: MotionEvent?,
+      e1: MotionEvent,
+      e2: MotionEvent,
       velocityX: Float,
       velocityY: Float
     ): Boolean {
       val calculateX = e1!!.x - e2!!.x
       if (calculateX < 0) {
-        viewModel.flickBlock("right")
+        viewModel.flickToRight()
       } else {
-        viewModel.flickBlock("left")
+        viewModel.flickToLeft()
       }
       return super.onFling(e1, e2, velocityX, velocityY)
     }
 
-    override fun onLongPress(e: MotionEvent?) {
-      viewModel.onSpeedUp()
+    override fun onLongPress(e: MotionEvent) {
+      viewModel.setSpeedUp()
       super.onLongPress(e)
     }
 
-    override fun onDoubleTap(e: MotionEvent?): Boolean {
-      viewModel.rotateBlock()
+    override fun onSingleTapUp(e: MotionEvent): Boolean {
+      viewModel.unsetSpeed()
+      return true
+    }
+
+    override fun onDoubleTap(e: MotionEvent): Boolean {
+      viewModel.rotate()
       return super.onDoubleTap(e)
     }
   }
