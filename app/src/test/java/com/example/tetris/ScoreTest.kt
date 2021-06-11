@@ -41,7 +41,7 @@ class ScoreTest : KoinTest {
   )
   fun addScore(i: Int) {
     val blocks: Array<Array<Int>> =
-      Array(24) { Array<Int>(12) { 0 } }
+      Array(24) { Array(12) { 0 } }
     for (n in 1..10) blocks[i][n] = 1
 
     val tetris: Tetris by inject {
@@ -64,7 +64,7 @@ class ScoreTest : KoinTest {
   )
   fun eraseAllBlocksAndAddScore(i: Int) {
     val blocks: Array<Array<Int>> =
-      Array(24) { Array<Int>(12) { 0 } }
+      Array(24) { Array(12) { 0 } }
     for (n in 1..10) blocks[i][n] = 1
     for (n in 1..10) blocks[i - 1][n] = 2
     for (n in 1..10) blocks[i - 2][n] = 2
@@ -77,7 +77,7 @@ class ScoreTest : KoinTest {
     }
 
     val expectedBlocks: Array<Array<Int>> =
-      Array(24) { Array<Int>(12) { 0 } }
+      Array(24) { Array(12) { 0 } }
     expectedBlocks.apply {
       addWallToBlocks(expectedBlocks)
     }
