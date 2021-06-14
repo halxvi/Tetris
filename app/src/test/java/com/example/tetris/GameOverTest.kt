@@ -1,12 +1,12 @@
 package com.example.tetris
 
 import com.example.tetris.Utilities.Companion.addWallToBlocks
+import com.example.tetris.Utilities.Companion.getTestBlock
 import com.example.tetris.Utilities.Companion.insertBlock
 import com.example.tetris.block.BlockInterface
-import com.example.tetris.block.InitBlock
-import com.example.tetris.block.StraightBlock
 import com.example.tetris.model.Tetris
 import org.junit.Assert.*
+import org.junit.Test
 import org.junit.jupiter.api.extension.RegisterExtension
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
@@ -35,27 +35,18 @@ class GameOverTest : KoinTest {
   }
 
   @ParameterizedTest
-  @CsvSource(
-    "1", "2", "3", "4", "5", "6", "7"
-  )
-  fun isGameOver(x: Int) {
+  @CsvSource("3")
+  fun isGameOver(ty: Int) {
     val blocks: Array<Array<Int>> =
       Array(24) { Array<Int>(12) { 0 } }
     blocks.apply {
-      insertBlock(blocks, 1, 0, x, 3)
+      insertBlock(blocks, 1, 0, 5, ty)
       addWallToBlocks(blocks)
     }
 
     val tetris: Tetris by inject {
       parametersOf(
-        StraightBlock(
-          arrayOf(
-            arrayOf(x, 3),
-            arrayOf(x + 1, 3),
-            arrayOf(x + 2, 3),
-            arrayOf(x + 3, 3)
-          )
-        ),
+        getTestBlock(1),
         blocks
       )
     }
@@ -65,22 +56,29 @@ class GameOverTest : KoinTest {
 
   @ParameterizedTest
   @CsvSource(
-    "1", "2", "3", "4", "5", "6", "7"
+    "true | true",
+    "false | false",
+    "true | false",
+    delimiter = '|'
   )
-  fun `isn'tGameOver`(x: Int) {
+  fun `isn'tGameOver`(canMoveBlock: Boolean, isInitPosition: Boolean) {
     val blocks: Array<Array<Int>> =
       Array(24) { Array<Int>(12) { 0 } }
+    var ty = 0
+    ty = if (canMoveBlock) 21 else 4
     blocks.apply {
-      insertBlock(blocks, 1, 0, x, 3)
-      insertBlock(blocks, 1, 0, x, 2)
+      insertBlock(blocks, 1, 0, 5, ty)
       addWallToBlocks(blocks)
     }
 
     val tetris: Tetris by inject {
       parametersOf(
-        InitBlock(),
+        getTestBlock(1),
         blocks
       )
+    }
+    if (!isInitPosition) {
+      repeat(2) { tetris.moveBlock() }
     }
 
     assertFalse(tetris.isGameover())
