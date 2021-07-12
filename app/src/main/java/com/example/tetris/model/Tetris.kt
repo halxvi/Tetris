@@ -6,7 +6,7 @@ import kotlin.random.Random
 class Tetris(
   var selectedBlock: BlockInterface = InitBlock(),
   val blocks: Array<Array<Int>> =
-    Array(24) { Array<Int>(12) { 0 } },
+    Array(24) { Array(12) { 0 } },
   val nextBlocks: MutableList<Int> = mutableListOf(0, 0, 0),
   private val random: Random = Random,
   var score: Int = 0
