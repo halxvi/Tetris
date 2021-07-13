@@ -18,18 +18,18 @@ class TetrisViewModel(
   private var sleepTime: Long = 1000
   private var timer: Timer = Timer()
   private val timerTask: TimerTask.() -> Unit = {
-    if (tetris.canMoveBlock()) {
+    if (tetris.canMoveBlock(tetris.selectedBlock.coordinates)) {
       tetris.moveBlock()
       Log.i("Tetris:moveBlock", "moveBlock")
     }
-    if (!tetris.canMoveBlock()) {
+    if (!tetris.canMoveBlock(tetris.selectedBlock.coordinates)) {
       tetris.eraseBlocks()
       Log.i("Tetris:EraseBlocks", "EraseBlocks")
       tetris.addBlock()
       Log.i("Tetris:AddBlock", "AddBlock")
     }
     fetchState()
-    Log.i("Tetris:canMoveBlock", "${tetris.canMoveBlock()}")
+    Log.i("Tetris:canMoveBlock", "${tetris.canMoveBlock(tetris.selectedBlock.coordinates)}")
     Log.i("Tetris:isGameover", "${tetris.isGameover()}")
     //gameover = tetris.isGameover()
     if (gameover) endGame()
@@ -62,7 +62,7 @@ class TetrisViewModel(
   private fun fetchState() {
     Log.i("Tetris:NextBlocks", "${tetris.nextBlocks}")
     Log.i("Tetris:Score", "${tetris.score}")
-    fields.postValue(tetris.combineBlocks())
+    fields.postValue(tetris.combineAllBlocks())
     nextBlocks.postValue(tetris.nextBlocks)
     score.postValue(tetris.score)
   }

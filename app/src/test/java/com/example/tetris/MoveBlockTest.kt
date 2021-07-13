@@ -101,7 +101,7 @@ class MoveBlockTest : KoinTest {
       )
     }
 
-    assertTrue(tetris.canMoveBlock())
+    assertTrue(tetris.canMoveBlock(tetris.selectedBlock.coordinates))
   }
 
   @ParameterizedTest
@@ -142,7 +142,7 @@ class MoveBlockTest : KoinTest {
       )
     }
 
-    assertFalse(tetris.canMoveBlock())
+    assertFalse(tetris.canMoveBlock(tetris.selectedBlock.coordinates))
   }
 
   @Test
@@ -162,7 +162,7 @@ class MoveBlockTest : KoinTest {
         Random
       )
     }
-    assertFalse(tetris.canMoveBlock())
+    assertFalse(tetris.canMoveBlock(tetris.selectedBlock.coordinates))
   }
 
   @ParameterizedTest
@@ -186,7 +186,7 @@ class MoveBlockTest : KoinTest {
       )
     }
     tetris.addBlock()
-    while (tetris.canMoveBlock()) {
+    while (tetris.canMoveBlock(tetris.selectedBlock.coordinates)) {
       tetris.moveBlock()
     }
     val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
@@ -234,7 +234,7 @@ class MoveBlockTest : KoinTest {
       )
     }
     tetris.addBlock()
-    while (tetris.canMoveBlock()) {
+    while (tetris.canMoveBlock(tetris.selectedBlock.coordinates)) {
       tetris.moveBlock()
     }
     val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
