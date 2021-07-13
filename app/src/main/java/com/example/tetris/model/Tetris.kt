@@ -56,6 +56,15 @@ class Tetris(
     nextBlocks.removeAt(0)
   }
 
+  private fun deepCopy(array:Array<Array<Int>>): Array<Array<Int>> {
+    val blocks: Array<Array<Int>> =
+      Array(array.size) { Array(array[0].size) { 0 } }
+    repeat(array.size){
+      array[it].forEachIndexed { index, ints -> blocks[it][index] = ints }
+    }
+    return blocks
+  }
+
   fun combineBlocks(): Array<Array<Int>> {
     val copiedBlocks = deepCopy(blocks)
     selectedBlock.coordinates.forEach {
@@ -180,14 +189,5 @@ class Tetris(
 
   fun startGame() {
     addBlock()
-  }
-
-  private fun deepCopy(array:Array<Array<Int>>): Array<Array<Int>> {
-    val blocks: Array<Array<Int>> =
-      Array(array.size) { Array(array[0].size) { 0 } }
-    repeat(array.size){
-      array[it].forEachIndexed { index, ints -> blocks[it][index] = ints }
-    }
-    return blocks
   }
 }

@@ -5,7 +5,6 @@ apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "com.example.tetris"
@@ -24,8 +23,8 @@ android {
         }
     }
 
-    dataBinding {
-        enabled true
+    buildFeatures {
+        dataBinding true
     }
 
     testOptions {
