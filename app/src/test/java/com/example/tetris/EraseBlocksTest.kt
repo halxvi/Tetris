@@ -34,14 +34,12 @@ class EraseBlocksTest : KoinTest {
 
   @ParameterizedTest
   @CsvSource(
-    "4", "5", "6", "7", "8",
-    "9", "10", "11", "12", "13",
-    "14", "15", "16", "17", "18",
-    "19", "20", "21", "22"
+    "22"
   )
-  fun canFindErasableBlocks(i: Int) {
+  fun canFindErasableBlocksIndex(i: Int) {
     val blocks: Array<Array<Int>> =
       Array(24) { Array<Int>(12) { 0 } }
+    blocks.apply { addWallToBlocks(blocks) }
     for (n in 1..10) blocks[i][n] = 1
 
     val tetris: Tetris by inject {
@@ -51,7 +49,7 @@ class EraseBlocksTest : KoinTest {
       )
     }
 
-    assertEquals(i, tetris.findErasableBlocks())
+    assertEquals(i, tetris.findErasableBlocksIndex())
   }
 
   @ParameterizedTest
@@ -61,7 +59,7 @@ class EraseBlocksTest : KoinTest {
     "14", "15", "16", "17", "18",
     "19", "20", "21", "22"
   )
-  fun cantFindErasableBlocks(i: Int) {
+  fun cantFindErasableBlocksIndex(i: Int) {
     val blocks: Array<Array<Int>> =
       Array(24) { Array<Int>(12) { 0 } }
     for (n in 1..9) blocks[i][n] = 1
@@ -73,7 +71,7 @@ class EraseBlocksTest : KoinTest {
       )
     }
 
-    assertEquals(-1, tetris.findErasableBlocks())
+    assertEquals(-1, tetris.findErasableBlocksIndex())
   }
 
   @ParameterizedTest

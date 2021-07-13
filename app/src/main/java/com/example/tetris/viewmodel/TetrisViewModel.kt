@@ -15,7 +15,7 @@ class TetrisViewModel(
   var nextBlocks: MutableLiveData<List<Int>> = MutableLiveData(List(3) { 0 })
   var score: MutableLiveData<Int> = MutableLiveData(0)
   var gameover: Boolean = false
-  private var sleepTime: Long = 1000
+  private var sleepTime: Long = 1
   private var timer: Timer = Timer()
   private val timerTask: TimerTask.() -> Unit = {
     if (tetris.canMoveBlock(tetris.selectedBlock.coordinates)) {
@@ -23,6 +23,7 @@ class TetrisViewModel(
       Log.i("Tetris:moveBlock", "moveBlock")
     }
     if (!tetris.canMoveBlock(tetris.selectedBlock.coordinates)) {
+      Log.i("Tetris:findIndex", "${tetris.findErasableBlocksIndex()}")
       tetris.eraseBlocks()
       Log.i("Tetris:EraseBlocks", "EraseBlocks")
       tetris.addBlock()
@@ -31,7 +32,7 @@ class TetrisViewModel(
     fetchState()
     Log.i("Tetris:canMoveBlock", "${tetris.canMoveBlock(tetris.selectedBlock.coordinates)}")
     Log.i("Tetris:isGameover", "${tetris.isGameover()}")
-    //gameover = tetris.isGameover()
+    gameover = tetris.isGameover()
     if (gameover) endGame()
     checkCounter()
     Thread.sleep(sleepTime)

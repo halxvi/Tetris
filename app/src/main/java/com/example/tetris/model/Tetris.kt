@@ -5,7 +5,7 @@ import kotlin.random.Random
 
 class Tetris(
   var selectedBlock: BlockInterface = InitBlock(),
-  val blocks: Array<Array<Int>> =
+  var blocks: Array<Array<Int>> =
     Array(24) { Array(12) { 0 } },
   val nextBlocks: MutableList<Int> = mutableListOf(0, 0, 0),
   private val random: Random = Random,
@@ -33,7 +33,7 @@ class Tetris(
   }
 
   fun addBlock() {
-    blocks.apply { combineBlocks() }
+    blocks = combineBlocks()
     selectedBlock = when (nextBlocks[0]) {
       1 -> StraightBlock()
       2 -> SquareBlock()
@@ -102,13 +102,13 @@ class Tetris(
   fun canMoveBlock(coordinates: Array<Array<Int>>): Boolean {
       coordinates.forEach {
         if(
-          blocks[it[1] + 1][it[0]] == -1||
-          blocks[it[1] + 1][it[0]] == 1||
-          blocks[it[1] + 1][it[0]] == 2||
-          blocks[it[1] + 1][it[0]] == 3||
-          blocks[it[1] + 1][it[0]] == 4||
-          blocks[it[1] + 1][it[0]] == 5||
-          blocks[it[1] + 1][it[0]] == 6||
+          blocks[it[1] + 1][it[0]] == -1 ||
+          blocks[it[1] + 1][it[0]] == 1 ||
+          blocks[it[1] + 1][it[0]] == 2 ||
+          blocks[it[1] + 1][it[0]] == 3 ||
+          blocks[it[1] + 1][it[0]] == 4 ||
+          blocks[it[1] + 1][it[0]] == 5 ||
+          blocks[it[1] + 1][it[0]] == 6 ||
           blocks[it[1] + 1][it[0]] == 7
         ) return false
       }
@@ -148,7 +148,7 @@ class Tetris(
   }
 
   fun eraseBlocks() {
-    val y = findErasableBlocks()
+    val y = findErasableBlocksIndex()
     if (y == -1) return
     for (x in 1..10) blocks[y][x] = 0
     for (m in (y - 1)..0) {
@@ -164,12 +164,20 @@ class Tetris(
     score += 10
   }
 
-  fun findErasableBlocks(): Int {
-    for ((i, a) in blocks.withIndex()) {
-      if (a[1] != 0) {
-        foundCrack@ for (n in 2..11) {
-          if (a[n] == 0) break@foundCrack
-          if (a[n] == -1) return i
+  fun findErasableBlocksIndex(): Int {
+    for ((index, array) in blocks.withIndex()) {
+      if (
+        array[1] == 1 ||
+        array[1] == 2 ||
+        array[1] == 3 ||
+        array[1] == 4 ||
+        array[1] == 5 ||
+        array[1] == 6 ||
+        array[1] == 7
+      ) {
+        cantErase@ for (n in 2..11) {
+          if (array[n] == 0) break@cantErase
+          if (array[n] == -1) return index
         }
       }
     }
