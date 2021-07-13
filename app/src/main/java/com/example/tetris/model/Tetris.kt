@@ -73,8 +73,8 @@ class Tetris(
     return copiedBlocks
   }
 
-  fun combineShadowBlock(): Array<Array<Int>> {
-    val copiedBlocks = deepCopy(blocks)
+  fun combineShadowBlock(argBlocks: Array<Array<Int>> ): Array<Array<Int>> {
+    val copiedBlocks = deepCopy(argBlocks)
     val shadowBlockCoordinates = deepCopy(selectedBlock.coordinates)
     while (canMoveBlock(shadowBlockCoordinates)) {
       for ((index, elem) in shadowBlockCoordinates.withIndex()) {
@@ -82,13 +82,13 @@ class Tetris(
       }
     }
     shadowBlockCoordinates.forEach {
-      copiedBlocks[it[1]][it[0]] = 8
+      if (copiedBlocks[it[1]][it[0]] == 0) copiedBlocks[it[1]][it[0]] = 8
     }
     return copiedBlocks
   }
 
   fun combineAllBlocks(): Array<Array<Int>> {
-    return combineBlocks().apply { combineShadowBlock() }
+    return combineShadowBlock(combineBlocks())
   }
 
   fun moveBlock() {

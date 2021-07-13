@@ -3,6 +3,7 @@ package com.example.tetris
 import com.example.tetris.Utilities.Companion.addWallToBlocks
 import com.example.tetris.Utilities.Companion.insertShadowBlock
 import com.example.tetris.Utilities.Companion.getTestBlock
+import com.example.tetris.Utilities.Companion.insertBlock
 import com.example.tetris.block.*
 import com.example.tetris.model.Tetris
 import org.junit.Assert.assertArrayEquals
@@ -44,9 +45,10 @@ class ShadowBlockTest : KoinTest {
     }
     val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
     expectedBlocks.apply {
+      insertBlock(expectedBlocks,type,0,5,2)
       insertShadowBlock(expectedBlocks, type, 0, 5, 21)
       addWallToBlocks(expectedBlocks)
     }
-    assertArrayEquals(expectedBlocks, tetris.combineShadowBlock())
+    assertArrayEquals(expectedBlocks, tetris.combineShadowBlock(tetris.combineBlocks()))
   }
 }
