@@ -11,6 +11,7 @@ class Tetris(
   private val random: Random = Random,
   var score: Int = 0
 ) {
+  private var sleepTime: Long = 500
 
   init {
     addWallToBlocks()
@@ -33,7 +34,7 @@ class Tetris(
 
   fun addBlock() {
     blocks.apply { combineBlocks() }
-    selectedBlock = when (nextBlocks.removeAt(0)) {
+    selectedBlock = when (nextBlocks[0]) {
       1 -> StraightBlock()
       2 -> SquareBlock()
       3 -> ZBlock()
@@ -43,41 +44,64 @@ class Tetris(
       7 -> TBlock()
       else -> SquareBlock()
     }
+    removeFirstNextBlock()
+    addNextBlock()
+  }
+
+  private fun addNextBlock(){
     nextBlocks.add(random.nextInt(1, 7))
   }
 
+  private fun removeFirstNextBlock(){
+    nextBlocks.removeAt(0)
+  }
+
   fun combineBlocks(): Array<Array<Int>> {
-    val combinedBlocks = blocks
+    val copiedBlocks = deepCopy(blocks)
     selectedBlock.coordinates.forEach {
-      combinedBlocks[it[1]][it[0]] = selectedBlock.type
+      copiedBlocks[it[1]][it[0]] = selectedBlock.type
     }
-    return combinedBlocks
+    return copiedBlocks
   }
 
   fun combineShadowBlock(): Array<Array<Int>> {
-    val shadowBlock = selectedBlock
-    val combinedBlocks = blocks
+    val copiedBlocks = deepCopy(blocks)
+    val shadowBlockCoordinates = deepCopy(selectedBlock.coordinates)
     while (canMoveBlock()) {
-      for ((index, elem) in selectedBlock.coordinates.withIndex()) {
-        shadowBlock.coordinates[index] = arrayOf(elem[0], elem[1] + 1)
+      for ((index, elem) in shadowBlockCoordinates.withIndex()) {
+        shadowBlockCoordinates[index] = arrayOf(elem[0], elem[1] + 1)
       }
     }
-    shadowBlock.coordinates.forEach {
-      combinedBlocks[it[1]][it[0]] = 8
+    shadowBlockCoordinates.forEach {
+      copiedBlocks[it[1]][it[0]] = 8
     }
-    return combinedBlocks
+    return copiedBlocks
+  }
+
+  fun combineAllBlocks(): Array<Array<Int>> {
+    return combineBlocks().apply { combineShadowBlock() }
   }
 
   fun moveBlock() {
     if (!canMoveBlock()) return
-    for ((index, elem) in selectedBlock.coordinates.withIndex()) {
+    val copyBlockCoordinates = deepCopy(selectedBlock.coordinates)
+    for ((index, elem) in copyBlockCoordinates.withIndex()) {
       selectedBlock.coordinates[index] = arrayOf(elem[0], elem[1] + 1)
     }
   }
 
   fun canMoveBlock(): Boolean {
     selectedBlock.coordinates.forEach {
-      if (blocks[it[1] + 1][it[0]] != 0 && blocks[it[1] + 1][it[0]] != 8) return false
+      if(
+        blocks[it[1] + 1][it[0]] == -1||
+        blocks[it[1] + 1][it[0]] == 1||
+        blocks[it[1] + 1][it[0]] == 2||
+        blocks[it[1] + 1][it[0]] == 3||
+        blocks[it[1] + 1][it[0]] == 4||
+        blocks[it[1] + 1][it[0]] == 5||
+        blocks[it[1] + 1][it[0]] == 6||
+        blocks[it[1] + 1][it[0]] == 7
+      ) return false
     }
     return true
   }
@@ -119,11 +143,15 @@ class Tetris(
     if (y == -1) return
     for (x in 1..10) blocks[y][x] = 0
     for (m in (y - 1)..0) {
-      for (n in 10..1) {
+      for (n in 10 downTo 1) {
         blocks[m + 1][n] = blocks[m][n]
       }
     }
     eraseBlocks()
+    addScore()
+  }
+
+  private fun addScore(){
     score += 10
   }
 
@@ -140,11 +168,26 @@ class Tetris(
   }
 
   fun isGameover(): Boolean {
-    for (n in 1..10) {
-      if (blocks[4][n] != 0 && blocks[3][n] != 0) {
-        return true
+    repeat(10) {
+      selectedBlock.coordinates.forEach {
+        if (!canMoveBlock() && it[1] == 3) {
+          return true
+        }
       }
     }
     return false
+  }
+
+  fun startGame() {
+    addBlock()
+  }
+
+  private fun deepCopy(array:Array<Array<Int>>): Array<Array<Int>> {
+    val blocks: Array<Array<Int>> =
+      Array(array.size) { Array(array[0].size) { 0 } }
+    repeat(array.size){
+      array[it].forEachIndexed { index, ints -> blocks[it][index] = ints }
+    }
+    return blocks
   }
 }

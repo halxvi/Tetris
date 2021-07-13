@@ -18,13 +18,13 @@ class TetrisViewModel(
   private var sleepTime: Long = 1000
   private var timer: Timer = Timer()
   private val timerTask: TimerTask.() -> Unit = {
-    Log.i("Tetris:canMoveBlock", "${tetris.canMoveBlock()}")
     if (tetris.canMoveBlock()) {
       tetris.moveBlock()
       Log.i("Tetris:moveBlock", "moveBlock")
     }
     if (!tetris.canMoveBlock()) {
       tetris.eraseBlocks()
+      Log.i("Tetris:EraseBlocks", "EraseBlocks")
       tetris.addBlock()
       Log.i("Tetris:AddBlock", "AddBlock")
     }
