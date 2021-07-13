@@ -50,7 +50,7 @@ class MoveBlockTest : KoinTest {
     val tetris: Tetris by inject {
       parametersOf(
         getTestBlock(blockType),
-        Array(24) { Array<Int>(12) { 0 } },
+        Array(24) { Array(12) { 0 } },
         mutableListOf(0, 0, 0),
         Random
       )
@@ -60,7 +60,7 @@ class MoveBlockTest : KoinTest {
       repeat(direction) { tetris.rotate() }
     }
     tetris.moveBlock()
-    val expectedBlocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(
         expectedBlocks,
@@ -157,7 +157,7 @@ class MoveBlockTest : KoinTest {
             arrayOf(8, 22)
           )
         ),
-        Array(24) { Array<Int>(12) { 0 } },
+        Array(24) { Array(12) { 0 } },
         mutableListOf(0, 0, 0),
         Random
       )
@@ -215,7 +215,7 @@ class MoveBlockTest : KoinTest {
     delimiter = '|'
   )
   fun moveBlockToBlock(type: Int, ty: Int) {
-    val block = Array(24) { Array<Int>(12) { 0 } }
+    val block = Array(24) { Array(12) { 0 } }
     block.apply {
       insertBlock(
         block,
@@ -237,7 +237,7 @@ class MoveBlockTest : KoinTest {
     while (tetris.canMoveBlock()) {
       tetris.moveBlock()
     }
-    val expectedBlocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(
         expectedBlocks,
