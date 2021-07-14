@@ -41,7 +41,7 @@ class RandomBlockTest : KoinTest {
     val tetris: Tetris by inject {
       parametersOf(
         StraightBlock(),
-        Array(24) { Array<Int>(12) { 0 } },
+        Array(24) { Array(12) { 0 } },
         mutableListOf(0, 0, 0),
         Random(0)
       )

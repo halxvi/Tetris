@@ -11,10 +11,10 @@ class TetrisViewModel(
   private val tetris: Tetris
 ) : ViewModel() {
   var fields: MutableLiveData<Array<Array<Int>>> =
-    MutableLiveData(Array(22) { Array<Int>(12) { 0 } })
+    MutableLiveData(Array(22) { Array(12) { 0 } })
   var nextBlocks: MutableLiveData<List<Int>> = MutableLiveData(List(3) { 0 })
   var score: MutableLiveData<Int> = MutableLiveData(0)
-  var gameover: Boolean = false
+  private var gameover: Boolean = false
   private var sleepTime: Long = 1
   private var timer: Timer = Timer()
   private val timerTask: TimerTask.() -> Unit = {
