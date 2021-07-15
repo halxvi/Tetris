@@ -11,8 +11,6 @@ class Tetris(
   private val random: Random = Random,
   var score: Int = 0
 ) {
-  private var sleepTime: Long = 500
-
   init {
     addWallToBlocks()
     if (nextBlocks.elementAt(0) == 0) initNextBlocks()

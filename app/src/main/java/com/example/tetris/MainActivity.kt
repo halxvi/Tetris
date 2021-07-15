@@ -25,6 +25,9 @@ class MainActivity : AppCompatActivity() {
 
   override fun onTouchEvent(e: MotionEvent): Boolean {
     mDetector.onTouchEvent(e)
+    when(e.action){
+      MotionEvent.ACTION_UP ->  if(viewModel.isSpeedUp) viewModel.setSpeedDown()
+    }
     return super.onTouchEvent(e)
   }
 
@@ -36,7 +39,7 @@ class MainActivity : AppCompatActivity() {
       velocityX: Float,
       velocityY: Float
     ): Boolean {
-      val calculateX = e1!!.x - e2!!.x
+      val calculateX = e1.x - e2.x
       if (calculateX < 0) {
         viewModel.flickToRight()
       } else {
@@ -45,14 +48,13 @@ class MainActivity : AppCompatActivity() {
       return super.onFling(e1, e2, velocityX, velocityY)
     }
 
+    override fun onDown(e: MotionEvent?): Boolean {
+      return true
+    }
+
     override fun onLongPress(e: MotionEvent) {
       viewModel.setSpeedUp()
       super.onLongPress(e)
-    }
-
-    override fun onSingleTapUp(e: MotionEvent): Boolean {
-      viewModel.unsetSpeed()
-      return true
     }
 
     override fun onDoubleTap(e: MotionEvent): Boolean {
