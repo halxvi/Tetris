@@ -196,4 +196,8 @@ class Tetris(
   fun startGame() {
     addBlock()
   }
+
+  fun fallDownBlock(){
+    while (canMoveBlock(selectedBlock.coordinates)) moveBlock()
+  }
 }

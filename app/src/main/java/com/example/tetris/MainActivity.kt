@@ -25,9 +25,6 @@ class MainActivity : AppCompatActivity() {
 
   override fun onTouchEvent(e: MotionEvent): Boolean {
     mDetector.onTouchEvent(e)
-    when(e.action){
-      MotionEvent.ACTION_UP ->  if(viewModel.isSpeedUp) viewModel.setSpeedDown()
-    }
     return super.onTouchEvent(e)
   }
 
@@ -53,7 +50,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onLongPress(e: MotionEvent) {
-      viewModel.setSpeedUp()
+      viewModel.fallDownBlock()
       super.onLongPress(e)
     }
 

@@ -18,7 +18,6 @@ class TetrisViewModel(
   private var gameSpeed: Long = 1000
   private var gameSpeedCounter: Int = 0
   private var gameSpeedThreshold: Int = 500
-  var isSpeedUp: Boolean = false
   private var timer: Timer = Timer()
 
   fun startGame() {
@@ -68,20 +67,8 @@ class TetrisViewModel(
     Log.i("Tetris:Rotate", "Rotate")
   }
 
-  fun setSpeedUp() {
-    if(isSpeedUp) return
-    isSpeedUp = true
-    deleteTimer()
-    startTimer(if(gameSpeed > gameSpeedThreshold) gameSpeed - gameSpeedThreshold else gameSpeed)
-    Log.i("Tetris:SetSpeedUp", "SetSpeedUp")
-  }
-
-  fun setSpeedDown() {
-    if (!isSpeedUp) return
-    isSpeedUp = false
-    deleteTimer()
-    startTimer(gameSpeed)
-    Log.i("Tetris:SetSpeedDown", "SetSpeedDown")
+  fun fallDownBlock() {
+    tetris.fallDownBlock()
   }
 
   private fun startTimer(speed:Long){
