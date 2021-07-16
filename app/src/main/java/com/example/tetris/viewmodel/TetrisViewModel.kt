@@ -21,7 +21,7 @@ class TetrisViewModel(
   private var timer: Timer = Timer()
 
   fun startGame() {
-    startTimer(gameSpeed)
+    startTimer()
     tetris.startGame()
     Log.i("Tetris:Start", "GameStart")
   }
@@ -36,7 +36,7 @@ class TetrisViewModel(
     if (gameSpeedCounter == 1000) {
       if (gameSpeed > gameSpeedThreshold) gameSpeed -= 1
       deleteTimer()
-      startTimer(gameSpeed)
+      startTimer()
       gameSpeedCounter = 0
     } else {
       gameSpeedCounter += 1
@@ -71,19 +71,18 @@ class TetrisViewModel(
     tetris.fallDownBlock()
   }
 
-  private fun startTimer(speed:Long){
+  fun startTimer(){
     val task: TimerTask.() -> Unit = {
       if (tetris.canMoveBlock(tetris.selectedBlock.coordinates)) {
         tetris.moveBlock()
         Log.i("Tetris:moveBlock", "moveBlock")
       }
       if (!tetris.canMoveBlock(tetris.selectedBlock.coordinates)) {
-        Log.i("Tetris:findIndex", "${tetris.findErasableBlocksIndex()}")
-        tetris.eraseBlocks()
-        Log.i("Tetris:EraseBlocks", "EraseBlocks")
         tetris.addBlock()
         Log.i("Tetris:AddBlock", "AddBlock")
       }
+      tetris.eraseBlocks()
+      Log.i("Tetris:EraseBlocks", "EraseBlocks")
       fetchState()
       Log.i("Tetris:canMoveBlock", "${tetris.canMoveBlock(tetris.selectedBlock.coordinates)}")
       Log.i("Tetris:isGameover", "${tetris.isGameover()}")
@@ -92,12 +91,14 @@ class TetrisViewModel(
       calGameSpeed()
     }
     timer = Timer()
-    timer.schedule(0, speed, task)
+    timer.schedule(0, gameSpeed, task)
     Log.i("Tetris:StartTimer", "StartTimer")
   }
 
-  private fun deleteTimer(){
+  fun deleteTimer(){
+    timer.purge()
     timer.cancel()
+    timer = Timer()
     Log.i("Tetris:DeleteTimer", "DeleteTimer")
   }
 }

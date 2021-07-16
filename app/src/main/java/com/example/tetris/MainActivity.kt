@@ -59,4 +59,14 @@ class MainActivity : AppCompatActivity() {
       return super.onDoubleTap(e)
     }
   }
+
+  override fun onStart() {
+    super.onStart()
+    viewModel.startTimer()
+  }
+
+  override fun onResume() {
+    super.onResume()
+    viewModel.deleteTimer()
+  }
 }
