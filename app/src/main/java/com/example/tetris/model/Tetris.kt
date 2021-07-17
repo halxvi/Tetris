@@ -173,9 +173,9 @@ class Tetris(
 
   fun eraseBlocks() {
     val y = findErasableBlocksIndex()
-    if (y == -1) return
+    if (y == -1 || y == 0) return
     for (x in 1..10) blocks[y][x] = 0
-    for (m in (y - 1)..0) {
+    for (m in (y - 1) downTo 0) {
       for (n in 10 downTo 1) {
         blocks[m + 1][n] = blocks[m][n]
       }
