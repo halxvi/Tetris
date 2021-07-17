@@ -6,10 +6,8 @@ import android.graphics.Paint
 import android.graphics.Rect
 import android.os.Build
 import android.util.AttributeSet
-import android.view.LayoutInflater
 import android.view.View
 import androidx.annotation.RequiresApi
-import androidx.databinding.DataBindingUtil
 import com.example.tetris.R
 
 class GameFieldView(
@@ -24,7 +22,7 @@ class GameFieldView(
   @RequiresApi(Build.VERSION_CODES.M)
   private var strokePaint = Paint().apply {
     color = context.getColor(R.color.colorBlockStroke)
-    strokeWidth = 1F
+    strokeWidth = 1.5F
     style = Paint.Style.STROKE
   }
   private val colorType = mapOf(
@@ -41,7 +39,9 @@ class GameFieldView(
   @RequiresApi(Build.VERSION_CODES.M)
   override fun onDraw(canvas: Canvas?) {
     super.onDraw(canvas)
-    mRect.set(0, 0, width / 10, height / 20)
+    val blockWidth = width / 10
+    val blockHeight = height / 20
+    mRect.set(0, 0, blockWidth, blockHeight)
     var offsetHeight = 0
     for (y in 4..22) {
       var offsetWidth = 0
@@ -56,9 +56,9 @@ class GameFieldView(
           mRect,
           strokePaint
         )
-        offsetWidth += width / 10
+        offsetWidth += blockWidth
       }
-      offsetHeight += height / 20
+      offsetHeight += blockHeight
     }
   }
 
