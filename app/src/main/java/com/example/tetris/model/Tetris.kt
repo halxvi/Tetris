@@ -8,12 +8,17 @@ class Tetris(
   var blocks: Array<Array<Int>> =
     Array(24) { Array(12) { 0 } },
   val nextBlocks: MutableList<Int> = mutableListOf(0, 0, 0),
+  private var blockPool: MutableList<Int> = mutableListOf(0, 0, 0, 0, 0, 0, 0),
   private val random: Random = Random,
   var score: Int = 0
 ) {
   init {
     addWallToBlocks()
-    if (nextBlocks.elementAt(0) == 0) initNextBlocks()
+    if (nextBlocks.elementAt(0) == 0) {
+      fillBlockPool()
+      shuffleBlockPool()
+      initNextBlocks()
+    }
   }
 
   private fun addWallToBlocks() {
@@ -26,7 +31,7 @@ class Tetris(
 
   private fun initNextBlocks() {
     for (index in nextBlocks.indices) {
-      nextBlocks[index] = random.nextInt(1, 7)
+      nextBlocks[index] = blockPool.removeAt(0)
     }
   }
 
@@ -47,7 +52,28 @@ class Tetris(
   }
 
   private fun addNextBlock(){
-    nextBlocks.add(random.nextInt(1, 7))
+    if(blockPool.isEmpty()) {
+      fillBlockPool()
+      shuffleBlockPool()
+    }
+    nextBlocks.add(blockPool.removeAt(0))
+  }
+
+  private fun fillBlockPool(){
+    blockPool = mutableListOf(1, 2, 3, 4, 5, 6, 7)
+  }
+
+  private fun shuffleBlockPool(){
+    for(i in 6 downTo 1){
+      val r = getRandomInt(i)
+      val temp = blockPool[r]
+      blockPool[r] = blockPool[i]
+      blockPool[i] = temp
+    }
+  }
+
+  private fun getRandomInt(i:Int):Int{
+    return random.nextInt(0, i)
   }
 
   private fun removeFirstNextBlock(){
