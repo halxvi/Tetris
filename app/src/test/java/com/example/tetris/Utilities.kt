@@ -9,7 +9,7 @@ class Utilities {
         array[n][0] = -1
         array[n][11] = -1
       }
-      for (i in 2..10) array[23][i] = -1
+      for (i in 1..10) array[23][i] = -1
       return array
     }
 

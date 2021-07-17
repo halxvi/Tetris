@@ -8,8 +8,8 @@ class Tetris(
   var blocks: Array<Array<Int>> =
     Array(24) { Array(12) { 0 } },
   val nextBlocks: MutableList<Int> = mutableListOf(0, 0, 0),
-  private var blockPool: MutableList<Int> = mutableListOf(0, 0, 0, 0, 0, 0, 0),
   private val random: Random = Random,
+  private var blockPool: MutableList<Int> = mutableListOf(0, 0, 0, 0, 0, 0, 0),
   var score: Int = 0
 ) {
   init {
@@ -26,7 +26,7 @@ class Tetris(
       blocks[n][0] = -1
       blocks[n][11] = -1
     }
-    for (i in 2..10) blocks[23][i] = -1
+    for (i in 1..10) blocks[23][i] = -1
   }
 
   private fun initNextBlocks() {
