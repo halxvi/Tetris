@@ -211,7 +211,7 @@ class Tetris(
   fun isGameover(): Boolean {
     repeat(10) {
       selectedBlock.coordinates.forEach {
-        if (!canMoveBlock(selectedBlock.coordinates) && it[1] == 3) {
+        if (!canMoveBlock(selectedBlock.coordinates) && it[1] <= 3) {
           return true
         }
       }
