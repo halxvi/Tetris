@@ -16,12 +16,33 @@ class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
-    mDetector = GestureDetectorCompat(this, MyGestureListener(this.viewModel))
+    mDetector = GestureDetectorCompat(this, MyGestureListener(viewModel))
     val fragmentManager = supportFragmentManager
     val fragmentTransaction = fragmentManager.beginTransaction()
     fragmentTransaction.add(R.id.fragment_container, TetrisFragment())
     fragmentTransaction.commit()
+    viewModel.startGame()
   }
+
+  override fun onRestart() {
+    super.onRestart()
+    viewModel.startTimer()
+  }
+
+//  override fun onResume() {
+//    super.onResume()
+//    viewModel.deleteTimer()
+//  }
+//
+  override fun onStop() {
+    super.onStop()
+    viewModel.deleteTimer()
+  }
+
+//  override fun onPause() {
+//    super.onPause()
+//    viewModel.deleteTimer()
+//  }
 
   override fun onTouchEvent(e: MotionEvent): Boolean {
     mDetector.onTouchEvent(e)
@@ -58,15 +79,5 @@ class MainActivity : AppCompatActivity() {
       viewModel.rotate()
       return super.onDoubleTap(e)
     }
-  }
-
-  override fun onStart() {
-    super.onStart()
-    viewModel.startTimer()
-  }
-
-  override fun onResume() {
-    super.onResume()
-    viewModel.deleteTimer()
   }
 }

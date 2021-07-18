@@ -32,6 +32,5 @@ class TetrisFragment : Fragment() {
       gameFieldView.setField(newField)
     }
     viewModel.fields.observe(viewLifecycleOwner, fieldObserver)
-    viewModel.startGame()
   }
 }

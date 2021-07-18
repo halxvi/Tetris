@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.tetris.model.Tetris
 import java.util.*
-import kotlin.concurrent.schedule
+import kotlin.concurrent.scheduleAtFixedRate
 
 class TetrisViewModel(
   private val tetris: Tetris
@@ -18,7 +18,7 @@ class TetrisViewModel(
   private var gameSpeed: Long = 1000
   private var gameSpeedCounter: Int = 0
   private var gameSpeedThreshold: Int = 500
-  private var timer: Timer = Timer()
+  private lateinit var timer: Timer
 
   fun startGame() {
     startTimer()
@@ -90,15 +90,14 @@ class TetrisViewModel(
       if (gameover) endGame()
       calGameSpeed()
     }
-    timer = Timer()
-    timer.schedule(0, gameSpeed, task)
+    timer = Timer(true)
+    timer.scheduleAtFixedRate(0, gameSpeed, task)
     Log.i("Tetris:StartTimer", "StartTimer")
   }
 
   fun deleteTimer(){
-    timer.purge()
     timer.cancel()
-    timer = Timer()
+    timer = Timer(true)
     Log.i("Tetris:DeleteTimer", "DeleteTimer")
   }
 }
