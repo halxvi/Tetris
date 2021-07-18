@@ -29,20 +29,10 @@ class MainActivity : AppCompatActivity() {
     viewModel.startTimer()
   }
 
-//  override fun onResume() {
-//    super.onResume()
-//    viewModel.deleteTimer()
-//  }
-//
   override fun onStop() {
     super.onStop()
     viewModel.deleteTimer()
   }
-
-//  override fun onPause() {
-//    super.onPause()
-//    viewModel.deleteTimer()
-//  }
 
   override fun onTouchEvent(e: MotionEvent): Boolean {
     mDetector.onTouchEvent(e)
