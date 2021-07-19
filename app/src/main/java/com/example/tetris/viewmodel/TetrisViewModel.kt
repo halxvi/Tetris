@@ -14,10 +14,10 @@ class TetrisViewModel(
     MutableLiveData(Array(22) { Array(12) { 0 } })
   var nextBlocks: MutableLiveData<List<Int>> = MutableLiveData(List(3) { 0 })
   var score: MutableLiveData<Int> = MutableLiveData(0)
-  private var gameover: Boolean = false
+  var gameover: MutableLiveData<Boolean> = MutableLiveData(false)
   private var gameSpeed: Long = 1000
   private var gameSpeedCounter: Int = 0
-  private var gameSpeedThreshold: Int = 500
+  private val gameSpeedThreshold: Int = 500
   private lateinit var timer: Timer
 
   fun startGame() {
@@ -28,6 +28,7 @@ class TetrisViewModel(
 
   private fun endGame() {
     deleteTimer()
+    gameover.postValue(true)
     Log.i("Tetris:End", "GameEnd")
   }
 
@@ -86,8 +87,7 @@ class TetrisViewModel(
       fetchState()
       Log.i("Tetris:canMoveBlock", "${tetris.canMoveBlock(tetris.selectedBlock.coordinates)}")
       Log.i("Tetris:isGameover", "${tetris.isGameover()}")
-      gameover = tetris.isGameover()
-      if (gameover) endGame()
+      if (tetris.isGameover()) endGame()
       calGameSpeed()
     }
     timer = Timer(true)
