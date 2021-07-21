@@ -15,8 +15,6 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 class TetrisFragment : Fragment() {
   private val viewModel: TetrisViewModel by sharedViewModel()
   private lateinit var binding: TetrisBinding
-  private val manager = childFragmentManager
-  private val transaction = manager.beginTransaction()
 
   override fun onCreateView(
     inflater: LayoutInflater,
@@ -35,9 +33,12 @@ class TetrisFragment : Fragment() {
       gameFieldView.setField(newField)
     }
     viewModel.fields.observe(viewLifecycleOwner, fieldObserver)
-    val gameoverObserver = Observer<Boolean> {
-      transaction.replace(R.id.fragment_container, GameoverFragment())
-      transaction.commit()
+    val gameoverObserver = Observer<Boolean> { isGameover ->
+      if(isGameover){
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.add(R.id.fragment_container, GameoverFragment())
+        transaction.commit()
+      }
     }
     viewModel.gameover.observe(viewLifecycleOwner, gameoverObserver)
   }

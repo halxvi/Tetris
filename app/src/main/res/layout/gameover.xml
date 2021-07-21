@@ -10,7 +10,6 @@
   </data>
 
   <androidx.constraintlayout.widget.ConstraintLayout
-      android:id="@+id/gameOverLayout"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:background="@drawable/gameover_background">
@@ -29,21 +28,10 @@
         android:id="@+id/gameOverScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@{viewModel.score}"
+        android:text='@{"Score:"+String.valueOf(viewModel.score)}'
         app:layout_constraintBottom_toTopOf="@+id/restartButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gameOverTitle" />
-
-    <TextView
-        android:id="@+id/gameOverTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@+String/GameOver!"
-        app:layout_constraintBottom_toTopOf="@+id/restartButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 
