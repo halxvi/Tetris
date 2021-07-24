@@ -30,7 +30,7 @@ class AddBlockTest : KoinTest {
     val tetris: Tetris by inject()
     tetris.nextBlocks[0] = blockType
     tetris.addBlock()
-    val expectedBlocks: Array<Array<Int>> = Array(24) { Array<Int>(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(25) { Array(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(
         expectedBlocks,

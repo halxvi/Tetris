@@ -59,7 +59,7 @@ class RotateZReverseBlockTest : KoinTest {
         0
       )
     }
-    val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(25) { Array(12) { 0 } }
     expectedBlocks.apply {
       addWallToBlocks(expectedBlocks)
     }
@@ -82,7 +82,7 @@ class RotateZReverseBlockTest : KoinTest {
         1
       )
     }
-    val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(25) { Array(12) { 0 } }
     expectedBlocks.apply {
       addWallToBlocks(expectedBlocks)
     }
@@ -125,7 +125,7 @@ class RotateZReverseBlockTest : KoinTest {
         0
       )
     }
-    val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(25) { Array(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(expectedBlocks, 1, 1, tx, ty)
       addWallToBlocks(expectedBlocks)
@@ -167,7 +167,7 @@ class RotateZReverseBlockTest : KoinTest {
         1
       )
     }
-    val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(25) { Array(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(expectedBlocks, 1, 1, tx, ty)
       addWallToBlocks(expectedBlocks)
@@ -201,7 +201,7 @@ class RotateZReverseBlockTest : KoinTest {
     }
     val tetris: Tetris by inject { parametersOf(zReverseBlock) }
     tetris.rotate()
-    val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(25) { Array(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(expectedBlocks, 4, 1, tx, 18)
       addWallToBlocks(expectedBlocks)
@@ -237,7 +237,7 @@ class RotateZReverseBlockTest : KoinTest {
     }
     val tetris: Tetris by inject { parametersOf(zReverseBlock) }
     tetris.rotate()
-    val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(25) { Array(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(expectedBlocks, 4, 0, tx, 19)
       addWallToBlocks(expectedBlocks)

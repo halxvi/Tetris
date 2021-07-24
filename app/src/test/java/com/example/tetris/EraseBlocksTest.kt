@@ -38,7 +38,7 @@ class EraseBlocksTest : KoinTest {
   )
   fun canFindErasableBlocksIndex(i: Int) {
     val blocks: Array<Array<Int>> =
-      Array(24) { Array(12) { 0 } }
+      Array(25) { Array(12) { 0 } }
     blocks.apply { addWallToBlocks(blocks) }
     for (n in 1..10) blocks[i][n] = 1
 
@@ -61,7 +61,7 @@ class EraseBlocksTest : KoinTest {
   )
   fun cantFindErasableBlocksIndex(i: Int) {
     val blocks: Array<Array<Int>> =
-      Array(24) { Array(12) { 0 } }
+      Array(25) { Array(12) { 0 } }
     for (n in 1..9) blocks[i][n] = 1
 
     val tetris: Tetris by inject {
@@ -83,7 +83,7 @@ class EraseBlocksTest : KoinTest {
   )
   fun eraseBlocks(i: Int) {
     val blocks: Array<Array<Int>> =
-      Array(24) { Array(12) { 0 } }
+      Array(25) { Array(12) { 0 } }
     for (n in 1..10) blocks[i][n] = 1
 
     val tetris: Tetris by inject {
@@ -94,7 +94,7 @@ class EraseBlocksTest : KoinTest {
     }
 
     val expectedBlocks: Array<Array<Int>> =
-      Array(24) { Array(12) { 0 } }
+      Array(25) { Array(12) { 0 } }
     expectedBlocks.apply {
       addWallToBlocks(expectedBlocks)
     }
@@ -111,7 +111,7 @@ class EraseBlocksTest : KoinTest {
   )
   fun eraseBlocksAndMoveBlocks(i: Int) {
     val blocks: Array<Array<Int>> =
-      Array(24) { Array(12) { 0 } }
+      Array(25) { Array(12) { 0 } }
     for (n in 1..10) blocks[i][n] = 1
     for (n in 1..9) blocks[i - 1][n] = 1
 
@@ -123,7 +123,7 @@ class EraseBlocksTest : KoinTest {
     }
 
     val expectedBlocks: Array<Array<Int>> =
-      Array(24) { Array(12) { 0 } }
+      Array(25) { Array(12) { 0 } }
     for (n in 1..9) expectedBlocks[i][n] = 1
     expectedBlocks.apply {
       addWallToBlocks(expectedBlocks)
@@ -141,7 +141,7 @@ class EraseBlocksTest : KoinTest {
   )
   fun eraseAllBlocks(i: Int) {
     val blocks: Array<Array<Int>> =
-      Array(24) { Array(12) { 0 } }
+      Array(25) { Array(12) { 0 } }
     for (n in 1..10) blocks[i][n] = 1
     for (n in 1..10) blocks[i - 1][n] = 2
     for (n in 1..10) blocks[i - 2][n] = 2
@@ -154,7 +154,7 @@ class EraseBlocksTest : KoinTest {
     }
 
     val expectedBlocks: Array<Array<Int>> =
-      Array(24) { Array(12) { 0 } }
+      Array(25) { Array(12) { 0 } }
     expectedBlocks.apply {
       addWallToBlocks(expectedBlocks)
     }

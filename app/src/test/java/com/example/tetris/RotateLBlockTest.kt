@@ -59,7 +59,7 @@ class RotateLBlockTest : KoinTest {
         0
       )
     }
-    val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(25) { Array(12) { 0 } }
     expectedBlocks.apply {
       addWallToBlocks(expectedBlocks)
     }
@@ -82,7 +82,7 @@ class RotateLBlockTest : KoinTest {
         1
       )
     }
-    val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(25) { Array(12) { 0 } }
     expectedBlocks.apply {
       addWallToBlocks(expectedBlocks)
     }
@@ -105,7 +105,7 @@ class RotateLBlockTest : KoinTest {
         2
       )
     }
-    val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(25) { Array(12) { 0 } }
     expectedBlocks.apply {
       addWallToBlocks(expectedBlocks)
     }
@@ -128,7 +128,7 @@ class RotateLBlockTest : KoinTest {
         3
       )
     }
-    val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(25) { Array(12) { 0 } }
     expectedBlocks.apply {
       addWallToBlocks(expectedBlocks)
     }
@@ -155,7 +155,7 @@ class RotateLBlockTest : KoinTest {
         0
       )
     }
-    val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(25) { Array(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(expectedBlocks, 1, 1, tx, ty)
       addWallToBlocks(expectedBlocks)
@@ -186,7 +186,7 @@ class RotateLBlockTest : KoinTest {
         1
       )
     }
-    val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(25) { Array(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(expectedBlocks, 1, 0, tx, ty)
       addWallToBlocks(expectedBlocks)
@@ -217,7 +217,7 @@ class RotateLBlockTest : KoinTest {
         2
       )
     }
-    val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(25) { Array(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(expectedBlocks, 1, 1, tx, ty)
       addWallToBlocks(expectedBlocks)
@@ -247,7 +247,7 @@ class RotateLBlockTest : KoinTest {
         3
       )
     }
-    val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(25) { Array(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(expectedBlocks, 1, 0, tx, ty)
       addWallToBlocks(expectedBlocks)
@@ -281,7 +281,7 @@ class RotateLBlockTest : KoinTest {
     }
     val tetris: Tetris by inject { parametersOf(lBlock) }
     tetris.rotate()
-    val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(25) { Array(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(expectedBlocks, 5, 1, tx, 18)
       addWallToBlocks(expectedBlocks)
@@ -317,7 +317,7 @@ class RotateLBlockTest : KoinTest {
     }
     val tetris: Tetris by inject { parametersOf(lBlock) }
     tetris.rotate()
-    val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(25) { Array(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(expectedBlocks, 5, 2, tx, 19)
       addWallToBlocks(expectedBlocks)
@@ -352,7 +352,7 @@ class RotateLBlockTest : KoinTest {
     }
     val tetris: Tetris by inject { parametersOf(lBlock) }
     tetris.rotate()
-    val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(25) { Array(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(expectedBlocks, 5, 3, tx, 17)
       addWallToBlocks(expectedBlocks)
@@ -388,7 +388,7 @@ class RotateLBlockTest : KoinTest {
     }
     val tetris: Tetris by inject { parametersOf(lBlock) }
     tetris.rotate()
-    val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(25) { Array(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(expectedBlocks, 5, 0, tx, 19)
       addWallToBlocks(expectedBlocks)

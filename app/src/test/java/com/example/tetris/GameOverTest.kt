@@ -6,7 +6,6 @@ import com.example.tetris.Utilities.Companion.insertBlock
 import com.example.tetris.block.BlockInterface
 import com.example.tetris.model.Tetris
 import org.junit.Assert.*
-import org.junit.Test
 import org.junit.jupiter.api.extension.RegisterExtension
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
@@ -38,9 +37,9 @@ class GameOverTest : KoinTest {
   @CsvSource("3")
   fun isGameOver(ty: Int) {
     val blocks: Array<Array<Int>> =
-      Array(24) { Array<Int>(12) { 0 } }
+      Array(25) { Array(12) { 0 } }
     blocks.apply {
-      insertBlock(blocks, 1, 0, 5, ty)
+      insertBlock(blocks, 1, 0, 4, ty)
       addWallToBlocks(blocks)
     }
 
@@ -63,9 +62,8 @@ class GameOverTest : KoinTest {
   )
   fun `isn'tGameOver`(canMoveBlock: Boolean, isInitPosition: Boolean) {
     val blocks: Array<Array<Int>> =
-      Array(24) { Array<Int>(12) { 0 } }
-    var ty = 0
-    ty = if (canMoveBlock) 21 else 4
+      Array(25) { Array(12) { 0 } }
+    val ty = if (canMoveBlock) 21 else 4
     blocks.apply {
       insertBlock(blocks, 1, 0, 5, ty)
       addWallToBlocks(blocks)

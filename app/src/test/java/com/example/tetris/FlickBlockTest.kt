@@ -73,7 +73,7 @@ class FlickBlockTest : KoinTest {
       )
     }
     tetris.flickToRight()
-    val expectedBlocks = Array(24) { Array<Int>(12) { 0 } }
+    val expectedBlocks = Array(25) { Array(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(expectedBlocks, tetris.selectedBlock.type, tetris.selectedBlock.direction, 7, 2)
       addWallToBlocks(expectedBlocks)
@@ -130,7 +130,7 @@ class FlickBlockTest : KoinTest {
       )
     }
     tetris.flickToLeft()
-    val expectedBlocks = Array(24) { Array<Int>(12) { 0 } }
+    val expectedBlocks = Array(25) { Array(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(expectedBlocks, tetris.selectedBlock.type, tetris.selectedBlock.direction, 1, 2)
       addWallToBlocks(expectedBlocks)

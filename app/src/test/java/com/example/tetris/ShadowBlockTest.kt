@@ -43,10 +43,10 @@ class ShadowBlockTest : KoinTest {
         getTestBlock(type)
       )
     }
-    val expectedBlocks: Array<Array<Int>> = Array(24) { Array(12) { 0 } }
+    val expectedBlocks: Array<Array<Int>> = Array(25) { Array(12) { 0 } }
     expectedBlocks.apply {
       insertBlock(expectedBlocks,type,0,5,2)
-      insertShadowBlock(expectedBlocks, type, 0, 5, 21)
+      insertShadowBlock(expectedBlocks, type, 0, 5, 22)
       addWallToBlocks(expectedBlocks)
     }
     assertArrayEquals(expectedBlocks, tetris.combineShadowBlock(tetris.combineBlocks()))
