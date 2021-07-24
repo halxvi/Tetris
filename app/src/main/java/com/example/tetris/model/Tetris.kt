@@ -29,36 +29,6 @@ class Tetris(
     for (i in 1..10) blocks[23][i] = -1
   }
 
-  private fun initNextBlocks() {
-    for (index in nextBlocks.indices) {
-      nextBlocks[index] = blockPool.removeAt(0)
-    }
-  }
-
-  fun addBlock() {
-    blocks = combineBlocks()
-    selectedBlock = when (nextBlocks[0]) {
-      1 -> StraightBlock()
-      2 -> SquareBlock()
-      3 -> ZBlock()
-      4 -> ZReverseBlock()
-      5 -> LBlock()
-      6 -> LReverseBlock()
-      7 -> TBlock()
-      else -> SquareBlock()
-    }
-    removeFirstNextBlock()
-    addNextBlock()
-  }
-
-  private fun addNextBlock(){
-    if(blockPool.isEmpty()) {
-      fillBlockPool()
-      shuffleBlockPool()
-    }
-    nextBlocks.add(blockPool.removeAt(0))
-  }
-
   private fun fillBlockPool(){
     blockPool = mutableListOf(1, 2, 3, 4, 5, 6, 7)
   }
@@ -69,6 +39,13 @@ class Tetris(
       val temp = blockPool[r]
       blockPool[r] = blockPool[i]
       blockPool[i] = temp
+    }
+  }
+
+
+  private fun initNextBlocks() {
+    for (index in nextBlocks.indices) {
+      nextBlocks[index] = blockPool.removeAt(0)
     }
   }
 
@@ -87,6 +64,34 @@ class Tetris(
       array[it].forEachIndexed { index, ints -> blocks[it][index] = ints }
     }
     return blocks
+  }
+
+  private fun addScore(){
+    score += 10
+  }
+
+  private fun addNextBlock(){
+    if(blockPool.isEmpty()) {
+      fillBlockPool()
+      shuffleBlockPool()
+    }
+    nextBlocks.add(blockPool.removeAt(0))
+  }
+
+  fun addBlock() {
+    blocks = combineBlocks()
+    selectedBlock = when (nextBlocks[0]) {
+      1 -> StraightBlock()
+      2 -> SquareBlock()
+      3 -> ZBlock()
+      4 -> ZReverseBlock()
+      5 -> LBlock()
+      6 -> LReverseBlock()
+      7 -> TBlock()
+      else -> SquareBlock()
+    }
+    removeFirstNextBlock()
+    addNextBlock()
   }
 
   fun combineBlocks(): Array<Array<Int>> {
@@ -182,10 +187,6 @@ class Tetris(
     }
     eraseBlocks()
     addScore()
-  }
-
-  private fun addScore(){
-    score += 10
   }
 
   fun findErasableBlocksIndex(): Int {
