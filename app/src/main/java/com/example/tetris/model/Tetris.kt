@@ -6,7 +6,7 @@ import kotlin.random.Random
 class Tetris(
   var selectedBlock: BlockInterface = InitBlock(),
   var blocks: Array<Array<Int>> =
-    Array(24) { Array(12) { 0 } },
+    Array(25) { Array(12) { 0 } },
   var nextBlocks: MutableList<Int> = mutableListOf(0, 0, 0),
   private var random: Random = Random,
   private var blockPool: MutableList<Int> = mutableListOf(0, 0, 0, 0, 0, 0, 0),
@@ -22,11 +22,11 @@ class Tetris(
   }
 
   private fun addWallToBlocks() {
-    for (n in 0..23) {
+    for (n in 0..24) {
       blocks[n][0] = -1
       blocks[n][11] = -1
     }
-    for (i in 1..10) blocks[23][i] = -1
+    for (i in 1..10) blocks[24][i] = -1
   }
 
   private fun fillBlockPool(){
@@ -230,7 +230,7 @@ class Tetris(
 
   fun restart(){
     selectedBlock = InitBlock()
-    blocks = Array(24) { Array(12) { 0 } }
+    blocks = Array(25) { Array(12) { 0 } }
     nextBlocks = mutableListOf(0, 0, 0)
     random = Random
     blockPool = mutableListOf(0, 0, 0, 0, 0, 0, 0)

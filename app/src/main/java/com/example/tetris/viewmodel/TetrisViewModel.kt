@@ -11,7 +11,7 @@ class TetrisViewModel(
   private val tetris: Tetris
 ) : ViewModel() {
   var fields: MutableLiveData<Array<Array<Int>>> =
-    MutableLiveData(Array(24) { Array(12) { 0 } })
+    MutableLiveData(Array(25) { Array(12) { 0 } })
   var nextBlocks: MutableLiveData<List<Int>> = MutableLiveData(List(3) { 0 })
   var score: MutableLiveData<Int> = MutableLiveData(0)
   var gameover: MutableLiveData<Boolean> = MutableLiveData(false)
@@ -103,7 +103,7 @@ class TetrisViewModel(
 
   fun restart(){
     deleteTimer()
-    fields.postValue(Array(24) { Array(12) { 0 } })
+    fields.postValue(Array(25) { Array(12) { 0 } })
     nextBlocks.postValue(List(3) { 0 })
     score.postValue(0)
     gameover.postValue(false)

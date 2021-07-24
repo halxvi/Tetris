@@ -43,7 +43,7 @@ class GameFieldView(
     val blockHeight = height / 20
     mRect.set(0, 0, blockWidth, blockHeight)
     var offsetHeight = 0
-    for (y in 4..22) {
+    for (y in 4..23) {
       var offsetWidth = 0
       for (x in 1..10) {
         mRect.offsetTo(offsetWidth, offsetHeight)
