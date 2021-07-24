@@ -5,6 +5,7 @@ import android.view.GestureDetector
 import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GestureDetectorCompat
+import com.example.tetris.view.GameoverFragment
 import com.example.tetris.view.TetrisFragment
 import com.example.tetris.viewmodel.TetrisViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -17,10 +18,16 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
     mDetector = GestureDetectorCompat(this, MyGestureListener(viewModel))
-    val fragmentManager = supportFragmentManager
-    val fragmentTransaction = fragmentManager.beginTransaction()
-    fragmentTransaction.add(R.id.fragment_container, TetrisFragment())
-    fragmentTransaction.commit()
+    val tetirsFragment = TetrisFragment()
+    val gameoverFragment = GameoverFragment()
+    if(savedInstanceState == null) {
+      val fragmentManager = supportFragmentManager
+      val fragmentTransaction = fragmentManager.beginTransaction()
+      fragmentTransaction.add(R.id.fragment_container, tetirsFragment, "Tetris")
+      fragmentTransaction.add(R.id.fragment_container, gameoverFragment, "Gameover")
+      fragmentTransaction.detach(gameoverFragment)
+      fragmentTransaction.commit()
+    }
     viewModel.startGame()
   }
 

@@ -7,8 +7,8 @@ class Tetris(
   var selectedBlock: BlockInterface = InitBlock(),
   var blocks: Array<Array<Int>> =
     Array(24) { Array(12) { 0 } },
-  val nextBlocks: MutableList<Int> = mutableListOf(0, 0, 0),
-  private val random: Random = Random,
+  var nextBlocks: MutableList<Int> = mutableListOf(0, 0, 0),
+  private var random: Random = Random,
   private var blockPool: MutableList<Int> = mutableListOf(0, 0, 0, 0, 0, 0, 0),
   var score: Int = 0
 ) {
@@ -225,5 +225,18 @@ class Tetris(
 
   fun fallDownBlock(){
     while (canMoveBlock(selectedBlock.coordinates)) moveBlock()
+  }
+
+  fun restart(){
+    selectedBlock = InitBlock()
+    blocks = Array(24) { Array(12) { 0 } }
+    nextBlocks = mutableListOf(0, 0, 0)
+    random = Random
+    blockPool = mutableListOf(0, 0, 0, 0, 0, 0, 0)
+    score = 0
+    addWallToBlocks()
+    fillBlockPool()
+    shuffleBlockPool()
+    initNextBlocks()
   }
 }

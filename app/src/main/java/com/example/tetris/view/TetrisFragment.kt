@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import com.example.tetris.R
 import com.example.tetris.databinding.TetrisBinding
 import com.example.tetris.viewmodel.TetrisViewModel
 import kotlinx.android.synthetic.main.tetris.*
@@ -33,12 +32,18 @@ class TetrisFragment : Fragment() {
       gameFieldView.setField(newField)
     }
     viewModel.fields.observe(viewLifecycleOwner, fieldObserver)
+
     val gameoverObserver = Observer<Boolean> { isGameover ->
-      if(isGameover){
-        val transaction = parentFragmentManager.beginTransaction()
-        transaction.add(R.id.fragment_container, GameoverFragment())
-        transaction.commit()
+      val gameoverFragment = parentFragmentManager.findFragmentByTag("Gameover") ?: return@Observer
+      val transaction = parentFragmentManager.beginTransaction()
+      if(isGameover == true){
+          transaction.attach(gameoverFragment)
       }
+      if(isGameover == false){
+        gameFieldView.restart()
+        transaction.detach(gameoverFragment)
+      }
+      transaction.commit()
     }
     viewModel.gameover.observe(viewLifecycleOwner, gameoverObserver)
   }

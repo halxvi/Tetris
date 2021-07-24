@@ -66,4 +66,12 @@ class GameFieldView(
     this.field = field
     invalidate()
   }
+
+  fun restart(){
+    repeat(24) { y ->
+      repeat(12){ x ->
+        field[y][x] = 0
+      }
+    }
+  }
 }
