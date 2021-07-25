@@ -10,7 +10,8 @@ class Tetris(
   var nextBlocks: MutableList<Int> = mutableListOf(0, 0, 0),
   private var random: Random = Random,
   private var blockPool: MutableList<Int> = mutableListOf(0, 0, 0, 0, 0, 0, 0),
-  var score: Int = 0
+  var score: Int = 0,
+  var level: Int = 0
 ) {
   init {
     addWallToBlocks()
@@ -49,7 +50,7 @@ class Tetris(
     }
   }
 
-  private fun getRandomInt(i:Int):Int{
+  private fun getRandomInt(i:Int):Int {
     return random.nextInt(0, i)
   }
 
@@ -68,6 +69,12 @@ class Tetris(
 
   private fun addScore(){
     score += 10
+  }
+
+  private fun addLevel(){
+    if(score % 100 == 0){
+      level += 1
+    }
   }
 
   private fun addNextBlock(){
@@ -187,6 +194,7 @@ class Tetris(
     }
     eraseBlocks()
     addScore()
+    addLevel()
   }
 
   fun findErasableBlocksIndex(): Int {

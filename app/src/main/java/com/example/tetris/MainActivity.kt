@@ -33,12 +33,12 @@ class MainActivity : AppCompatActivity() {
 
   override fun onRestart() {
     super.onRestart()
-    viewModel.startTimer()
+    viewModel.startGameSpeedTimer()
   }
 
   override fun onStop() {
     super.onStop()
-    viewModel.deleteTimer()
+    viewModel.deleteAllTimer()
   }
 
   override fun onTouchEvent(e: MotionEvent): Boolean {
