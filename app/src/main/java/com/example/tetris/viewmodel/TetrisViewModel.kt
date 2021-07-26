@@ -1,6 +1,5 @@
 package com.example.tetris.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.tetris.model.Tetris
@@ -17,24 +16,24 @@ class TetrisViewModel(
   var level: MutableLiveData<Int> = MutableLiveData(0)
   var gameover: MutableLiveData<Boolean> = MutableLiveData(false)
   private var gameSpeed: Long = 1000
-  private val gameSpeedThreshold: Int = 500
-  private var mainTimer: Timer = Timer(true)
-  private lateinit var gameSpeedTimer: Timer
+  private val gameSpeedThreshold: Long = 500
+  private lateinit var timer: Timer
 
   fun startGame() {
-    startGameSpeedTimer()
+    startTimer()
     tetris.startGame()
-    Log.i("Tetris:Start", "GameStart")
   }
 
   private fun endGame() {
-    deleteAllTimer()
+    deleteTimer()
     gameover.postValue(true)
-    Log.i("Tetris:End", "GameEnd")
   }
 
   private fun calGameSpeed(): Long {
-    return if(gameSpeed > gameSpeedThreshold) gameSpeed.minus(1) else gameSpeed
+    if((tetris.level + 1) % 2 == 0) {
+      return if(gameSpeed > gameSpeedThreshold) gameSpeed.minus(1) else gameSpeed
+    }
+    return gameSpeed
   }
 
   private fun fetchState() {
@@ -60,45 +59,32 @@ class TetrisViewModel(
     tetris.fallDownBlock()
   }
 
-  private fun startMainTimer(){
+  fun startTimer(){
     val task: TimerTask.() -> Unit = {
+      if (tetris.isGameover()) endGame()
       if (tetris.canMoveBlock(tetris.selectedBlock.coordinates)) {
         tetris.moveBlock()
-      }
-      if (!tetris.canMoveBlock(tetris.selectedBlock.coordinates)) {
+      } else {
         tetris.addBlock()
       }
       tetris.eraseBlocks()
       fetchState()
-      if (tetris.isGameover()) endGame()
+      if(gameSpeed != calGameSpeed()){
+        gameSpeed = calGameSpeed()
+        deleteTimer()
+        startTimer()
+      }
     }
-    mainTimer = Timer(true)
-    mainTimer.scheduleAtFixedRate(0, gameSpeed, task)
-    Log.i("Tetris:TimerM", "GameStart")
+    timer = Timer()
+    timer.scheduleAtFixedRate(0, gameSpeed, task)
   }
 
-  fun startGameSpeedTimer(){
-    val task: TimerTask.() -> Unit = {
-      gameSpeed = calGameSpeed()
-      mainTimer.cancel()
-      mainTimer = Timer(true)
-      startMainTimer()
-      Log.i("Tetris:TimerM", "A")
-    }
-    gameSpeedTimer = Timer(true)
-    gameSpeedTimer.scheduleAtFixedRate(0, 1000, task)
-    Log.i("Tetris:TimerGS", "GameStart")
-  }
-
-  fun deleteAllTimer(){
-    mainTimer.cancel()
-    mainTimer = Timer(true)
-    gameSpeedTimer.cancel()
-    gameSpeedTimer = Timer(true)
+  fun deleteTimer(){
+    timer.cancel()
+    timer = Timer()
   }
 
   fun restart(){
-    deleteAllTimer()
     fields.postValue(Array(25) { Array(12) { 0 } })
     nextBlocks.postValue(List(3) { 0 })
     score.postValue(0)

@@ -43,15 +43,14 @@ class Tetris(
     }
   }
 
-
   private fun initNextBlocks() {
     for (index in nextBlocks.indices) {
       nextBlocks[index] = blockPool.removeAt(0)
     }
   }
 
-  private fun getRandomInt(i:Int):Int {
-    return random.nextInt(0, i)
+  private fun getRandomInt(limit:Int):Int {
+    return random.nextInt(0, limit)
   }
 
   private fun removeFirstNextBlock(){
