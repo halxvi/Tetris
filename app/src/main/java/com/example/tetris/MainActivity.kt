@@ -1,8 +1,11 @@
 package com.example.tetris
 
+import android.os.Build
 import android.os.Bundle
 import android.view.GestureDetector
 import android.view.MotionEvent
+import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GestureDetectorCompat
 import com.example.tetris.view.GameoverFragment
@@ -14,6 +17,7 @@ class MainActivity : AppCompatActivity() {
   private lateinit var mDetector: GestureDetectorCompat
   private val viewModel: TetrisViewModel by viewModel()
 
+  @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
@@ -29,6 +33,7 @@ class MainActivity : AppCompatActivity() {
       fragmentTransaction.commit()
     }
     viewModel.startGame()
+    window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
   }
 
   override fun onRestart() {
