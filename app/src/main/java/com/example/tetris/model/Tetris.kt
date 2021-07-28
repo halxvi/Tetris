@@ -66,14 +66,15 @@ class Tetris(
     return blocks
   }
 
-  private fun addScore(){
-    score += 10
+  private fun calScore():Int {
+    return score + 10
   }
 
-  private fun addLevel(){
+  private fun calLevel():Int {
     if(score % 100 == 0){
-      level += 1
+      return level ++
     }
+    return level
   }
 
   private fun addNextBlock(){
@@ -192,8 +193,8 @@ class Tetris(
       }
     }
     eraseBlocks()
-    addScore()
-    addLevel()
+    score = calScore()
+    level = calLevel()
   }
 
   fun findErasableBlocksIndex(): Int {
