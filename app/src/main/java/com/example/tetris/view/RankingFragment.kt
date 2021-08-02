@@ -5,22 +5,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.tetris.databinding.GameoverBinding
-import com.example.tetris.viewmodel.TetrisViewModel
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import com.example.tetris.R
+import kotlinx.android.synthetic.main.ranking.*
 
 class RankingFragment : Fragment() {
-  private val viewModel: TetrisViewModel by sharedViewModel()
-  private lateinit var binding: GameoverBinding
-
   override fun onCreateView(
     inflater: LayoutInflater,
     container: ViewGroup?,
     savedInstanceState: Bundle?
-  ): View {
-    binding = GameoverBinding.inflate(inflater, container, false)
-    binding.viewModel = viewModel
-    binding.lifecycleOwner = this
-    return binding.root
+  ): View? {
+    return inflater.inflate(R.layout.ranking, container, false)
+  }
+
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+    backButton.setOnClickListener{
+      val rankingFragment = parentFragmentManager.findFragmentByTag("Ranking")
+      val gameoverFragment = parentFragmentManager.findFragmentByTag("Gameover")
+      if (rankingFragment != null && gameoverFragment != null) {
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.detach(rankingFragment)
+        transaction.attach(gameoverFragment)
+        transaction.commit()
+      }
+    }
   }
 }
