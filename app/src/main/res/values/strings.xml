@@ -3,4 +3,6 @@
   <string name="holdblockview">holdBlockView</string>
   <string name="nextblockview">nextBlockView</string>
   <string name="restart">Restart</string>
+  <string name="back">Back</string>
+  <string name="ranking">Ranking</string>
 </resources>
