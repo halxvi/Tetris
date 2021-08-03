@@ -2,7 +2,9 @@
     <string name="app_name">Tetris</string>
   <string name="holdblockview">holdBlockView</string>
   <string name="nextblockview">nextBlockView</string>
-  <string name="restart">Restart</string>
-  <string name="back">Back</string>
-  <string name="ranking">Ranking</string>
+  <string name="restart">リスタート</string>
+  <string name="back">戻る</string>
+  <string name="ranking">ランキング</string>
+  <string name="submit">登録</string>
+  <string name="namePlaceholder">ニックネーム</string>
 </resources>
