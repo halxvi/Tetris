@@ -7,4 +7,5 @@
   <string name="ranking">ランキング</string>
   <string name="submit">登録</string>
   <string name="namePlaceholder">ニックネーム</string>
+  <string name="goToSubmitFrom">登録ページ</string>
 </resources>

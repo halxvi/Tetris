@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GestureDetectorCompat
 import com.example.tetris.view.GameoverFragment
 import com.example.tetris.view.RankingFragment
+import com.example.tetris.view.RankingSubmitFormFragment
 import com.example.tetris.view.TetrisFragment
 import com.example.tetris.viewmodel.TetrisViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -23,17 +24,20 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
     mDetector = GestureDetectorCompat(this, MyGestureListener(viewModel))
-    val tetirsFragment = TetrisFragment()
+    val tetrisFragment = TetrisFragment()
     val gameoverFragment = GameoverFragment()
     val rankingFragment = RankingFragment()
+    val rankingSubmitFormFragment = RankingSubmitFormFragment()
     if(savedInstanceState == null) {
       val fragmentManager = supportFragmentManager
       val fragmentTransaction = fragmentManager.beginTransaction()
-      fragmentTransaction.add(R.id.fragment_container, tetirsFragment, "Tetris")
+      fragmentTransaction.add(R.id.fragment_container, tetrisFragment, "Tetris")
       fragmentTransaction.add(R.id.fragment_container, gameoverFragment, "Gameover")
       fragmentTransaction.detach(gameoverFragment)
       fragmentTransaction.add(R.id.fragment_container, rankingFragment,"Ranking")
       fragmentTransaction.detach(rankingFragment)
+      fragmentTransaction.add(R.id.fragment_container, rankingSubmitFormFragment,"RankingSubmitForm")
+      fragmentTransaction.detach(rankingSubmitFormFragment)
       fragmentTransaction.commit()
     }
     viewModel.startGame()

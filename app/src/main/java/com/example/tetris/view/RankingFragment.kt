@@ -29,5 +29,15 @@ class RankingFragment : Fragment() {
         transaction.commit()
       }
     }
+    goToSubmitFormButton.setOnClickListener {
+      val rankingFragment = parentFragmentManager.findFragmentByTag("Ranking")
+      val rankingSubmitFormFragment = parentFragmentManager.findFragmentByTag("RankingSubmitForm")
+      if (rankingFragment != null && rankingSubmitFormFragment != null) {
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.detach(rankingFragment)
+        transaction.attach(rankingSubmitFormFragment)
+        transaction.commit()
+      }
+    }
   }
 }
