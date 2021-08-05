@@ -3,9 +3,12 @@
     <words>
       <w>gameover</w>
       <w>haikei</w>
+      <w>holdblockview</w>
       <w>koin</w>
+      <w>nextblockview</w>
       <w>prng</w>
       <w>tetris</w>
+      <w>viewmodel</w>
     </words>
   </dictionary>
 </component>
