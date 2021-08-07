@@ -21,7 +21,7 @@ class LBlock(
     direction = (direction + 1) % 4
   }
 
-  fun canRotate(blocks: Array<Array<Int>>): Boolean {
+  override fun canRotate(blocks: Array<Array<Int>>): Boolean {
     return when (direction) {
       0 -> canRotateD0(blocks)
       1 -> canRotateD1(blocks)

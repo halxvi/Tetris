@@ -11,4 +11,7 @@ class InitBlock(
   override val type: Int = 0
 ) : BlockInterface {
   override fun rotate(blocks: Array<Array<Int>>) {}
+  override fun canRotate(blocks: Array<Array<Int>>): Boolean {
+    return false
+  }
 }

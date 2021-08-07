@@ -6,4 +6,5 @@ interface BlockInterface {
   val type: Int
 
   fun rotate(blocks: Array<Array<Int>>)
+  fun canRotate(blocks: Array<Array<Int>>):Boolean
 }

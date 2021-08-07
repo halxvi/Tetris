@@ -19,7 +19,7 @@ class StraightBlock(
     direction = if (direction == 0) 1 else 0
   }
 
-  fun canRotate(blocks: Array<Array<Int>>): Boolean {
+  override fun canRotate(blocks: Array<Array<Int>>): Boolean {
     return when (direction) {
       0 -> canRotateD0(blocks)
       1 -> canRotateD1(blocks)
