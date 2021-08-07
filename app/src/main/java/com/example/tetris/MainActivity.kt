@@ -41,7 +41,6 @@ class MainActivity : AppCompatActivity() {
       fragmentTransaction.commit()
     }
     viewModel.startGame()
-    window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
   }
 
   override fun onRestart() {

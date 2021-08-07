@@ -6,17 +6,18 @@ import com.example.tetris.block.BlockInterface
 import com.example.tetris.block.StraightBlock
 import com.example.tetris.model.Tetris
 import org.junit.Assert.*
-import org.junit.Rule
 import org.junit.Test
+import org.junit.jupiter.api.extension.RegisterExtension
 import org.koin.core.parameter.parametersOf
 import org.koin.dsl.module
 import org.koin.test.KoinTest
-import org.koin.test.KoinTestRule
 import org.koin.test.inject
+import org.koin.test.junit5.KoinTestExtension
 
 class FlickBlockTest : KoinTest {
-  @get:Rule
-  val koinTestRule = KoinTestRule.create {
+  @JvmField
+  @RegisterExtension
+  val koinTestExtension = KoinTestExtension.create {
     modules(
       module {
         single { (selectedBlocks: BlockInterface) -> Tetris(selectedBlocks) }
