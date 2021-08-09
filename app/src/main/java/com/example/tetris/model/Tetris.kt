@@ -5,14 +5,14 @@ import kotlin.random.Random
 
 class Tetris(
   var selectedBlock: BlockInterface = InitBlock(),
-  var blocks: Array<Array<Int>> =
+  override var blocks: Array<Array<Int>> =
     Array(25) { Array(12) { 0 } },
-  var nextBlocks: MutableList<Int> = mutableListOf(0, 0, 0),
+  override var nextBlocks: MutableList<Int> = mutableListOf(0, 0, 0),
   private var random: Random = Random,
   private var blockPool: MutableList<Int> = mutableListOf(0, 0, 0, 0, 0, 0, 0),
-  var score: Int = 0,
-  var level: Int = 0
-) {
+  override var score: Int = 0,
+  override var level: Int = 0
+):ITetris {
   init {
     addWallToBlocks()
     if (nextBlocks.elementAt(0) == 0) {
@@ -123,11 +123,11 @@ class Tetris(
     return copiedBlocks
   }
 
-  fun combineAllBlocks(): Array<Array<Int>> {
+  override fun combineAllBlocks(): Array<Array<Int>> {
     return combineShadowBlock(combineBlocks())
   }
 
-  fun moveBlock() {
+  override fun moveBlock() {
     if (!canMoveBlock(selectedBlock.coordinates)) return
     val copyBlockCoordinates = deepCopy(selectedBlock.coordinates)
     for ((index, elem) in copyBlockCoordinates.withIndex()) {
@@ -135,7 +135,7 @@ class Tetris(
     }
   }
 
-  fun canMoveBlock(coordinates: Array<Array<Int>>): Boolean {
+  override fun canMoveBlock(coordinates: Array<Array<Int>>): Boolean {
       coordinates.forEach {
         if(
           blocks[it[1] + 1][it[0]] == -1 ||
@@ -151,7 +151,7 @@ class Tetris(
     return true
   }
 
-  fun flickToRight() {
+  override fun flickToRight() {
     if (!canFlickToRight()) return
     for ((index, elem) in selectedBlock.coordinates.withIndex()) {
       selectedBlock.coordinates[index] = arrayOf(elem[0] + 1, elem[1])
@@ -165,7 +165,7 @@ class Tetris(
     return true
   }
 
-  fun flickToLeft() {
+  override fun flickToLeft() {
     if (!canFlickToLeft()) return
     for ((index, elem) in selectedBlock.coordinates.withIndex()) {
       selectedBlock.coordinates[index] = arrayOf(elem[0] - 1, elem[1])
@@ -179,11 +179,11 @@ class Tetris(
     return true
   }
 
-  fun rotate() {
+  override fun rotate() {
     selectedBlock.rotate(blocks)
   }
 
-  fun eraseBlocks() {
+  override fun eraseBlocks() {
     val y = findErasableBlocksIndex()
     if (y == -1 || y == 0) return
     for (x in 1..10) blocks[y][x] = 0
@@ -217,7 +217,7 @@ class Tetris(
     return -1
   }
 
-  fun isGameover(): Boolean {
+  override fun isGameover(): Boolean {
     repeat(10) {
       selectedBlock.coordinates.forEach {
         if (!canMoveBlock(selectedBlock.coordinates) && it[1] <= 3) {
@@ -228,15 +228,15 @@ class Tetris(
     return false
   }
 
-  fun startGame() {
+  override fun startGame() {
     addBlock()
   }
 
-  fun fallDownBlock(){
+  override fun fallDownBlock(){
     while (canMoveBlock(selectedBlock.coordinates)) moveBlock()
   }
 
-  fun restart(){
+  override fun restart(){
     selectedBlock = InitBlock()
     blocks = Array(25) { Array(12) { 0 } }
     nextBlocks = mutableListOf(0, 0, 0)
