@@ -33,6 +33,10 @@ android {
             useJUnitPlatform()
         }
     }
+
+    viewBinding {
+        enabled = true
+    }
 }
 
 dependencies {
