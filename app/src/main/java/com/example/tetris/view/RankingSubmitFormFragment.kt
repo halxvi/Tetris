@@ -7,9 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.tetris.databinding.RankingSubmitFormBinding
 import com.example.tetris.model.Repository
+import com.example.tetris.viewmodel.TetrisViewModel
 import kotlinx.android.synthetic.main.ranking_submit_form.*
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+
+data class Score(val user_name:String? = null, val score:Int? = null)
 
 class RankingSubmitFormFragment : Fragment() {
+  private val viewModel: TetrisViewModel by sharedViewModel()
   private val repository = Repository()
   private var _binding: RankingSubmitFormBinding? = null
   private val binding get() = _binding!!
@@ -26,8 +31,20 @@ class RankingSubmitFormFragment : Fragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     submitButton.setOnClickListener {
-      val text = editTextTextPersonName.text.toString()
-      repository.write(text)
+      val userName = editTextTextPersonName.text.toString()
+      repository.setReference("score")
+      repository.push()
+      val score = Score(userName, viewModel.score.value)
+      repository.setValue(score)
+
+      val rankingFragment = parentFragmentManager.findFragmentByTag("Ranking")
+      val gameoverFragment = parentFragmentManager.findFragmentByTag("Gameover")
+      if(rankingFragment != null && gameoverFragment != null) {
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.detach(rankingFragment)
+        transaction.attach(gameoverFragment)
+        transaction.commit()
+      }
     }
   }
 

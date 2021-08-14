@@ -6,15 +6,23 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 class Repository(
-  override val database: FirebaseDatabase = Firebase.database
-  ) : IRepository {
-  private val ref = database.getReference("user_name")
+  private val database: FirebaseDatabase = Firebase.database,
+  private var ref: DatabaseReference = database.getReference("score")
+) : IRepository {
 
-  override fun reference(referenceName:String):DatabaseReference {
-    return database.getReference(referenceName)
+  override fun setReference(referenceName:String) {
+    ref = database.getReference(referenceName)
   }
 
-  override fun write(data:String) {
+  override fun setReferenceChild(referenceName:String) {
+    ref = ref.child(referenceName)
+  }
+
+  override fun push(){
+    ref = ref.push()
+  }
+
+  override fun setValue(data:Any) {
     ref.setValue(data)
   }
 
