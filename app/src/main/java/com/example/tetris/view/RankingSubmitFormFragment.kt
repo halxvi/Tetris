@@ -6,12 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.tetris.databinding.RankingSubmitFormBinding
+import com.example.tetris.misc.Score
 import com.example.tetris.model.Repository
 import com.example.tetris.viewmodel.TetrisViewModel
 import kotlinx.android.synthetic.main.ranking_submit_form.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-
-data class Score(val user_name:String? = null, val score:Int? = null)
 
 class RankingSubmitFormFragment : Fragment() {
   private val viewModel: TetrisViewModel by sharedViewModel()
