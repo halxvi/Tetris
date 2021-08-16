@@ -37,7 +37,7 @@ class TetrisFragment : Fragment() {
       val gameoverFragment = parentFragmentManager.findFragmentByTag("Gameover") ?: return@Observer
       val transaction = parentFragmentManager.beginTransaction()
       if(isGameover == true){
-          transaction.attach(gameoverFragment)
+        transaction.attach(gameoverFragment)
       }
       if(isGameover == false){
         gameFieldView.restart()

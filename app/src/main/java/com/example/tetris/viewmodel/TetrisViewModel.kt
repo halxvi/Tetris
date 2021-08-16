@@ -16,6 +16,7 @@ class TetrisViewModel(
   var level: MutableLiveData<Int> = MutableLiveData(0)
   var gameover: MutableLiveData<Boolean> = MutableLiveData(false)
   private var gameSpeed: Long = 1000
+  var submittedScore: MutableLiveData<Boolean>  = MutableLiveData(false)
   private val gameSpeedThreshold: Long = 500
   private lateinit var timer: Timer
 

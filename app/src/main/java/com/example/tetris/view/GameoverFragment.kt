@@ -39,6 +39,7 @@ class GameoverFragment : Fragment() {
 
     restartButton.setOnClickListener {
       viewModel.restart()
+      viewModel.submittedScore.value = false
       val gameoverFragment = parentFragmentManager.findFragmentByTag("Gameover")
       if(gameoverFragment != null) {
         val transaction = parentFragmentManager.beginTransaction()

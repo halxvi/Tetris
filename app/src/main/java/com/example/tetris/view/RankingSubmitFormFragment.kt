@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import com.example.tetris.databinding.RankingSubmitFormBinding
 import com.example.tetris.misc.Score
 import com.example.tetris.model.Repository
@@ -35,16 +36,27 @@ class RankingSubmitFormFragment : Fragment() {
       repository.push()
       val score = Score(userName, viewModel.score.value)
       repository.setValue(score)
+      viewModel.submittedScore.value = true
+    }
 
-      val rankingFragment = parentFragmentManager.findFragmentByTag("Ranking")
+    backButton.setOnClickListener{
+      val rankingSubmitFormFragment = parentFragmentManager.findFragmentByTag("RankingSubmitForm")
       val gameoverFragment = parentFragmentManager.findFragmentByTag("Gameover")
-      if(rankingFragment != null && gameoverFragment != null) {
+      if(rankingSubmitFormFragment != null && gameoverFragment != null) {
         val transaction = parentFragmentManager.beginTransaction()
-        transaction.detach(rankingFragment)
+        transaction.detach(rankingSubmitFormFragment)
         transaction.attach(gameoverFragment)
         transaction.commit()
       }
     }
+
+    val submittedScoreObserver = Observer<Boolean> { isSubmittedScore ->
+     if (isSubmittedScore == true){
+       submitButton.isClickable = false
+       submitButton.text = "登録済み"
+     }
+    }
+    viewModel.submittedScore.observe(viewLifecycleOwner, submittedScoreObserver)
   }
 
   override fun onDestroyView() {
