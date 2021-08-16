@@ -6,9 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.tetris.databinding.GameoverBinding
+import com.example.tetris.viewmodel.TetrisViewModel
 import kotlinx.android.synthetic.main.gameover.*
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class GameoverFragment : Fragment() {
+  private val viewModel: TetrisViewModel by sharedViewModel()
   private var _binding: GameoverBinding? = null
   private val binding get() = _binding!!
 
@@ -29,6 +32,16 @@ class GameoverFragment : Fragment() {
       if(rankingFragment != null && gameoverFragment != null) {
         val transaction = parentFragmentManager.beginTransaction()
         transaction.attach(rankingFragment)
+        transaction.detach(gameoverFragment)
+        transaction.commit()
+      }
+    }
+
+    restartButton.setOnClickListener {
+      viewModel.restart()
+      val gameoverFragment = parentFragmentManager.findFragmentByTag("Gameover")
+      if(gameoverFragment != null) {
+        val transaction = parentFragmentManager.beginTransaction()
         transaction.detach(gameoverFragment)
         transaction.commit()
       }

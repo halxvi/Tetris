@@ -24,8 +24,10 @@
       android:textColor="#455A64"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.298"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+      app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+      app:layout_constraintVertical_bias="0.505" />
 
   <EditText
       android:id="@+id/editTextTextPersonName"
@@ -50,6 +52,19 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
+
+  <Button
+      android:id="@+id/backButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="184dp"
+      android:text="@string/back"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.277"
+      app:layout_constraintStart_toEndOf="@+id/submitButton"
+      app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+      app:layout_constraintVertical_bias="0.01" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
