@@ -21,6 +21,7 @@ class GameoverFragment : Fragment() {
     savedInstanceState: Bundle?
   ): View {
     _binding = GameoverBinding.inflate(inflater, container, false)
+    binding.viewModel = viewModel
     return binding.root
   }
 

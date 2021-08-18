@@ -25,6 +25,7 @@ class RankingSubmitFormFragment : Fragment() {
     savedInstanceState: Bundle?
   ): View {
     _binding = RankingSubmitFormBinding.inflate(inflater, container, false)
+    binding.viewModel = viewModel
     return binding.root
   }
 
@@ -32,10 +33,8 @@ class RankingSubmitFormFragment : Fragment() {
     super.onViewCreated(view, savedInstanceState)
     submitButton.setOnClickListener {
       val userName = editTextTextPersonName.text.toString()
-      repository.setReference("score")
-      repository.push()
       val score = Score(userName, viewModel.score.value)
-      repository.setValue(score)
+      repository.setScore(score)
       viewModel.submittedScore.value = true
     }
 
