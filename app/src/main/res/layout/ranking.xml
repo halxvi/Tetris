@@ -7,7 +7,7 @@
     android:background="@drawable/gray_background">
 
   <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/recyclerView"
+      android:id="@+id/rankingRecyclerView"
       android:layout_width="385dp"
       android:layout_height="568dp"
       app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +24,7 @@
       android:text="@string/back"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+      app:layout_constraintTop_toBottomOf="@+id/rankingRecyclerView"
       app:layout_constraintVertical_bias="0.095" />
 
   <Button
@@ -37,7 +37,7 @@
       app:layout_constraintEnd_toStartOf="@+id/backButton"
       app:layout_constraintHorizontal_bias="0.507"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+      app:layout_constraintTop_toBottomOf="@+id/rankingRecyclerView"
       app:layout_constraintVertical_bias="0.095" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

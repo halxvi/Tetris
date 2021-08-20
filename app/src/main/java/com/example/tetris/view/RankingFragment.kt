@@ -6,9 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.tetris.R
+import com.example.tetris.misc.RankingViewAdapter
+import com.example.tetris.misc.Score
+import com.example.tetris.model.Repository
 import kotlinx.android.synthetic.main.ranking.*
 
 class RankingFragment : Fragment() {
+  private val repository = Repository()
+
   override fun onCreateView(
     inflater: LayoutInflater,
     container: ViewGroup?,
@@ -39,5 +44,8 @@ class RankingFragment : Fragment() {
         transaction.commit()
       }
     }
+
+    val dataSet = repository.fetchScore()?.value
+    rankingRecyclerView.adapter = RankingViewAdapter(dataSet as Array<Score>)
   }
 }
