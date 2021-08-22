@@ -45,7 +45,8 @@ class RankingFragment : Fragment() {
       }
     }
 
-    val dataSet = repository.fetchScore()?.value
+    val initScore: Array<Score> = Array(1){ Score("",0) }
+    val dataSet = repository.fetchScore()?.value ?: initScore
     rankingRecyclerView.adapter = RankingViewAdapter(dataSet as Array<Score>)
   }
 }

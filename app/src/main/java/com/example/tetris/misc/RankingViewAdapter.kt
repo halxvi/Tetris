@@ -7,7 +7,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tetris.R
 
-class RankingViewAdapter(private val dataSet: Array<Score>): RecyclerView.Adapter<RankingViewAdapter.ViewHolder>()  {
+class RankingViewAdapter(
+  private val dataSet: Array<Score>
+  ) : RecyclerView.Adapter<RankingViewAdapter.ViewHolder>()  {
   class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val rankingScoreTextView: TextView = view.findViewById(R.id.rankingScoreTextView)
     val rankingNameTextView:TextView = view.findViewById(R.id.rankingNameTextView)
