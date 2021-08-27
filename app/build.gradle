@@ -63,5 +63,7 @@ dependencies {
     testImplementation "io.insert-koin:koin-test-junit5:$koin_version"
     testImplementation "io.insert-koin:koin-test:$koin_version"
 
-    implementation platform('com.google.firebase:firebase-bom:28.2.1')
+    implementation platform('com.google.firebase:firebase-bom:28.3.0')
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.google.android.gms:play-services-auth:19.2.0'
 }
