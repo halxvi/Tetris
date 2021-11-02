@@ -27,15 +27,27 @@ class GameoverFragment : Fragment() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
+
     rankingButton.setOnClickListener{
-      val rankingFragment = parentFragmentManager.findFragmentByTag("Ranking")
-      val gameoverFragment = parentFragmentManager.findFragmentByTag("Gameover")
-      if(rankingFragment != null && gameoverFragment != null) {
-        val transaction = parentFragmentManager.beginTransaction()
-        transaction.attach(rankingFragment)
-        transaction.detach(gameoverFragment)
-        transaction.commit()
+      val transaction = parentFragmentManager.beginTransaction()
+
+      if(viewModel.isLogging){
+        val rankingFragment = parentFragmentManager.findFragmentByTag("Ranking")
+        val gameoverFragment = parentFragmentManager.findFragmentByTag("Gameover")
+        if(rankingFragment != null && gameoverFragment != null) {
+          transaction.attach(rankingFragment)
+          transaction.detach(gameoverFragment)
+        }
+      } else {
+        val gameoverFragment = parentFragmentManager.findFragmentByTag("Gameover")
+        val authenticationFragment = parentFragmentManager.findFragmentByTag("Authentication")
+        if(gameoverFragment != null && authenticationFragment != null) {
+          transaction.attach(authenticationFragment)
+          transaction.detach(gameoverFragment)
+        }
       }
+
+      transaction.commit()
     }
 
     restartButton.setOnClickListener {
