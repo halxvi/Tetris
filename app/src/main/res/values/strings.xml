@@ -8,4 +8,5 @@
   <string name="submit">登録</string>
   <string name="namePlaceholder">ニックネーム</string>
   <string name="goToSubmitFrom">登録ページ</string>
+  <string name="send">送信</string>
 </resources>
