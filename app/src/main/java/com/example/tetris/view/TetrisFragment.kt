@@ -28,9 +28,11 @@ class TetrisFragment : Fragment() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
+
     val fieldObserver = Observer<Array<Array<Int>>> { newField ->
       gameFieldView.setField(newField)
     }
+
     viewModel.fields.observe(viewLifecycleOwner, fieldObserver)
 
     val gameoverObserver = Observer<Boolean> { isGameover ->
@@ -45,6 +47,7 @@ class TetrisFragment : Fragment() {
       }
       transaction.commit()
     }
+
     viewModel.gameover.observe(viewLifecycleOwner, gameoverObserver)
   }
 }

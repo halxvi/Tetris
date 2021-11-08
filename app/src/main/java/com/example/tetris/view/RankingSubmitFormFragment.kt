@@ -10,11 +10,13 @@ import com.example.tetris.databinding.RankingSubmitFormBinding
 import com.example.tetris.misc.Score
 import com.example.tetris.model.Repository
 import com.example.tetris.viewmodel.TetrisViewModel
+import com.example.tetris.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.ranking_submit_form.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class RankingSubmitFormFragment : Fragment() {
-  private val viewModel: TetrisViewModel by sharedViewModel()
+  private val tetrisViewModel: TetrisViewModel by sharedViewModel()
+  private val userViewModel: UserViewModel by sharedViewModel()
   private val repository = Repository()
   private var _binding: RankingSubmitFormBinding? = null
   private val binding get() = _binding!!
@@ -25,7 +27,7 @@ class RankingSubmitFormFragment : Fragment() {
     savedInstanceState: Bundle?
   ): View {
     _binding = RankingSubmitFormBinding.inflate(inflater, container, false)
-    binding.viewModel = viewModel
+    binding.viewModel = tetrisViewModel
     return binding.root
   }
 
@@ -33,9 +35,9 @@ class RankingSubmitFormFragment : Fragment() {
     super.onViewCreated(view, savedInstanceState)
     submitButton.setOnClickListener {
       val userName = editTextTextPersonName.text.toString()
-      val score = Score(userName, viewModel.score.value)
+      val score = Score(userName,tetrisViewModel.score.value)
       repository.setScore(score)
-      viewModel.submittedScore.value = true
+      userViewModel.submittedScore.value = true
     }
 
     backButton.setOnClickListener{
@@ -55,7 +57,7 @@ class RankingSubmitFormFragment : Fragment() {
        submitButton.text = "登録済み"
      }
     }
-    viewModel.submittedScore.observe(viewLifecycleOwner, submittedScoreObserver)
+    userViewModel.submittedScore.observe(viewLifecycleOwner, submittedScoreObserver)
   }
 
   override fun onDestroyView() {

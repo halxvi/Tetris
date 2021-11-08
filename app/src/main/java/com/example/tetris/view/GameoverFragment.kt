@@ -7,11 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.tetris.databinding.GameoverBinding
 import com.example.tetris.viewmodel.TetrisViewModel
+import com.example.tetris.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.gameover.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class GameoverFragment : Fragment() {
-  private val viewModel: TetrisViewModel by sharedViewModel()
+  private val userViewModel: UserViewModel by sharedViewModel()
+  private val tetrisViewModel: TetrisViewModel by sharedViewModel()
   private var _binding: GameoverBinding? = null
   private val binding get() = _binding!!
 
@@ -21,7 +23,7 @@ class GameoverFragment : Fragment() {
     savedInstanceState: Bundle?
   ): View {
     _binding = GameoverBinding.inflate(inflater, container, false)
-    binding.viewModel = viewModel
+    binding.viewModel = tetrisViewModel
     return binding.root
   }
 
@@ -31,7 +33,7 @@ class GameoverFragment : Fragment() {
     rankingButton.setOnClickListener{
       val transaction = parentFragmentManager.beginTransaction()
 
-      if(viewModel.isLogging){
+      if(userViewModel.isLogging){
         val rankingFragment = parentFragmentManager.findFragmentByTag("Ranking")
         val gameoverFragment = parentFragmentManager.findFragmentByTag("Gameover")
         if(rankingFragment != null && gameoverFragment != null) {
@@ -51,8 +53,8 @@ class GameoverFragment : Fragment() {
     }
 
     restartButton.setOnClickListener {
-      viewModel.restart()
-      viewModel.submittedScore.value = false
+     tetrisViewModel.restart()
+     userViewModel.submittedScore.value = false
       val gameoverFragment = parentFragmentManager.findFragmentByTag("Gameover")
       if(gameoverFragment != null) {
         val transaction = parentFragmentManager.beginTransaction()

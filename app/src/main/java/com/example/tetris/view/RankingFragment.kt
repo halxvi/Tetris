@@ -24,6 +24,7 @@ class RankingFragment : Fragment() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
+
     backButton.setOnClickListener{
       val rankingFragment = parentFragmentManager.findFragmentByTag("Ranking")
       val gameoverFragment = parentFragmentManager.findFragmentByTag("Gameover")
@@ -34,6 +35,7 @@ class RankingFragment : Fragment() {
         transaction.commit()
       }
     }
+
     goToSubmitFormButton.setOnClickListener {
       val rankingFragment = parentFragmentManager.findFragmentByTag("Ranking")
       val rankingSubmitFormFragment = parentFragmentManager.findFragmentByTag("RankingSubmitForm")
@@ -45,8 +47,8 @@ class RankingFragment : Fragment() {
       }
     }
 
-    val initScore: Array<Score> = Array(1){ Score("",0) }
-    val dataSet = repository.fetchScore()?.value ?: initScore
-    rankingRecyclerView.adapter = RankingViewAdapter(dataSet as Array<Score>)
+//    val initScore: Array<Score> = Array(1){ Score("",0) }
+//    val dataSet = repository.fetchScore()?.value ?: initScore
+//    rankingRecyclerView.adapter = RankingViewAdapter(dataSet as Array<Score>)
   }
 }
