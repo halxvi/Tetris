@@ -1,6 +1,5 @@
 package com.example.tetris
 
-import android.content.ContentValues.TAG
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -11,10 +10,12 @@ import android.widget.Toast.LENGTH_SHORT
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GestureDetectorCompat
+import androidx.lifecycle.Observer
 import com.example.tetris.view.*
 import com.example.tetris.viewmodel.TetrisViewModel
 import com.example.tetris.viewmodel.UserViewModel
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.dynamiclinks.ktx.dynamicLinks
 import com.google.firebase.ktx.Firebase
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -31,58 +32,17 @@ class MainActivity : AppCompatActivity() {
     mDetector = GestureDetectorCompat(this, MyGestureListener(tetrisViewModel))
 
     if (savedInstanceState == null) {
-      val fragmentManager = supportFragmentManager
-      val fragmentTransaction = fragmentManager.beginTransaction()
-
-      val tetrisFragment = TetrisFragment()
-      fragmentTransaction.add(R.id.fragment_container, tetrisFragment, "Tetris")
-
-      val gameoverFragment = GameoverFragment()
-      fragmentTransaction.add(R.id.fragment_container, gameoverFragment, "Gameover")
-      fragmentTransaction.detach(gameoverFragment)
-
-      val rankingFragment = RankingFragment()
-      fragmentTransaction.add(R.id.fragment_container, rankingFragment, "Ranking")
-      fragmentTransaction.detach(rankingFragment)
-
-      val rankingSubmitFormFragment = RankingSubmitFormFragment()
-      fragmentTransaction.add(
-        R.id.fragment_container,
-        rankingSubmitFormFragment,
-        "RankingSubmitForm"
-      )
-      fragmentTransaction.detach(rankingSubmitFormFragment)
-
-      val authenticationFragment = AuthenticationFragment()
-      fragmentTransaction.add(R.id.fragment_container, authenticationFragment, "Authentication")
-      fragmentTransaction.detach(authenticationFragment)
-
-      fragmentTransaction.commit()
+      initFragments()
     }
 
     tetrisViewModel.startGame()
 
-    val auth = Firebase.auth
-    val intent = intent
-    val emailLink = intent.data.toString()
-
-    if (auth.isSignInWithEmailLink(emailLink)) {
-      if (userViewModel.emailAddress !== "") {
-        auth.signInWithEmailLink(userViewModel.emailAddress, emailLink)
-          .addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-              userViewModel.isLogging = true
-              Log.d(TAG, "Successfully signed in with email link!")
-              Toast.makeText(applicationContext, "ログインしました", LENGTH_SHORT).show()
-            } else {
-              Log.e(TAG, "Error signing in with email link", task.exception)
-              Toast.makeText(applicationContext, "ログイン出来ませんでした", LENGTH_SHORT).show()
-            }
-          }
-      } else {
-        Toast.makeText(applicationContext, "ログイン出来ませんでした", LENGTH_SHORT).show()
+    Firebase.dynamicLinks
+      .getDynamicLink(intent)
+      .addOnSuccessListener(this) {
+        userViewModel.emailAddress.value?.let { it1 -> signingWithEmail(it1) }
       }
-    }
+      .addOnFailureListener(this) { e -> Log.w("TAG", "getDynamicLink:onFailure", e) }
   }
 
   override fun onRestart() {
@@ -98,6 +58,60 @@ class MainActivity : AppCompatActivity() {
   override fun onTouchEvent(e: MotionEvent): Boolean {
     mDetector.onTouchEvent(e)
     return super.onTouchEvent(e)
+  }
+
+  private fun initFragments() {
+    val fragmentManager = supportFragmentManager
+    val fragmentTransaction = fragmentManager.beginTransaction()
+
+    val tetrisFragment = TetrisFragment()
+    fragmentTransaction.add(R.id.fragment_container, tetrisFragment, "Tetris")
+
+    val gameoverFragment = GameoverFragment()
+    fragmentTransaction.add(R.id.fragment_container, gameoverFragment, "Gameover")
+    fragmentTransaction.detach(gameoverFragment)
+
+    val rankingFragment = RankingFragment()
+    fragmentTransaction.add(R.id.fragment_container, rankingFragment, "Ranking")
+    fragmentTransaction.detach(rankingFragment)
+
+    val rankingSubmitFormFragment = RankingSubmitFormFragment()
+    fragmentTransaction.add(
+      R.id.fragment_container,
+      rankingSubmitFormFragment,
+      "RankingSubmitForm"
+    )
+    fragmentTransaction.detach(rankingSubmitFormFragment)
+
+    val authenticationFragment = AuthenticationFragment()
+    fragmentTransaction.add(R.id.fragment_container, authenticationFragment, "Authentication")
+    fragmentTransaction.detach(authenticationFragment)
+
+    fragmentTransaction.commit()
+  }
+
+  private fun signingWithEmail(data:String) {
+    Log.d("aaaa",data)
+    val auth = Firebase.auth
+    val intent = intent
+    val emailLink = intent.data.toString()
+
+    if (auth.isSignInWithEmailLink(emailLink)) {
+      if (data !== "") {
+        auth.signInWithEmailLink(data, emailLink)
+          .addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+              userViewModel.isLogging = true
+              Toast.makeText(applicationContext, "ログインしました", LENGTH_SHORT).show()
+            } else {
+              Toast.makeText(applicationContext, "ログイン出来ませんでした", LENGTH_SHORT).show()
+            }
+          }
+      } else {
+        Log.d("bbbb",data)
+        Toast.makeText(applicationContext, "ログイン出来ませんでした", LENGTH_SHORT).show()
+      }
+    }
   }
 
   private class MyGestureListener(val tetrisViewModel: TetrisViewModel) :
