@@ -43,7 +43,7 @@ class AuthenticationFragment : Fragment() {
      Firebase.auth.sendSignInLinkToEmail(email, actionCodeSettings)
        .addOnCompleteListener { task ->
          if (task.isSuccessful) {
-           authEmailNotification.text = "メールアドレスを確認してください"
+           authEmailNotification.text = "メールを送信しました"
            sendEmailButton.text = "送信済"
            sendEmailButton.isClickable = false
          }else{
