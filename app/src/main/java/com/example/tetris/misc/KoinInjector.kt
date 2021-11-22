@@ -9,6 +9,6 @@ import org.koin.dsl.module
 val appModule = module {
   single { Tetris() }
 
-  viewModel { TetrisViewModel(get()) }
   viewModel { UserViewModel() }
+  viewModel { TetrisViewModel(get()) }
 }
