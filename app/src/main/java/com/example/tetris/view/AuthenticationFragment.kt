@@ -1,5 +1,6 @@
 package com.example.tetris.view
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,16 +9,12 @@ import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.fragment.app.Fragment
 import com.example.tetris.R
-import com.example.tetris.viewmodel.UserViewModel
 import com.google.firebase.auth.ActionCodeSettings
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.authentication.*
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class AuthenticationFragment : Fragment() {
-  private val userViewModel: UserViewModel by sharedViewModel()
-
   override fun onCreateView(
     inflater: LayoutInflater,
     container: ViewGroup?,
@@ -37,15 +34,23 @@ class AuthenticationFragment : Fragment() {
        .setAndroidPackageName("com.example.android", false, null)
        .build()
 
-     val email = editTextEmailAddress.text.toString()
-     userViewModel.emailAddress = email
+     val emailAddress = editTextEmailAddress.text.toString()
 
-     Firebase.auth.sendSignInLinkToEmail(email, actionCodeSettings)
+     Firebase.auth.sendSignInLinkToEmail(emailAddress, actionCodeSettings)
        .addOnCompleteListener { task ->
          if (task.isSuccessful) {
            authEmailNotification.text = "メールを送信しました"
            sendEmailButton.text = "送信済"
            sendEmailButton.isClickable = false
+
+           val sharedPref = activity?.getSharedPreferences(
+             getString(R.string.tetirs_preference_file_key), Context.MODE_PRIVATE)
+           if (sharedPref != null) {
+             with (sharedPref.edit()) {
+               putString(getString(R.string.tetris_user_email_address), emailAddress)
+               commit()
+             }
+           }
          }else{
            Toast.makeText(context, "有効なメールアドレスを入力してください", LENGTH_SHORT).show()
          }

@@ -9,4 +9,6 @@
   <string name="namePlaceholder">ニックネーム</string>
   <string name="goToSubmitFrom">スコア登録</string>
   <string name="send">送信</string>
+  <string name="tetirs_preference_file_key" />
+  <string name="tetris_user_email_address" />
 </resources>

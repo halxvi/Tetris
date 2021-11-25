@@ -1,16 +1,15 @@
 package com.example.tetris
 
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.widget.Toast
-import android.widget.Toast.LENGTH_SHORT
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GestureDetectorCompat
-import androidx.lifecycle.Observer
 import com.example.tetris.view.*
 import com.example.tetris.viewmodel.TetrisViewModel
 import com.example.tetris.viewmodel.UserViewModel
@@ -40,7 +39,7 @@ class MainActivity : AppCompatActivity() {
     Firebase.dynamicLinks
       .getDynamicLink(intent)
       .addOnSuccessListener(this) {
-        userViewModel.emailAddress.value?.let { it1 -> signingWithEmail(it1) }
+        signingWithEmail()
       }
       .addOnFailureListener(this) { e -> Log.w("TAG", "getDynamicLink:onFailure", e) }
   }
@@ -58,6 +57,31 @@ class MainActivity : AppCompatActivity() {
   override fun onTouchEvent(e: MotionEvent): Boolean {
     mDetector.onTouchEvent(e)
     return super.onTouchEvent(e)
+  }
+
+  private fun signingWithEmail() {
+    val auth = Firebase.auth
+    val intent = intent
+    val emailLink = intent.data.toString()
+    val sharedPref = this.getSharedPreferences(
+      getString(R.string.tetirs_preference_file_key), Context.MODE_PRIVATE)
+    val emailAddress = sharedPref.getString(getString(R.string.tetris_user_email_address), "")
+
+    if (auth.isSignInWithEmailLink(emailLink)) {
+      if (emailAddress == "" || emailAddress == null) {
+        Toast.makeText(applicationContext, "ログイン出来ませんでした", Toast.LENGTH_SHORT).show()
+      } else {
+        auth.signInWithEmailLink(emailAddress, emailLink)
+          .addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+              userViewModel.isLogging = true
+              Toast.makeText(applicationContext, "ログインしました", Toast.LENGTH_SHORT).show()
+            } else {
+              Toast.makeText(applicationContext, "ログイン出来ませんでした", Toast.LENGTH_SHORT).show()
+            }
+          }
+      }
+    }
   }
 
   private fun initFragments() {
@@ -88,30 +112,6 @@ class MainActivity : AppCompatActivity() {
     fragmentTransaction.detach(authenticationFragment)
 
     fragmentTransaction.commit()
-  }
-
-  private fun signingWithEmail(data:String) {
-    Log.d("aaaa",data)
-    val auth = Firebase.auth
-    val intent = intent
-    val emailLink = intent.data.toString()
-
-    if (auth.isSignInWithEmailLink(emailLink)) {
-      if (data !== "") {
-        auth.signInWithEmailLink(data, emailLink)
-          .addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-              userViewModel.isLogging = true
-              Toast.makeText(applicationContext, "ログインしました", LENGTH_SHORT).show()
-            } else {
-              Toast.makeText(applicationContext, "ログイン出来ませんでした", LENGTH_SHORT).show()
-            }
-          }
-      } else {
-        Log.d("bbbb",data)
-        Toast.makeText(applicationContext, "ログイン出来ませんでした", LENGTH_SHORT).show()
-      }
-    }
   }
 
   private class MyGestureListener(val tetrisViewModel: TetrisViewModel) :
