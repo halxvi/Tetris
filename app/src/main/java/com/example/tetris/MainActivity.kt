@@ -54,6 +54,19 @@ class MainActivity : AppCompatActivity() {
     tetrisViewModel.deleteTimer()
   }
 
+  override fun onDestroy() {
+    super.onDestroy()
+    val sharedPref = this.getSharedPreferences(
+      getString(R.string.tetirs_preference_file_key), Context.MODE_PRIVATE
+    )
+    if (sharedPref != null) {
+      with (sharedPref.edit()) {
+        putString(getString(R.string.tetris_user_email_address), "")
+        commit()
+      }
+    }
+  }
+
   override fun onTouchEvent(e: MotionEvent): Boolean {
     mDetector.onTouchEvent(e)
     return super.onTouchEvent(e)
@@ -64,7 +77,8 @@ class MainActivity : AppCompatActivity() {
     val intent = intent
     val emailLink = intent.data.toString()
     val sharedPref = this.getSharedPreferences(
-      getString(R.string.tetirs_preference_file_key), Context.MODE_PRIVATE)
+      getString(R.string.tetirs_preference_file_key), Context.MODE_PRIVATE
+    )
     val emailAddress = sharedPref.getString(getString(R.string.tetris_user_email_address), "")
 
     if (auth.isSignInWithEmailLink(emailLink)) {
